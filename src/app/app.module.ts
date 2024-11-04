@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { importProvidersFrom, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -50,6 +50,18 @@ import { TwoFactorCodeComponent } from './layout/pages/two-factor-code/two-facto
 import { NgOtpInputModule } from 'ng-otp-input';
 import { CheckIdDocumentsComponent } from './layout/pages/check-id-documents/check-id-documents.component';
 import { NzResultModule } from 'ng-zorro-antd/result';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { environment } from '../environments/environments';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyBl_6MnrJxIFFF0SfuWf8jRoMrXg652n3Y',
+  authDomain: 'ap-ai-4f32a.firebaseapp.com',
+  projectId: 'ap-ai-4f32a',
+  storageBucket: 'ap-ai-4f32a.appspot.com',
+  messagingSenderId: '17046956708',
+  appId: '1:17046956708:web:03ee629fa064fdc1be1431',
+};
 
 const icons: IconDefinition[] = [UserOutline];
 registerLocaleData(en);
@@ -107,6 +119,8 @@ registerLocaleData(en);
     { provide: NZ_ICONS, useValue: icons },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     DecimalPipe,
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideAuth(() => getAuth()),
   ],
   bootstrap: [AppComponent],
 })

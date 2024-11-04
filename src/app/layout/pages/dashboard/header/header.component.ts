@@ -20,6 +20,7 @@ import { SignUpService } from 'src/app/_services/sign-up.service';
 import { IdScanDetailsComponent } from '../../signup/id-scan-details/id-scan-details.component';
 import { CorporateAccountsChangeService } from 'src/app/_services/corporate-accounts-change.service';
 import { CheckIdDocumentsComponent } from '../../check-id-documents/check-id-documents.component';
+import { SignupPageComponent } from '../../signup/signup-page/signup-page.component';
 
 @Component({
   selector: 'app-header',
@@ -270,24 +271,33 @@ export class HeaderComponent {
     this.getCoperateAccess(this.SenderDetails.agentSenderDetailsId);
   }
 
+  // signUpAmlCheck() {
+  //   if (window.innerWidth > 540) {
+  //     this.modalService.create({
+  //       nzContent: PopupMessageComponent,
+  //       nzClosable: true,
+  //       nzFooter: null,
+  //       nzWidth: 510,
+  //       nzClassName: 'popup-message',
+  //     });
+  //   } else {
+  //     this.modalService.create({
+  //       nzContent: SignupComponent,
+  //       nzClosable: true,
+  //       nzFooter: null,
+  //       nzWidth: 510,
+  //       nzClassName: 'sign-up',
+  //     });
+  //   }
+  // }
   signUpAmlCheck() {
-    if (window.innerWidth > 540) {
-      this.modalService.create({
-        nzContent: PopupMessageComponent,
-        nzClosable: true,
-        nzFooter: null,
-        nzWidth: 510,
-        nzClassName: 'popup-message',
-      });
-    } else {
-      this.modalService.create({
-        nzContent: SignupComponent,
-        nzClosable: true,
-        nzFooter: null,
-        nzWidth: 510,
-        nzClassName: 'sign-up',
-      });
-    }
+    this.modalService.create({
+      nzContent: SignupPageComponent,
+      nzClosable: true,
+      nzFooter: null,
+      nzWidth: 510,
+      nzClassName: 'sign-up',
+    });
   }
 
   trackClickActivity(type: string) {

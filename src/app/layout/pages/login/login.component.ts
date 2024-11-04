@@ -101,57 +101,70 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
 
-  submitForm() {
-    // localStorage.clear();
-    // console.log(this.loginForm.value);
-
-    if (!this.loginForm.valid) {
-      this.validateFormFields(this.loginForm);
-    } else {
-      this.dataService.loggedInUser = this.userName?.value;
-      this.dataService.loggedInPassword = this.password?.value;
-
-      const formData = {
-        username: this.userName?.value,
-        password: this.password?.value,
-        grantType: 'Agent Customer',
-      };
-      this.authService
-        .login(formData)
-        .pipe(takeUntil(this.unsubscribe$))
-        .subscribe({
-          next: (data: any) => {
-            if (data.jwttoken) {
-              this.tokenService.saveToken(data.jwttoken);
-              this.tokenService.saveRefreshToken(data.refreshToken);
-              this.tokenStorageService.saveUser(this.userName?.value);
-              this.dataService.isLoggedIn = true;
-              this.tokenService.savePrivileges(this.userName?.value);
-              this.route.navigate(['']);
-              this.eventTrigger.onReloadServiceData();
-              this.afterLoginPopup();
-              // this.otpOpen();
-            } else if (data['errorDescription']) {
-              this.notificationServise.create(
-                'error',
-                'Error',
-                data['errorDescription'],
-                { nzStyle: { background: '#cc2d2d', color: '#fff' } }
-              );
-            }
-          },
-          error: () => {
-            this.notificationServise.create(
-              'error',
-              'Error',
-              'Username or password wrong',
-              { nzStyle: { background: '#cc2d2d', color: '#fff' } }
-            );
-          },
-        });
-      this.modalRef.destroy();
-    }
+  onSignup() {
+    this.authService
+      .login(this.userName?.value, this.password?.value)
+      .subscribe({
+        next: (response) => {
+          this.dataService.isLoggedIn = true;
+          this.route.navigate(['']);
+          this.afterLoginPopup();
+          console.log('Success', response);
+        },
+        error: (err) => {
+          this.notificationServise.create(
+            'error',
+            'Error',
+            'Error Signing up',
+            { nzStyle: { background: '#cc2d2d', color: '#fff' } }
+          );
+        },
+      });
   }
+  // submitForm() {
+  //   if (!this.loginForm.valid) {
+  //     this.validateFormFields(this.loginForm);
+  //   } else {
+  //     this.dataService.loggedInUser = this.userName?.value;
+  //     this.dataService.loggedInPassword = this.password?.value;
+
+  //     const formData = {
+  //       username: this.userName?.value,
+  //       password: this.password?.value,
+  //     };
+  //     this.authService.login(formData).subscribe({
+  //       next: (data: any) => {
+  //         if (data.jwttoken) {
+  //           this.tokenService.saveToken(data.jwttoken);
+  //           this.tokenService.saveRefreshToken(data.refreshToken);
+  //           this.tokenStorageService.saveUser(this.userName?.value);
+  //           this.dataService.isLoggedIn = true;
+  //           this.tokenService.savePrivileges(this.userName?.value);
+  //           this.route.navigate(['']);
+  //           this.eventTrigger.onReloadServiceData();
+  //           this.afterLoginPopup();
+  //           // this.otpOpen();
+  //         } else if (data['errorDescription']) {
+  //           this.notificationServise.create(
+  //             'error',
+  //             'Error',
+  //             data['errorDescription'],
+  //             { nzStyle: { background: '#cc2d2d', color: '#fff' } }
+  //           );
+  //         }
+  //       },
+  //       error: () => {
+  //         this.notificationServise.create(
+  //           'error',
+  //           'Error',
+  //           'Username or password wrong',
+  //           { nzStyle: { background: '#cc2d2d', color: '#fff' } }
+  //         );
+  //       },
+  //     });
+  //     this.modalRef.destroy();
+  //   }
+  // }
 
   send2FaCode() {
     if (!this.loginForm.valid) {
