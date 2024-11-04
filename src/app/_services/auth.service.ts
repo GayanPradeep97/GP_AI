@@ -1,12 +1,18 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { CommonService } from './common.service';
 import { Router } from '@angular/router';
 import { TokenService } from './token.service';
-import { BehaviorSubject, Observable, catchError, map } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, from, map } from 'rxjs';
 import { user } from '../_models/users';
 import { environment } from 'src/environments/environment';
 import { DataService } from './shared-data/data.service';
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {
+  Auth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +20,7 @@ import { DataService } from './shared-data/data.service';
 export class AuthService {
   public currentUser!: Observable<any>;
   private currentUserSubject!: BehaviorSubject<user>;
+  private firebaseAuth = inject(Auth);
 
   constructor(
     private http: HttpClient,
@@ -32,18 +39,45 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  //login user
-  login(data: any) {
-    const url = environment.authenticate;
-    return this.http.post<user>(url, data).pipe(
-      map((user: any) => {
-        return user;
-      }),
-      catchError((err) => {
-        return this.commonService.catchError(err);
-      })
+  register(
+    email: string,
+    username: string,
+    password: string
+  ): Observable<void> {
+    const promise = createUserWithEmailAndPassword(
+      this.firebaseAuth,
+      email,
+      password
+    ).then((response) =>
+      updateProfile(response.user, { displayName: username })
     );
+    return from(promise);
   }
+
+  // Login user with Firebase Authentication
+  login(email: string, password: string): Observable<any> {
+    const promise = signInWithEmailAndPassword(
+      this.firebaseAuth,
+      email,
+      password
+    );
+    signInWithEmailAndPassword(this.firebaseAuth, email, password).then(
+      () => {}
+    );
+    return from(promise);
+  }
+  //login user
+  // login(data: any) {
+  //   const url = environment.authenticate;
+  //   return this.http.post<user>(url, data).pipe(
+  //     map((user: any) => {
+  //       return user;
+  //     }),
+  //     catchError((err) => {
+  //       return this.commonService.catchError(err);
+  //     })
+  //   );
+  // }
 
   isLoggedIn(): boolean {
     // return (this.currentUserValue && this.currentUserValue.jwttoken);
@@ -88,4 +122,7 @@ export class AuthService {
       })
     );
   }
+}
+function then(arg0: (userCredential: any) => any) {
+  throw new Error('Function not implemented.');
 }

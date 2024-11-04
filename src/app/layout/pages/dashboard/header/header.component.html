@@ -2,7 +2,7 @@
   <div class="header-container">
     <div class="logo">
       <a [routerLink]="['/']" (click)="trackClickActivity('logo')"
-        ><img src="./assets/images/logo.png"
+        ><img src="./assets/images/gp_logo1.png"
       /></a>
     </div>
     <div class="nav-menu-container">
@@ -20,6 +20,12 @@
           class="desktop-only-m992"
         >
           <a class="ref-txt">Old Reference: {{ customerOldReference }}</a>
+        </li>
+
+        <li>
+          <a [routerLink]="['/']" (click)="trackClickActivity('about us')"
+            >Home</a
+          >
         </li>
 
         <li>

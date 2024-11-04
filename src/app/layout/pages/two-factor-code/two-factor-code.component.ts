@@ -79,51 +79,51 @@ export class TwoFactorCodeComponent {
     });
   }
   verify() {
-    if (isNaN(this.entered2faCode)) {
-      this.notificationService.create(
-        'error',
-        'Error',
-        'Please Enter Valid OTP',
-        { nzStyle: { background: '#cc2d2d', color: '#fff' } }
-      );
-    } else {
-      const formData = {
-        username: this.dataService.loggedInUser,
-        password: this.dataService.loggedInPassword,
-        grantType: 'Agent Customer',
-        otp: this.entered2faCode,
-      };
-      this.authService.login(formData).subscribe({
-        next: (data: any) => {
-          if (data.jwttoken) {
-            this.tokenService.saveToken(data.jwttoken);
-            this.tokenService.saveRefreshToken(data.refreshToken);
-            this.tokenStorage.saveUser(this.dataService.loggedInUser);
-            this.dataService.isLoggedIn = true;
-            this.tokenService.savePrivileges(this.dataService.loggedInUser);
-            this.route.navigate(['']);
-            this.eventTrigger.onReloadServiceData();
-            this.afterLoginPopup();
-          } else if (data['errorDescription']) {
-            this.notificationService.create(
-              'error',
-              'Error',
-              data['errorDescription'],
-              { nzStyle: { background: '#cc2d2d', color: '#fff' } }
-            );
-          }
-        },
-        error: () => {
-          this.notificationService.create(
-            'error',
-            'Error',
-            'Please enter valid OTP',
-            { nzStyle: { background: '#cc2d2d', color: '#fff' } }
-          );
-        },
-      });
-      // this.modalRef.destroy();
-    }
+    // if (isNaN(this.entered2faCode)) {
+    //   this.notificationService.create(
+    //     'error',
+    //     'Error',
+    //     'Please Enter Valid OTP',
+    //     { nzStyle: { background: '#cc2d2d', color: '#fff' } }
+    //   );
+    // } else {
+    //   const formData = {
+    //     username: this.dataService.loggedInUser,
+    //     password: this.dataService.loggedInPassword,
+    //     grantType: 'Agent Customer',
+    //     otp: this.entered2faCode,
+    //   };
+    //   this.authService.login(formData).subscribe({
+    //     next: (data: any) => {
+    //       if (data.jwttoken) {
+    //         this.tokenService.saveToken(data.jwttoken);
+    //         this.tokenService.saveRefreshToken(data.refreshToken);
+    //         this.tokenStorage.saveUser(this.dataService.loggedInUser);
+    //         this.dataService.isLoggedIn = true;
+    //         this.tokenService.savePrivileges(this.dataService.loggedInUser);
+    //         this.route.navigate(['']);
+    //         this.eventTrigger.onReloadServiceData();
+    //         this.afterLoginPopup();
+    //       } else if (data['errorDescription']) {
+    //         this.notificationService.create(
+    //           'error',
+    //           'Error',
+    //           data['errorDescription'],
+    //           { nzStyle: { background: '#cc2d2d', color: '#fff' } }
+    //         );
+    //       }
+    //     },
+    //     error: () => {
+    //       this.notificationService.create(
+    //         'error',
+    //         'Error',
+    //         'Please enter valid OTP',
+    //         { nzStyle: { background: '#cc2d2d', color: '#fff' } }
+    //       );
+    //     },
+    //   });
+    //   // this.modalRef.destroy();
+    // }
   }
 
   afterLoginPopup() {
