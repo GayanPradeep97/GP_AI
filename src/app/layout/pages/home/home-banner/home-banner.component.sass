@@ -1,0 +1,295 @@
+@import '../../../../../assets/sass/index'
+.ant-layout
+    overflow-x: hidden
+
+.ant-layout-header
+    padding: 0
+    width: 100%
+    position: fixed
+    top: 0
+    z-index: 1
+    background: $primary-color
+    height: auto
+    z-index: 900
+
+.ant-layout-footer
+    padding: 0
+    width: 100%
+
+.banner-section
+    position: relative
+    background: $primary-color
+    width: 100%
+    //height: auto
+    //overflow: hidden
+    @include media_query_all(null,null,null,null,null,"hidden",'overflow')
+    @include media_query_all(800,null,"auto","auto",null,null,'min-height')
+
+.banner-section-container div
+    //justify-content: space-between
+    @include media_query_all("center",null,null,null,"space-around","space-between",'justify-content')
+
+.banner-section .banner-img
+    position: absolute
+    bottom: 14px
+    width: 100%
+    background: $primary-color
+
+.banner-section-container
+    position: relative
+    //padding: 119px 81px 0 98px
+    z-index: 800
+    padding-top: 100px
+    // @include media_query_all(10,10,100,null,null,null,'padding-top')
+    @include media_query_all(20,null,null,null,81,81,'padding-right')
+    @include media_query_all(20,null,null,98,98,98,'padding-left')
+
+.banner-section-container .banner-caption
+    //padding-top: 51px
+    @include media_query_all(16,null,null,unset,null,null,'padding-right')
+    @include media_query_all(16,null,null,unset,null,null,'padding-left')
+    padding-bottom: 51px
+    @include media_query_all(0,0,0,51,51,51,'padding-top')
+
+.banner-section-container > div:nth-child(1)
+    @include media_query_all('grid',null,null,"flex",null,null,'display')
+    @include media_query_all('center',null,null,'left','left','left','text-align')
+
+.form-align
+    justify-content: center
+    display: flex
+    @include media_query_all_im(center,null,null,null,null,end,'justify-content')
+    @include media_query_all(16,null,null,unset,null,28,'margin-top')
+
+.banner-caption
+    //width: 600px
+    // display: grid
+    justify-items: left
+    margin-right: auto
+    @include media_query_all("center",null,null,"left",null,null,'justify-items')
+    // @include media_query_all(550,null,"35rem","35rem",null,null,'width')
+
+.banner-caption h1
+    color: $white-color
+    font-family: $font-family
+    font-style: normal
+    font-weight: bold
+    letter-spacing: 0.05em
+    @include media_query_all(28,null,null,null,null,28,'margin-bottom')
+    @include media_query_all(30,null,48,null,null,50,'font-size')
+    @include media_query_all(40,65,null,null,null,65,'line-height')
+
+.banner-caption h6
+    font-family: $font-family
+    color: $white-color
+    letter-spacing: 0.01em
+    font-weight: 500
+    margin-bottom: 0
+    @include media_query_all(18,null,null,null,null,24,'font-size')
+    @include media_query_all(32,null,null,null,null,32,'line-height')
+
+.banner-caption h6 br
+    @include media_query_all(none,null,null,block,null,block,'display')
+
+.banner-caption .learn-more-row
+    position: relative
+    @include media_query_all(35,null,null,null,null,60,'margin-top')
+
+.learn-more-row
+    @include media_query_all_im(center,null,left,null,null,unset,'justify-content')
+
+.banner-caption .learn-more-row .learn-more-btn
+    @include media_query_all(52,null,null,null,null,52,'height')
+    @include media_query_all(200,null,null,null,null,200,'width')
+    background: $medium-color
+    border-radius: 5px
+    border: none
+    font-family: $font-family
+    @include media_query_all(18,null,null,null,null,16,'font-size')
+    color: $white-color
+    font-weight: bold
+    letter-spacing: 0.03em
+    line-height: 19px
+    text-align: center
+    cursor: pointer
+    outline: none
+    margin-right: 19px
+    @include media_query_all(30,null,null,null,null,null,'margin-bottom')
+
+.banner-caption .learn-more-row .txt
+    display: inline-block
+    color: $secondary-color
+    font-family: $font-family
+    font-size: 14px
+    line-height: 19px
+    font-weight: 600
+    margin-right: 19px
+
+.country-figure
+    display: inline-block
+    position: absolute
+    top: 38px
+    padding-left: 30px
+
+.country-figure a
+    /* display: block;   */
+    font-family: $font-family
+    color: $white-color
+    font-size: 14px
+    line-height: 19px
+    font-weight: 500
+    cursor: pointer
+    margin-bottom: 21px
+
+.country-figure a img
+    width: 36.4px
+    height: 26px
+    margin-right: 18px
+
+.banner-caption .learn-more-row .play-btn
+    margin-right: 8px
+    cursor: pointer
+
+.banner-caption .learn-more-row .play-btn img
+    @include media_query_all(52,null,null,null,null,52,'height')
+    @include media_query_all(52,null,null,null,null,52,'width')
+
+.banner-section-container .get-started-figure
+    position: relative
+    background: $medium-bg-color
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
+    border-radius: 5px
+    @include media_query_all(30,null,null,null,null,17,'padding-top')
+    @include media_query_all(16,null,null,null,null,23,'padding-left')
+    @include media_query_all(16,null,null,null,null,23,'padding-right')
+    @include media_query_all(30,null,null,null,null,25,'padding-bottom')
+    @include media_query_all(auto,null,null,null,null,440,'max-width')
+    @include media_query_all(auto,null,null,null,null,420,'min-height')
+    /* height: 449px; */
+    float: right
+
+.get-started-figure
+    margin-bottom: 2rem
+
+.get-started-figure h4
+    font-family: $font-family
+    color: $medium-color
+    @include media_query_all(18,null,null,null,null,22,'font-size')
+    letter-spacing: 0.01em
+    @include media_query_all(10,null,null,null,null,10,'margin-bottom')
+
+.get-started-figure .get-started-btn
+    @include media_query_all(52,null,null,null,null,52,'height')
+    width: 100%
+    background: $medium-color
+    border-radius: 5px
+    border: none
+    font-family: $font-family
+    @include media_query_all(18,null,null,null,null,16,'font-size')
+    color: $white-color
+    font-weight: bold
+    letter-spacing: 0.03em
+    line-height: 19px
+    text-align: center
+    cursor: pointer
+    outline: none
+    @include media_query_all(16,null,null,null,null,20,'margin-top')
+
+.get-started-figure .get-started-btn:disabled
+    cursor: not-allowed
+    background: rgba(154, 2, 0, 0.68)
+
+.get-started-figure .bottom-row
+    text-align: center
+
+.get-started-figure .bottom-row span
+    display: block
+    float: left
+    color: $secondary-color
+    font-family: $font-family
+    font-size: 14px
+    line-height: 19px
+    letter-spacing: 0.01em
+
+.get-started-figure .bottom-row a
+    display: block
+    float: right
+    color: $gray-color
+    font-family: $font-family
+    font-size: 14px
+    line-height: 19px
+    letter-spacing: 0.01em
+    cursor: pointer
+    text-decoration: underline
+
+.nz-select-top-control.nzsel
+    height: 50px
+
+:host ::ng-deep .get-started-figure .ant-form-item
+    padding-bottom: 0
+    margin-bottom: 6px
+
+:host ::ng-deep .get-started-figure .ant-form-item label
+    font-family: $font-family
+    color: $gray
+    @include media_query_all(18,null,null,null,null,16,'font-size')
+    line-height: 19px
+    letter-spacing: 0.01em
+    font-weight: normal
+    // @include media_query_all(10,null,null,null,null,10,'margin-bottom')
+
+:host ::ng-deep .ant-input,
+:host ::ng-deep .nz-select.nz-select-single .nz-select-container
+    @include media_query_all(52,null,null,null,null,52,'height')
+    width: 100%
+    border: 1px solid $input-border
+    box-sizing: border-box
+    border-radius: 5px
+    padding: 0 11px
+    font-family: $font-family
+    font-weight: normal
+    @include media_query_all(18,null,null,null,null,16,'font-size')
+    line-height: 19px
+    letter-spacing: 0.01em
+    background: none
+    color: $gray-color
+
+:host ::ng-deep .nz-select.nz-select-single .nz-select-container
+    padding: 0 6px 0 1px !important
+
+:host ::ng-deep .nz-select .nz-arrow-wrapper .nz-arrow
+    border-color: $input-border transparent transparent
+    border-style: solid
+    border-width: 10px 10px 0px
+
+:host ::ng-deep .nz-select.nz-select-opened>.nz-select-container .nz-arrow
+    top: -2px
+    border-color: transparent transparent $input-border
+    border-width: 0 10px 10px
+
+:host ::ng-deep .nz-dropdown-panel.nz-select-bottom,
+:host ::ng-deep .nz-dropdown-panel.nz-select-top
+    border-radius: 5px
+    overflow: hidden
+    margin-top: 2px
+    margin-bottom: 2px
+    border: 1px solid $input-border
+    background: $white-color
+    box-shadow: none
+
+:host ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option
+    padding: 8px 12px
+
+:host ::ng-deep .get-started-figure .ant-select-single:not(.ant-select-customize-input) .ant-select-selector
+    align-items: center
+    @include media_query_all(52,null,null,null,null,52,'height')
+    @include media_query_all(18,null,null,null,null,16,'font-size')
+
+:host ::ng-deep .ant-select-arrow .anticon:not(.ant-select-suffix)
+    @include media_query_all(18,null,null,null,null,25,'font-size')
+
+:host::ng-deep.ant-select-clear
+    @include media_query_all(15,null,null,null,null,20,'font-size')
+    position: absolute
+    right: 20px
+    

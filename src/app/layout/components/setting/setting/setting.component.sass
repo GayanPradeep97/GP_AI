@@ -1,0 +1,73 @@
+@import '../../../../../assets/sass/index'
+
+.title-bar
+    height: 74px
+    background: #FFF8F5
+    padding: 0 50px
+    display: flex
+    align-items: center
+    justify-content: center
+    // margin-bottom: 30px
+    width: 100%
+    @include media_query_all(0,30,null,null,null,30,'margin-bottom')
+    margin-top: 38px
+
+    @include media_query_all_im(16,null,50,null,null,50,'padding-left')
+    @include media_query_all_im(16,null,50,null,null,50,'padding-right')
+
+::ng-deep .ant-tabs-top>.ant-tabs-nav
+    margin: 0
+    // @include media_query_all(35,'unset',null,null,null,'unset','height')
+::ng-deep .ant-layout-content
+    background: #FFF8F5
+    height: 100vh
+
+:host ::ng-deep .ant-col-24
+    background: #ffff
+    padding: 20px
+    display: flex
+    align-items: center
+    // @include media_query_all(0,68,null,null,null,68,'height')
+    height: 68px
+    border-bottom: 0.2px solid rgba(0, 0, 0, 0.15)
+
+.title-bar .page-heading
+    // font-size: 28px
+    color: black
+    font-weight: 600
+    margin-bottom: 0
+    letter-spacing: 0.01em
+    line-height: 28px
+    @include media_query_all_im(20,null,null,null,null,28,'font-size')
+
+.content-figure
+    /* position: relative; */
+    // left: 22px
+    // right: 22px
+    padding: 0 50px
+    background: #FFF8F5
+    @include media_query_all_im(16,null,50,null,null,50,'padding-left')
+    @include media_query_all_im(16,null,50,null,null,50,'padding-right')
+
+::ng-deep .ant-tabs-tab-btn
+    color: #828282
+    font-weight: 600
+    line-height: 21px
+
+::ng-deep .ant-tabs-top>.ant-tabs-nav::before
+    background: #C4C4C4
+    height: 0.5px
+
+::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn
+    color: #F45300
+
+::ng-deep .ant-tabs-ink-bar
+    background: #F45300
+    height: 3px
+
+// ::ng-deep .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn
+//     @include media_query_all(12,'unset',null,null,null,'unset','font-size')
+::ng-deep .ant-form
+
+    @include media_query_all_im(40,null,40,null,null,40,'padding-bottom')
+    @include media_query_all_im(45,null,45,null,null,45,'margin-top')

@@ -1,0 +1,147 @@
+<div class="section" *ngIf="showConvenienceSec">
+  <div class="section-container">
+    <div class="heading-row">
+      <h2 class="heading">Pick up at your Convenience</h2>
+      <p class="desc">
+        No matter where in {{ country }} you want to send<br />
+        money to, Bankoyo has you covered.
+      </p>
+      <p
+        class="desc"
+        *ngIf="uniqueParagraph"
+        [innerHTML]="uniqueParagraph"
+        style="margin-top: 20px"
+      ></p>
+    </div>
+    <div nz-row style="justify-content: center">
+      <!-- <div
+        nz-col
+        nzXs="24"
+        [nzLg]="firstColSize"
+        [nzXl]="firstColSize"
+        class="feature-item"
+      ></div> -->
+      <div
+        nz-col
+        nzXs="24"
+        nzLg="6"
+        nzXl="6"
+        class="feature-item"
+        *ngIf="walletPayoutImgUrl1 && walletPayoutTitle1"
+      >
+        <div nz-row nzType="flex" nzJustify="center">
+          <div nz-col nzXs="24" nzLg="16" nzXl="16">
+            <div class="logo-sec">
+              <img
+                class="flag-img"
+                src="./assets/images/flag-usa.png"
+                *ngIf="currentRoute === '/send-money-in-usa'"
+              />
+              <img [src]="walletPayoutImgUrl1" />
+            </div>
+            <h5>{{ walletPayoutTitle1 }}</h5>
+            <p *ngIf="walletPayoutUniqueDesc1">{{ walletPayoutUniqueDesc1 }}</p>
+            <p *ngIf="!walletPayoutUniqueDesc1">
+              Now you can send money home and collect it at any
+              {{ walletPayoutTitle1 }} branch.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        nz-col
+        nzXs="24"
+        nzLg="6"
+        nzXl="6"
+        class="feature-item"
+        *ngIf="walletPayoutImgUrl2 && walletPayoutTitle2"
+      >
+        <div nz-row nzType="flex" nzJustify="center">
+          <div nz-col nzXs="24" nzLg="16" nzXl="16">
+            <div class="logo-sec">
+              <img
+                class="flag-img"
+                src="./assets/images/flag-srilanka.png"
+                *ngIf="currentRoute === '/send-money-in-usa'"
+              />
+              <img [src]="walletPayoutImgUrl2" style="left: 30px" />
+            </div>
+            <h5>{{ walletPayoutTitle2 }}</h5>
+            <p *ngIf="walletPayoutUniqueDesc2">{{ walletPayoutUniqueDesc2 }}</p>
+            <p *ngIf="!walletPayoutUniqueDesc2">
+              Now you can send money home and collect at any branch of
+              {{ walletPayoutTitle2 }}.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        nz-col
+        nzXs="24"
+        nzLg="6"
+        nzXl="6"
+        class="feature-item"
+        *ngIf="walletPayoutImgUrl3 && walletPayoutTitle3"
+      >
+        <div nz-row nzType="flex" nzJustify="center">
+          <div nz-col nzXs="24" nzLg="16" nzXl="16">
+            <div class="logo-sec">
+              <img [src]="walletPayoutImgUrl3" />
+            </div>
+            <h5>{{ walletPayoutTitle3 }}</h5>
+            <p *ngIf="walletPayoutUniqueDesc3">{{ walletPayoutUniqueDesc3 }}</p>
+            <p *ngIf="!walletPayoutUniqueDesc3">
+              Send money effortlessly with {{ walletPayoutTitle3 }}. Enjoy
+              convenient transfer options that put you in control of your
+              finances.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        nz-col
+        nzXs="24"
+        nzLg="6"
+        nzXl="6"
+        class="feature-item"
+        *ngIf="walletPayoutImgUrl4 && walletPayoutTitle4"
+      >
+        <div nz-row nzType="flex" nzJustify="center">
+          <div nz-col nzXs="24" nzLg="16" nzXl="16">
+            <div class="logo-sec">
+              <img [src]="walletPayoutImgUrl4" />
+            </div>
+            <h5>{{ walletPayoutTitle4 }}</h5>
+            <p *ngIf="walletPayoutUniqueDesc4">{{ walletPayoutUniqueDesc4 }}</p>
+            <p *ngIf="!walletPayoutUniqueDesc4">
+              Now you can send money home and collect at any branch of
+              {{ walletPayoutTitle4 }}.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        nz-col
+        nzXs="24"
+        nzLg="6"
+        nzXl="6"
+        class="feature-item"
+        *ngIf="showMajorBanks"
+      >
+        <div nz-row nzType="flex" nzJustify="center">
+          <div nz-col nzXs="24" nzLg="16" nzXl="16">
+            <div class="logo-sec">
+              <img src="./assets/images/other-banks-logo.png" />
+            </div>
+            <h5>All Major Banks</h5>
+            <p>
+              You family can receive in their account held at all
+              {{ nationality }} banks.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- <div nz-col nzXs="24" nzLg="6" nzXl="6" class="feature-item"></div> -->
+    </div>
+  </div>
+</div>

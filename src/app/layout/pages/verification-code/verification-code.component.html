@@ -1,0 +1,50 @@
+<div class="modal-content">
+  <form
+    nz-form
+    [nzLayout]="'vertical'"
+    [formGroup]="verificationForm"
+    [nzAutoTips]="autoTips"
+  >
+    <div nz-row>
+      <div nz-col [nzSpan]="24">
+        <nz-form-item>
+          <nz-form-label
+            >Verification Code<span class="required-mark"> * </span>
+          </nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              id="emailAddress"
+              formControlName="verificationCode"
+              placeholder="Enter Verification Code"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col [nzSpan]="24">
+        <nz-form-item>
+          <nz-form-label
+            >Date Of Birth<span class="required-mark"> * </span>
+          </nz-form-label>
+          <nz-form-control>
+            <nz-date-picker
+              nz-input
+              id="dateofbirth"
+              formControlName="dateOfBirth"
+              nzPlaceHolder="Select Date"
+              [nzFormat]="'yyyy-MM-dd'"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+  <div class="btn-row">
+    <button nz-button class="btn btn-design cancel-btn" (click)="closeModal()">
+      Cancel
+    </button>
+    <button nz-button class="btn btn-design submit-btn" (click)="submitCode()">
+      Submit
+    </button>
+  </div>
+</div>

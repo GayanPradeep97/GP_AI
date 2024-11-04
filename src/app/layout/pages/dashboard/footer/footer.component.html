@@ -1,0 +1,55 @@
+<div class="footer">
+  <div class="footer-container">
+    <div nz-row nzJustify="space-between">
+      <div nz-col xs="24" lg="7" xl="7" class="logo-col">
+        <a class="logo" (click)="trackClickActivity('logo')">
+          <img [routerLink]="['/']" src="./assets/images/logo.svg" />
+        </a>
+      </div>
+      <div nz-col nzSpan="9" class="links-col">
+        <div class="bottom-links">
+          <a [routerLink]="['/blog']" (click)="trackClickActivity('blog')"
+            >Blog</a
+          >
+          <a
+            [routerLink]="['/terms-conditions']"
+            (click)="trackClickActivity('terms & conditions')"
+            >Terms & Conditions</a
+          >
+          <a
+            [routerLink]="['/disclaimer']"
+            (click)="trackClickActivity('disclaimer')"
+            >Disclaimer</a
+          >
+          <a
+            [routerLink]="['/about-us']"
+            (click)="trackClickActivity('about us')"
+            >About Us</a
+          >
+        </div>
+      </div>
+      <div nz-col xs="24" lg="8" xl="8" class="copyright-col">
+        <div class="social-links">
+          <span>Follow Us:</span>
+          <a
+            href="{{ fbUrl }}"
+            target="_blank"
+            (click)="trackClickActivity('facebook')"
+            ><img src="./assets/images/Facebook.png"
+          /></a>
+          <a
+            href="{{ twitUrl }}"
+            target="_blank"
+            (click)="trackClickActivity('twitter')"
+            ><img src="./assets/images/Twitter.png"
+          /></a>
+          <!-- <a href={{logo.instaUrl}} target="_blank"><img src="./assets/icons/Instagram.png"></a>  -->
+          <!-- <a><img src="./assets/icons/Google.png"></a> -->
+        </div>
+        <p class="copyright-txt">
+          &copy;2024 Monex International Limited. All rights reserved
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

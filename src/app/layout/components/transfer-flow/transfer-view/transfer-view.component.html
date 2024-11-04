@@ -1,0 +1,209 @@
+<div>
+  <form nz-form [nzLayout]="'vertical'" [formGroup]="transferProcessView">
+    <!-- <input
+        type="hidden"
+        formControlName="ripplenetQuoteId"
+        id="ripplenetQuoteId"
+        name="ripplenetQuoteId"
+      /> -->
+
+    <div nz-row nzGutter="16">
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label
+            >Sending Currency<span class="required-mark">*</span></nz-form-label
+          >
+          <nz-form-control nzSpan="">
+            <nz-select
+              class="dropdown"
+              nzSuffixIcon="caret-down"
+              id="sendingCurrency"
+              formControlName="sendingCurrency"
+              nzPlaceHolder="Select Currency"
+              (ngModelChange)="getRecipientCurrencies($event)"
+              nzShowSearch
+            >
+              <nz-option
+                *ngFor="let data of sendingCurrencies"
+                [nzValue]="data.currencyId"
+                [nzLabel]="data.currencyCode + ' -  ' + data.currencyName"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label
+            >Recipient Currency<span class="required-mark"
+              >*</span
+            ></nz-form-label
+          >
+          <nz-form-control nzSpan="">
+            <nz-select
+              class="dropdown"
+              nzSuffixIcon="caret-down"
+              id="recipientCurrency"
+              formControlName="recipientCurrency"
+              nzPlaceHolder="Select Currency"
+              nzShowSearch
+              (ngModelChange)="getSelectreceivingCurrency($event)"
+              nzShowSearch
+            >
+              <nz-option
+                *ngFor="let data of receivingCurrencies"
+                [nzValue]="data.currencyId"
+                [nzLabel]="data.currencyCode + ' -  ' + data.currencyName"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label
+            >Send Amount<span class="required-mark">*</span></nz-form-label
+          >
+          <nz-form-control nzSpan="">
+            <input
+              nz-input
+              formControlName="sendAmount"
+              id="sendAmount"
+              type="text"
+              Placeholder="Enter Amount"
+              (keypress)="numberOnly($event)"
+              (change)="
+                getConvertedAmount();
+                covertSendingToDecimal();
+                changeTotalAmount()
+              "
+              (ngModelChange)="validateNumber()"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row nzGutter="16">
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label
+            >Amount Received<span class="required-mark">*</span></nz-form-label
+          >
+          <nz-form-control nzSpan="">
+            <input
+              nz-input
+              formControlName="amountReceived"
+              id="amountReceived"
+              type="text"
+              Placeholder="Enter Amount"
+              (keypress)="numberOnly($event)"
+              (change)="getConvertedAmoutReceived(); covertReceivingToDecimal()"
+              (ngModelChange)="validateNumberRec()"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label
+            >Transfer As<span class="required-mark">*</span></nz-form-label
+          >
+          <nz-form-control nzSpan="">
+            <nz-select
+              class="dropdown"
+              nzSuffixIcon="caret-down"
+              formControlName="transactionMode"
+              nzPlaceHolder="Select Transfer As"
+              (ngModelChange)="changeTransactionMode($event)"
+              nzShowSearch
+            >
+              <nz-option
+                *ngFor="let data of transactionmodes"
+                [nzValue]="data.agentCurrencyTransactionModeId"
+                [nzLabel]="data.transactionModeDesc"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label
+            >Paying By<span class="required-mark">*</span></nz-form-label
+          >
+          <nz-form-control nzSpan="">
+            <nz-select
+              class="dropdown"
+              nzSuffixIcon="caret-down"
+              nzPlaceHolder="Select Type"
+              clearAllText="Clear"
+              formControlName="paymentMode"
+              (ngModelChange)="gtAllConfiguredTransactionFee($event)"
+              nzShowSearch
+            >
+              <nz-option
+                *ngFor="let data of paymentmodes"
+                [nzValue]="data.agentPaymentModeId"
+                [nzLabel]="data.paymentModeDto.paymentModeDesc"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row nzGutter="16">
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label
+            >Transfer Fee <span class="required-mark">*</span></nz-form-label
+          >
+          <nz-form-control nzSpan="">
+            <input
+              nz-input
+              type="number"
+              placeholder="Transfer Fee"
+              formControlName="transferFee"
+              [disabled]="true"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label
+            >Total Amount Payable<span class="required-mark"
+              >*</span
+            ></nz-form-label
+          >
+          <nz-form-control nzSpan="">
+            <input
+              nz-input
+              formControlName="totalAmountPayable"
+              id="totalAmountPayable"
+              type="text"
+              placeholder="Amount Payable"
+              [disabled]="true"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label>Promo Code</nz-form-label>
+          <nz-form-control nzSpan="">
+            <input
+              nz-input
+              formControlName="promoCode"
+              id="promoCode"
+              type="text"
+              Placeholder="promo code"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+</div>

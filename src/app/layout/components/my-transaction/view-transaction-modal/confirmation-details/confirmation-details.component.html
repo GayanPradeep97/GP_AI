@@ -1,0 +1,56 @@
+<div class="invoice-desc-figure">
+  <div nz-row class="top-row" [nzGutter]="[20, 20]">
+    <!-- <div nz-col nzXs="24" nzMd="12" nzLg="6" nzXl="6">
+      <span class="detail-label">Invoice ID</span>
+      <P class="detail">{{ invoiceId }}</P>
+    </div> -->
+    <div nz-col nzXs="24" nzMd="12" nzLg="6" nzXl="6">
+      <span class="detail-label">Transfer Reference</span>
+      <P class="detail">{{ transferReferrence }}</P>
+    </div>
+    <div nz-col nzXs="24" nzMd="12" nzLg="6" nzXl="6">
+      <span class="detail-label">Date</span>
+      <P class="detail">{{ date }}</P>
+    </div>
+    <div nz-col nzXs="24" nzMd="12" nzLg="6" nzXl="6">
+      <span class="detail-label">Sender Name</span>
+      <P class="detail">{{ senderName }}</P>
+    </div>
+    <div nz-col nzXs="24" nzMd="12" nzLg="6" nzXl="6">
+      <span class="detail-label">Transfered Amount</span>
+      <P class="detail">{{ sendingCurrency }} {{ transferedAmount }}</P>
+    </div>
+  </div>
+  <div nz-row [nzGutter]="[20, 20]">
+    <div
+      nz-col
+      nzXs="24"
+      nzMd="12"
+      nzLg="6"
+      nzXl="6"
+      *ngIf="benifisaryLastName != undefined"
+    >
+      <span class="detail-label">Beneficiary Name</span>
+      <P class="detail">{{ benifisaryFirstName + " " + benifisaryLastName }}</P>
+    </div>
+    <div
+      nz-col
+      nzXs="24"
+      nzMd="12"
+      nzLg="6"
+      nzXl="6"
+      *ngIf="benifisaryLastName == undefined"
+    >
+      <span class="detail-label">Beneficiary Name</span>
+      <P class="detail">{{ benifisaryFirstName }}</P>
+    </div>
+    <div nz-col nzXs="24" nzMd="12" nzLg="6" nzXl="6">
+      <span class="detail-label">Mode of Service</span>
+      <P class="detail">{{ madeOfService }}</P>
+    </div>
+    <div nz-col nzXs="24" nzMd="12" nzLg="6" nzXl="6">
+      <span class="detail-label">Received Amount</span>
+      <P class="detail">{{ recipientCurrency }} {{ ReceivedAmmount }}</P>
+    </div>
+  </div>
+</div>

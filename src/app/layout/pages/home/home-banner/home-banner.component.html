@@ -1,0 +1,221 @@
+<div class="banner-section">
+  <img class="banner-img" src="./assets/images/mainBannerBg.svg" />
+  <div class="banner-section-container">
+    <div nz-row>
+      <!-- <div nz-col nzSpan="8" class="banner-caption"> -->
+      <div
+        nz-col
+        nzXs="24"
+        nzLg="16"
+        nzXl="16"
+        class="banner-caption"
+        *ngIf="!dataService.isLoggedIn"
+      >
+        <h1 *ngIf="country !== ''">
+          Spoton Online Money Transfer<br />
+          {{ country }}
+        </h1>
+        <h1 *ngIf="country === ''">
+          Spot On Money transfers.<br />
+          Now send money to Asia, UAE, Africa and beyond
+        </h1>
+        <h6 *ngIf="country !== ''">
+          Easily send remittances to {{ country }} with our secure and efficient
+          service.<br />Experience fast, reliable, and user-friendly
+          transactions,<br />
+          giving your loved ones in {{ country }} access to funds quickly and
+          conveniently.<br />
+          Perfect for individuals looking to support their families,<br />
+          pay for services, or make personal transfers with ease.
+        </h6>
+        <h6 *ngIf="country == ''">
+          An efficient and effective way to send money worldwide
+        </h6>
+        <div nz-row class="learn-more-row">
+          <button
+            nz-button
+            nzType="primary"
+            class="learn-more-btn"
+            [routerLink]="['/contact-us-home-page']"
+          >
+            Contact us
+          </button>
+        </div>
+      </div>
+      <div
+        nz-col
+        nzXs="24"
+        nzLg="16"
+        nzXl="16"
+        class="banner-caption"
+        *ngIf="dataService.isLoggedIn"
+      >
+        <h1>TRANSFERS SIMPLIFIED</h1>
+        <h6>We move money,SpotOn</h6>
+        <div nz-row class="learn-more-row">
+          <button
+            nz-button
+            nzType="primary"
+            class="learn-more-btn"
+            [routerLink]="['/how-it-works']"
+          >
+            Learn More
+          </button>
+          <a class="play-btn">
+            <img
+              src="./assets/icons/play-button.png"
+              [routerLink]="['/how-it-works']"
+            />
+            <span class="txt">How it works</span>
+          </a>
+        </div>
+      </div>
+
+      <div nz-col nzXs="24" nzLg="8" nzXl="8">
+        <form nz-form [nzLayout]="'vertical'" [formGroup]="transferDetailsForm">
+          <!-- <div nz-col xs="24" lg="8" xl="8" class="form-align"> -->
+          <div class="form-align">
+            <div class="get-started-figure">
+              <h4 *ngIf="!country">Send Money</h4>
+              <h4 *ngIf="country && !uniqueTitle && country === ''">
+                Send Money
+              </h4>
+              <h4 *ngIf="country && !uniqueTitle && country !== ''">
+                Send Money to {{ country }}
+              </h4>
+              <h4 *ngIf="uniqueTitle">{{ uniqueTitle }}</h4>
+              <div nz-row>
+                <div nz-col [nzSpan]="24">
+                  <nz-form-item>
+                    <nz-form-label [nzNoColon]="true"
+                      >Sending from</nz-form-label
+                    >
+                    <nz-form-control>
+                      <nz-select
+                        class="nzsel"
+                        nzSuffixIcon="caret-down"
+                        formControlName="sendingCurrency"
+                        nzPlaceHolder="Select Currency"
+                        nzAllowClear="true"
+                        nzShowSearch
+                      >
+                        <nz-option
+                          *ngFor="let data of sendingCurrencies"
+                          [nzValue]="data.currencyCode"
+                          [nzLabel]="
+                            data.currencyCode + ' - ' + data.currencyName
+                          "
+                        >
+                        </nz-option>
+                      </nz-select>
+                    </nz-form-control>
+                  </nz-form-item>
+                </div>
+              </div>
+              <div nz-row>
+                <div nz-col [nzSpan]="24">
+                  <nz-form-item>
+                    <nz-form-label [nzNoColon]="true"
+                      >Recipient Currency</nz-form-label
+                    >
+                    <nz-form-control>
+                      <nz-select
+                        formControlName="recipientCurrency"
+                        nzSuffixIcon="caret-down"
+                        nzPlaceHolder="Select Currency"
+                        nzAllowClear="true"
+                        (ngModelChange)="
+                          getRecieverRatesWithoutValues(); getRecieverRates(0)
+                        "
+                        nzShowSearch
+                      >
+                        <nz-option
+                          *ngFor="let data of recipientCurrencies"
+                          [nzValue]="data.currencyId"
+                          [nzLabel]="
+                            data.currencyCode + ' - ' + data.currencyName
+                          "
+                        ></nz-option>
+                      </nz-select>
+                    </nz-form-control>
+                  </nz-form-item>
+                </div>
+              </div>
+              <div nz-row>
+                <div nz-col [nzSpan]="12">
+                  <div nz-row nzType="flex" nzJustify="start">
+                    <div nz-col nzSpan="23">
+                      <nz-form-item>
+                        <nz-form-label [nzNoColon]="true"
+                          >Send Amount</nz-form-label
+                        >
+                        <nz-form-control>
+                          <input
+                            nz-input
+                            type="text"
+                            formControlName="sendAmount"
+                            placeholder="Enter Amount"
+                            nzAllowClear="true"
+                            (keypress)="numberOnly($event)"
+                            (change)="
+                              getRecieverRates(1); covertSendingToDecimal()
+                            "
+                            (ngModelChange)="validateNumber()"
+                            (click)="handleSendAmountClick()"
+                            [disabled]="!dataService.isLoggedIn"
+                          />
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                </div>
+                <div nz-col [nzSpan]="12">
+                  <div nz-row nzType="flex" nzJustify="end">
+                    <div nz-col nzSpan="23">
+                      <nz-form-item>
+                        <nz-form-label [nzNoColon]="true"
+                          >Amount Received</nz-form-label
+                        >
+                        <nz-form-control>
+                          <input
+                            nz-input
+                            type="text"
+                            formControlName="amountReceived"
+                            placeholder="Enter Amount"
+                            (keypress)="numberOnly($event)"
+                            (change)="
+                              getSenderRates(); covertReceivingToDecimal()
+                            "
+                            (ngModelChange)="validateNumberRec()"
+                          />
+                        </nz-form-control>
+                      </nz-form-item>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button
+                nz-button
+                nzType="primary"
+                class="get-started-btn"
+                (click)="startTransaction()"
+              >
+                Get Started
+              </button>
+              <div nz-row class="bottom-row">
+                <div nz-col nzSpan="24">
+                  <span style="float: none">{{ rateEquation }}</span>
+                  <span
+                    *ngIf="rateEquation"
+                    style="float: none; font-size: 12px; font-style: italic"
+                    >*Rates are indicative and may change often</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

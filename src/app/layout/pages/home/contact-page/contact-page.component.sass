@@ -1,0 +1,181 @@
+@import '../../../../../assets/sass/index'
+.ant-layout-header
+    padding: 0
+    width: 100%
+    height: 95px
+    background: #20366B
+    position: fixed
+    z-index: 900
+
+.ant-layout-footer
+    padding: 0
+    width: 100%
+
+:host ::ng-deep .ant-select-single:not(.ant-select-customize-input) .ant-select-selector
+    display: flex
+    align-items: center
+    height: 52px
+
+.section
+    width: 100%
+    background: #FFF
+    margin-top: 80px
+
+    &-container
+
+        @include media_query_all_im(16,null,50,null,null,50,'padding-left')
+        @include media_query_all_im(16,null,50,null,null,50,'padding-right')
+        @include media_query_all_im(16,null,50,null,null,50,'padding-top')
+        @include media_query_all_im(16,null,50,null,null,50,'padding-bottom')
+
+.heading-row
+    text-align: center
+    margin-bottom: 60px
+
+    & .heading
+        font-family: "Open Sans"
+        @include media_query_all_im(30,null,null,null,null,48,'font-size')
+        // line-height: 65px
+        letter-spacing: 0.01em
+        font-weight: bold
+        color: #20366B
+        margin-bottom: 0
+
+.desc-sec p
+    font-family: "Open Sans"
+    color: #4F4F4F
+    font-size: 16px
+    line-height: 26px
+    text-align: left
+    letter-spacing: 0.01em
+    margin-bottom: 40px
+    padding-right: 60px
+
+.desc-sec .contact-figure
+    margin-bottom: 45px
+
+    & h4
+        font-family: "Open Sans"
+        font-style: normal
+        font-weight: bold
+        font-size: 24px
+        line-height: 32px
+        letter-spacing: 0.01em
+        color: #F45300
+        margin-bottom: 0
+
+    & h4  img
+        margin-right: 15px
+        height: auto
+        width: 18px
+
+    & p
+        margin-bottom: 30px
+        padding-left: 35px
+
+.desc-sec .faq-item-figure .figure-item
+    margin-bottom: 30px
+
+    &:last-child
+        margin-bottom: 0
+
+.desc-sec .faq-item-figure h3,
+.desc-sec .faq-item-figure h4
+    font-family: "Open Sans"
+    font-style: normal
+    font-weight: bold
+    font-size: 28px
+    line-height: 32px
+    letter-spacing: 0.01em
+    color: #000
+    margin-bottom: 23px
+
+    &
+        font-size: 19px
+        text-decoration: underline
+        color: #F45300
+
+.desc-sec .faq-item-figure .figure-item h4
+    font-family: "Open Sans"
+    font-style: normal
+    font-weight: bold
+    font-size: 24px
+    line-height: 32px
+    letter-spacing: 0.01em
+    color: #000
+    margin-bottom: 10px
+
+.desc-sec .faq-item-figure .figure-item p,
+.desc-sec .faq-item-figure .figure-item ol > li
+    font-family: "Open Sans"
+    font-style: normal
+    font-weight: 500
+    font-size: 20px
+    line-height: 32px
+    letter-spacing: 0.01em
+    color: #4F4F4F
+    margin-bottom: 0
+
+.form-sec
+    //padding-left: 30px
+
+:host ::ng-deep .ant-form-item label
+    font-family: "Open Sans"
+    color: #828282
+    font-size: 14px
+    line-height: 19px
+    letter-spacing: 0.01em
+    font-weight: normal
+    margin-bottom: 9px
+
+:host ::ng-deep .ant-input,
+:host ::ng-deep .ant-select-selection,
+:host ::ng-deep .ng-select.ng-select-single .ng-select-container
+    height: 52px
+    width: 100%
+    /* border: 1px solid #C4C4C4; */
+    box-sizing: border-box
+    border-radius: 5px
+    padding: 0 11px
+    font-family: "Open Sans"
+    font-weight: normal
+    font-size: 14px
+    line-height: 19px
+    letter-spacing: 0.01em
+    color: #C4C4C4
+
+:host ::ng-deep .ng-select.ng-select-single .ng-select-container
+    padding: 0 8px 0 0 !important
+
+:host ::ng-deep .ng-select .ng-arrow-wrapper .ng-arrow
+    border-color: #C4C4C4 transparent transparent
+    border-style: solid
+    border-width: 10px 10px 0px
+
+:host ::ng-deep .ng-select.ng-select-opened>.ng-select-container .ng-arrow
+    top: -2px
+    border-color: transparent transparent #C4C4C4
+    border-width: 0 10px 10px
+
+:host ::ng-deep .ant-form-item
+    padding-bottom: 0
+    margin-bottom: 6px
+
+.submit-btn
+    height: 52px
+    width: 100%
+    background: #F45300
+    border: none
+    border-radius: 5px
+    font-family: "Open Sans"
+    font-style: normal
+    font-weight: bold
+    font-size: 14px
+    line-height: 19px
+    text-align: center
+    letter-spacing: 0.01em
+    color: #FFF
+    margin-right: 0
+    outline: none
+    cursor: pointer
+    margin-top: 52px

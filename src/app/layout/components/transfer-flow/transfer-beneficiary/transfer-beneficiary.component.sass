@@ -1,0 +1,49 @@
+@import '../../../../../assets/sass/index'
+.personal
+    margin-right: 10px
+
+.corporate
+    margin-left: 6.5px
+
+::ng-deep .add-ben-modal .ant-switch.ant-switch-checked
+    
+    background-color: #1AA3FF80
+    border-color: #1AA3FF80
+
+::ng-deep .add-ben-modal .ant-switch
+    background: #F45300
+    border-color: #F45300
+
+:host ::ng-deep .ant-select-single:not(.ant-select-customize-input) .ant-select-selector 
+    height: 48px
+
+:host ::ng-deep .ant-select:not(.ant-select-customize-input) .ant-select-selector
+    justify-content: center
+    align-items: center 
+
+.desktop-only-lg
+    @include media_query_all(none,block,null,null,null,block,'display')
+
+.mobile-only-lg
+    @include media_query_all(block,none,null,null,null,none,'display')
+
+:host ::ng-deep .ant-select-status-error.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input) .ant-select-selector   
+    background-color:#fff
+    border-color: #ff1717 !important
+
+::ng-deep .ant-select-status-error 
+    background-color:#fff
+    border-color: #ff1717 !important 
+
+::ng-deep .ant-picker-status-error
+    background-color:#fff
+    border-color: #ff1717 !important  
+
+:host ::ng-deep .ant-switch 
+    min-width: 37px
+    height: 22px 
+
+.card     
+    margin-bottom: 35px
+.dropdown
+    width: 100%

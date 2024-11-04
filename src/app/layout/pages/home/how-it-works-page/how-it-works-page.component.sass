@@ -1,0 +1,101 @@
+@import '../../../../../assets/sass/index'
+
+.ant-layout-header
+    padding: 0
+    width: 100%
+    height: 95px
+    background: #20366B
+    position: fixed
+    z-index: 900
+
+.ant-layout-footer
+    padding: 0
+    width: 100%
+
+.section
+    width: 100%
+    //background: #FFF
+    margin-top: 80px
+    @include media_query_all("none","#FFF",null,null,null,null,'background')
+
+    &-container
+        //padding: 48px 160px 50px 160px
+        @include media_query_all(21,48,null,null,null,null,'padding-top')
+        @include media_query_all(20,160,null,null,null,null,'padding-right')
+        @include media_query_all(50,50,null,null,null,null,'padding-bottom')
+        @include media_query_all(20,160,null,null,null,null,'padding-left')
+
+.heading-row
+    text-align: center
+    margin-bottom: 48px
+
+    & .heading
+        font-family: "Open Sans"
+        //font-size: 48px
+        line-height: 65px
+        letter-spacing: normal
+        font-weight: bold
+        color: #20366B
+        margin-bottom: 0
+        @include media_query_all(40,70,null,null,null,null,'font-size')
+
+p
+    font-family: "Open Sans"
+    color: #4F4F4F
+    font-size: 26px
+    line-height: 40px
+    text-align: center
+    letter-spacing: normal
+    margin-bottom: 0
+
+.steps-section
+    width: 100%
+    background: #FFF
+    @include media_query_all("none","#FFF",null,null,null,null,'background')
+
+    &-container
+        padding: 10px 0 0 0
+        //display: contents
+
+        @include media_query_all("grid","contents",null,null,null,null,'display')
+        @include media_query_all("100%",null,null,null,null,null,'width')
+        @include media_query_all("center",null,null,null,null,null,'justify-items')
+
+    & .step-figure
+        width: 25%
+        text-align: center
+        padding-bottom: 100px
+
+    & .step-figure .step-item
+        position: relative
+        background: #F45300
+        height: 92px
+        width: 92px
+        border-radius: 50px
+        left: 50%
+        transform: translateX(-50%)
+
+    & .step-figure .step-item span
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        font-family: "Open Sans"
+        font-style: normal
+        font-weight: bold
+        font-size: 50px
+        line-height: 40px
+        text-align: center
+        letter-spacing: normal
+        color: #FFFFFF
+
+    & .step-figure h5
+        font-family: "Open Sans"
+        font-style: normal
+        font-weight: bold
+        font-size: 26px
+        line-height: 34px
+        text-align: center
+        letter-spacing: normal
+        color: #000
+        margin-top: 27px

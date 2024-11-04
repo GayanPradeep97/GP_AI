@@ -1,0 +1,298 @@
+<div class="steps-content">
+  <!--  step 03 content-->
+  <h2>
+    Here is a summary of your entered information. If all details are entered
+    correctly. Click continue to proceed
+  </h2>
+  <div nz-row>
+    <form nz-form [formGroup]="idScanFormGroup">
+      <div nz-row>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="start">
+            <div nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >User Name<span class="required-mark">*</span></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input nz-input type="text" formControlName="username" />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="start">
+            <div nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >First Name<span class="required-mark">*</span></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input nz-input type="text" formControlName="firstName" />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Last Name<span class="required-mark">*</span></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="lastName"
+                    type="text"
+                    formControlName="lastName"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Date of Birth<span class="required-mark"
+                    >*</span
+                  ></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <nz-date-picker formControlName="dob"> </nz-date-picker>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="8" nzXl="8">
+          <div nz-row nzType="flex" nzJustify="center">
+            <div nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Place of Birth<span class="required-mark">*</span>
+                </nz-form-label>
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="lastName"
+                    type="text"
+                    formControlName="placeofBirth"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div class="agent" nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Email<span class="required-mark">*</span></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="email"
+                    type="text"
+                    formControlName="email"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div class="agent" nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Contact Number<span class="required-mark"
+                    >*</span
+                  ></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="email"
+                    type="text"
+                    formControlName="contact"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div class="agent" nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Address Line 01<span class="required-mark"
+                    >*</span
+                  ></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="email"
+                    type="text"
+                    formControlName="address"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div class="agent" nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >City<span class="required-mark">*</span></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="email"
+                    type="text"
+                    formControlName="city"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div class="agent" nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Post Code<span class="required-mark">*</span></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="email"
+                    type="text"
+                    formControlName="post"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div class="agent" nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Country<span class="required-mark">*</span></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="email"
+                    type="text"
+                    formControlName="country"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div class="agent" nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Nationality<span class="required-mark"
+                    >*</span
+                  ></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="email"
+                    type="text"
+                    formControlName="nationality"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div class="agent" nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Select ID Type<span class="required-mark"
+                    >*</span
+                  ></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="email"
+                    type="text"
+                    formControlName="idType"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div class="agent" nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Identification Number<span class="required-mark"
+                    >*</span
+                  ></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="email"
+                    type="text"
+                    formControlName="idNo"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div class="agent" nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Identification Expiry Date<span class="required-mark"
+                    >*</span
+                  ></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <nz-date-picker formControlName="expiry"> </nz-date-picker>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="btn-row">
+    <button nz-button class="btn btn__cancel" (click)="close()">
+      Submit
+    </button>
+  </div>
+</div>

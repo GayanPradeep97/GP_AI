@@ -1,0 +1,134 @@
+<div class="section">
+  <div class="section-container">
+    <div nz-row class="feature-item left-side" *ngIf="showImmediatePayments">
+      <div
+        nz-col
+        nzXs="24"
+        nzLg="6"
+        nzXl="6"
+        style="height: inherit; text-align: center"
+      >
+        <img src="./assets/icons/instant-deposit.png" />
+      </div>
+      <div nz-col nzXs="24" nzLg="12" nzXl="12" style="height: inherit">
+        <div class="item-desc">
+          <h3 *ngIf="immediatePaymentsTitle">{{ immediatePaymentsTitle }}</h3>
+          <h3 *ngIf="!immediatePaymentsTitle">
+            Immediate Payments - Account Deposits
+          </h3>
+          <p *ngIf="immediatePaymentsUniqueParagraph">
+            {{ immediatePaymentsUniqueParagraph }}
+          </p>
+          <p *ngIf="!immediatePaymentsUniqueParagraph">
+            Send immediate payments to any {{ nationality }} Bank account.
+            {{ showImmediatePaymentDes }}
+          </p>
+        </div>
+      </div>
+      <div nz-col nzXs="24" nzLg="6" nzXl="6"></div>
+    </div>
+
+    <div
+      nz-row
+      class="feature-item left-side"
+      *ngIf="router.url === '/send-money-to-sri-lanka'"
+      style="height: auto"
+    >
+      <div nz-col nzXs="24" nzLg="6" nzXl="6" style="height: inherit">
+        <!-- <img src="./assets/icons/instant-deposit.png" style="width: 169.99px; height: 210.53px"> -->
+      </div>
+      <div nz-col nzXs="24" nzLg="12" nzXl="12" style="height: inherit">
+        <div class="item-desc" style="height: auto">
+          <h3>US Dollar Payments - Account Deposits</h3>
+          <p>
+            Now you can send US Dollars to any USD currency account held in
+            selected banks in Sri Lanka which will be realised within 2 days
+          </p>
+        </div>
+      </div>
+      <div nz-col nzXs="24" nzLg="6" nzXl="6"></div>
+    </div>
+
+    <div nz-row class="feature-item right-side" *ngIf="showInstantCashPickup">
+      <div nz-col nzXs="24" nzLg="6" nzXl="6"></div>
+      <div nz-col nzXs="24" nzLg="12" nzXl="12" style="height: inherit">
+        <div class="item-desc">
+          <h3>Instant Cash Pickup</h3>
+          <p class="unique-para" *ngIf="instantCashPickupUniqueParagraph">
+            {{ instantCashPickupUniqueParagraph }}
+          </p>
+          <p class="common-para" *ngIf="!instantCashPickupUniqueParagraph">
+            {{ instantCashDes }}
+          </p>
+        </div>
+      </div>
+      <div
+        nz-col
+        nzXs="24"
+        nzLg="6"
+        nzXl="6"
+        style="height: inherit; text-align: center"
+      >
+        <img
+          src="./assets/icons/pickup.png"
+          style="width: 210px; height: 129.68px"
+        />
+      </div>
+    </div>
+    <div nz-row class="feature-item left-side">
+      <div
+        nz-col
+        nzXs="24"
+        nzLg="6"
+        nzXl="6"
+        style="height: inherit; text-align: center"
+      >
+        <img
+          src="./assets/icons/have-your-back.png"
+          style="width: 194px; height: 210px"
+        />
+      </div>
+      <div nz-col nzXs="24" nzLg="12" nzXl="12" style="height: inherit">
+        <div class="item-desc">
+          <h3>We've got your back!</h3>
+          <p>
+            We’re dedicated to securing your financial information and utilize
+            proven technology to protect your personal details.
+          </p>
+        </div>
+      </div>
+      <div nz-col nzXs="24" nzLg="6" nzXl="6"></div>
+    </div>
+    <div nz-row class="feature-item right-side">
+      <div nz-col nzXs="24" nzLg="6" nzXl="6"></div>
+      <div
+        nz-col
+        nzXs="24"
+        nzLg="12"
+        nzXl="12"
+        style="height: inherit; text-align: center"
+      >
+        <div class="item-desc" style="height: initial">
+          <!-- <h3>Money-back guarantee</h3> -->
+          <p
+            style="padding-top: 70px; padding-left: 56px; padding-bottom: 30px"
+          >
+            Have questions? <br />Contact us anytime.
+          </p>
+        </div>
+      </div>
+      <div
+        nz-col
+        nzXs="24"
+        nzLg="6"
+        nzXl="6"
+        style="height: inherit; text-align: center"
+      >
+        <img
+          src="./assets/icons/money-back.png"
+          style="width: 210px; height: 157px"
+        />
+      </div>
+    </div>
+  </div>
+</div>

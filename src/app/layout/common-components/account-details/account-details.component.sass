@@ -1,0 +1,98 @@
+@import '../../../../assets/sass/index'
+
+.modal-content
+    // background-color: $medium-bg-color
+    border-radius: 5px
+    // box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
+    @include media_query_all(16,null,20,null,null,30,'padding')
+    @include media_query_all(50,null,20,null,null,30,'padding-top')
+
+.content-figure
+    text-align: center
+    //width: 100%
+    // padding: 27px 28px
+
+    @include media_query_all(null,null,null,null,null,'100%','width')
+
+.title
+    // font-family: $font-family
+    font-size: 20px
+    //line-height: 29px
+    text-align: center
+    // letter-spacing: 0.01em
+    color: $low-black
+    margin-bottom: 28px
+    // @include media_query_all(null,20,null,null,null,20,'font-size')
+    // @include media_query_all(null,40,null,null,null,null,'line-height')
+
+.ant-btn.btn_ok
+    height: 52px
+    width: 160px
+    margin-top: 34px
+    margin-bottom: 0
+    border-radius: 5px
+    outline: none
+    cursor: pointer
+    background: $medium-color
+    display: inline
+
+.modal-content p,
+.modal-content ol > li
+    font-family: $font-family
+    font-size: 14px
+    line-height: 24px
+    letter-spacing: 0.01em
+    color: $gray-color
+    text-align: justify
+    margin-bottom: 0
+
+.note-sec
+    padding-left: 4%
+    padding-right: 4%
+
+:host ::ng-deep .ant-table-tbody > tr > td
+    padding: 8px 16px
+    font-weight: normal
+    font-family: $font-family
+    font-size: 14px
+    line-height: 20px
+    font-weight: bold
+    color: $gray-color
+    border: 1px solid #E0E0E0
+
+:host ::ng-deep .ant-table-tbody > tr > td
+    width: 200px
+
+:host ::ng-deep .ant-table-placeholder
+    display: none
+
+.note
+    margin-top: 30px
+    display: flex
+    flex-direction: column
+    // padding: 0 45px
+    span
+        color: #828282
+
+.note_sub
+    padding-top: 10px
+    padding-right: 20px
+    padding-left: 20px
+
+.sub_headding
+    display: flex
+    margin-bottom: 10px
+    span
+        color: #828282
+
+// @media only screen and (max-width: 480px)
+//     .content-figure
+//         width: 90%
+//         padding-left: 0
+//         padding-right: 0
+
+//     .title
+//         font-size: 20px
+.title_orange
+    text-transform: uppercase
+    color: $medium-color

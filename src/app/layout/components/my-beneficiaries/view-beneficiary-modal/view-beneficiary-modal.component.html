@@ -1,0 +1,772 @@
+<nz-tabset
+  [nzTabPosition]="'top'"
+  [nzType]="'card'"
+  [ngClass]="{ filterActive: isEditBeneficiary === false }"
+>
+  <nz-tab
+    [nzDisabled]="!isEditBeneficiary"
+    nzTitle="Beneficiary Basic Details"
+    *ngIf="currentIndex === 0"
+  >
+    <div class="form-figure">
+      <form
+        nz-form
+        [nzLayout]="'vertical'"
+        [formGroup]="beneficiaryDetailsForm"
+      >
+        <div nz-row nzGutter="40" class="coporate-personal-switch-row">
+          <div nz-col nzMd="4" nzXs="24">
+            <nz-form-label class="benefi-lable"
+              ><span class="bene">Beneficiary Type:</span>
+              <sup
+                ><span
+                  nz-icon
+                  nzType="info-circle"
+                  nzTheme="outline"
+                  style="color: #1aa3ff"
+                  [nz-tooltip]="
+                    !isCoporate
+                      ? 'For corporate beneficiary move the switch to right'
+                      : 'For personal beneficiary move the switch to left'
+                  "
+                ></span
+              ></sup>
+            </nz-form-label>
+          </div>
+          <div nz-col nzMd="3" nzXs="8" class="personal">
+            <p style="color: #00a2dc; font-weight: 700" *ngIf="!isCoporate">
+              Personal
+            </p>
+            <p style="color: #828282; font-weight: 700" *ngIf="isCoporate">
+              Personal
+            </p>
+          </div>
+          <div nz-col nzMd="2" nzXs="8">
+            <nz-switch
+              [(ngModel)]="isCoporate"
+              formControlName="isCoporateBeneficiary"
+              (ngModelChange)="accountTypeChange()"
+              [nzDisabled]="isEditBeneficiary"
+            ></nz-switch>
+          </div>
+          <div nz-col nzMd="3" nzXs="8" nzclass="corporate">
+            <p style="color: #f45300; font-weight: 700" *ngIf="isCoporate">
+              Corporate
+            </p>
+            <p style="color: #828282; font-weight: 700" *ngIf="!isCoporate">
+              Corporate
+            </p>
+          </div>
+          <div nz-col nzMd="12" nzXs="24"></div>
+        </div>
+
+        <div nz-row nzGutter="16">
+          <div nz-col nzMd="8" nzXs="24" *ngIf="!isCoporate">
+            <nz-form-item>
+              <nz-form-label
+                >First Name<span class="required-mark">*</span>
+              </nz-form-label>
+              <nz-form-control>
+                <input
+                  nz-input
+                  type="text"
+                  id="beneficiaryFirstName"
+                  formControlName="beneficiaryFirstName"
+                  placeholder="First name"
+                  (keypress)="letterOnly($event)"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col nzMd="8" nzXs="24" *ngIf="!isCoporate">
+            <nz-form-item>
+              <nz-form-label
+                >Last Name<span class="required-mark">*</span></nz-form-label
+              >
+              <nz-form-control>
+                <input
+                  nz-input
+                  type="text"
+                  id="beneficiaryLastName"
+                  formControlName="beneficiaryLastName"
+                  placeholder="Last name"
+                  (keypress)="letterOnly($event)"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col nzMd="8" nzXs="24" *ngIf="isCoporate">
+            <nz-form-item>
+              <nz-form-label
+                >Company Name<span class="required-mark">*</span>
+              </nz-form-label>
+              <nz-form-control nzSpan="">
+                <input
+                  nz-input
+                  type="text"
+                  id="companyName"
+                  formControlName="companyName"
+                  placeholder="Company name"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col nzMd="3" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>Code</nz-form-label>
+              <nz-form-control>
+                <nz-select
+                  class="code"
+                  id="code"
+                  bindLabel="countryId.referenceCountryCode"
+                  formControlName="code1"
+                  (click)="phoneCodeChange()"
+                  (change)="mapCountryCodeDetails()"
+                  nzPlaceHolder="Code"
+                  nzSuffixIcon="caret-down"
+                  nzAllowClear
+                  (focusout)="focusOutFun()"
+                  (input)="phoneCodeInput()"
+                  nzShowSearch
+                >
+                  <nz-option
+                    *ngFor="let data of countryData"
+                    [nzValue]="data.countryCodeId"
+                    [nzLabel]="data.phonePrefix"
+                  ></nz-option>
+
+                  <!-- <ng-template ng-label-tmp let-item="item">
+                          <span *ngIf="countryPhoneName === true">{{
+                            item.countryId.countryName +
+                              " (" +
+                              item.phonePrefix +
+                              ")"
+                          }}</span>
+                          <span *ngIf="countryPhoneCode === true">{{
+                            item.phonePrefix
+                          }}</span>
+                        </ng-template>
+                        <ng-template
+                          ng-option-tmp
+                          let-item="item"
+                          let-search="searchTerm"
+                          let-index="index"
+                        >
+                          <span *ngIf="countryPhoneName === true">{{
+                            item.countryId.countryName +
+                              " (" +
+                              item.phonePrefix +
+                              ")"
+                          }}</span>
+                          <span *ngIf="countryPhoneCode === true">{{
+                            item.phonePrefix
+                          }}</span>
+                        </ng-template> -->
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div id="contactNo" nz-col nzMd="5" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>Contact Number </nz-form-label>
+              <nz-form-control nzSpan="">
+                <input
+                  class="contact-number"
+                  nz-input
+                  id="beneficiaryTelephone"
+                  type="text"
+                  formControlName="beneficiaryTelephone"
+                  placeholder="Contact Number"
+                  (keypress)="numberOnly($event)"
+                  (input)="checkLength($event)"
+                  (change)="contactNumberValidation()"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div nz-row nzGutter="16">
+          <div nz-col nzMd="3" nzXs="24">
+            <nz-form-item>
+              <nz-form-label
+                >Code<span class="required-mark">*</span></nz-form-label
+              >
+              <nz-form-control nzSpan="">
+                <nz-select
+                  bindLabel="countryId.referenceCountryCode"
+                  formControlName="code2"
+                  nzSuffixIcon="caret-down"
+                  id="code2"
+                  nzAllowClear
+                  (click)="phoneCodeChange1()"
+                  (change)="mapCountryCodeDetails1()"
+                  nzPlaceHolder="Code"
+                  (focusout)="focusOutFun1()"
+                  (input)="phoneCodeInput1()"
+                  nzShowSearch
+                >
+                  <nz-option
+                    *ngFor="let data of countryData"
+                    [nzValue]="data.countryCodeId"
+                    [nzLabel]="data.phonePrefix"
+                  ></nz-option>
+
+                  <!-- <ng-template ng-label-tmp let-item="item">
+                          <span *ngIf="countryPhoneName1 === true">{{
+                            item.countryId.countryName +
+                              " (" +
+                              item.phonePrefix +
+                              ")"
+                          }}</span>
+                          <span *ngIf="countryPhoneCode1 === true">{{
+                            item.phonePrefix
+                          }}</span>
+                        </ng-template>
+                        <ng-template
+                          ng-option-tmp
+                          let-item="item"
+                          let-search="searchTerm"
+                          let-index="index"
+                        >
+                          <span *ngIf="countryPhoneName1 === true">{{
+                            item.countryId.countryName +
+                              " (" +
+                              item.phonePrefix +
+                              ")"
+                          }}</span>
+                          <span *ngIf="countryPhoneCode1 === true">{{
+                            item.phonePrefix
+                          }}</span>
+                        </ng-template> -->
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div id="contactNo" nz-col nzMd="5" nzXs="24">
+            <nz-form-item>
+              <nz-form-label
+                >Mobile Number<span class="required-mark"
+                  >*</span
+                ></nz-form-label
+              >
+              <nz-form-control nzSpan="">
+                <input
+                  class="contact-number"
+                  nz-input
+                  id="beneficiaryhandphone"
+                  type="text"
+                  formControlName="beneficiaryhandphone"
+                  placeholder="Mobile number"
+                  (keypress)="numberOnly($event)"
+                  (input)="checkLength1($event)"
+                  (change)="contactNumberValidation1()"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col nzMd="16" nzXs="24" class="address">
+            <nz-form-item>
+              <nz-form-label
+                >Address<span class="required-mark">*</span></nz-form-label
+              >
+              <nz-form-control>
+                <input
+                  class="address-input"
+                  nz-input
+                  type="text"
+                  id="beneficiaryAddress"
+                  formControlName="beneficiaryAddress"
+                  placeholder="Address"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div nz-row nzGutter="16" *ngIf="!isCoporate" class="row">
+          <div nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label
+                >Date of Birth<span class="required-mark"
+                  >*</span
+                ></nz-form-label
+              >
+              <nz-form-control nzSpan="">
+                <nz-date-picker
+                  id="dateOfBirth"
+                  formControlName="dateOfBirth"
+                  [nzFormat]="'dd-MM-yyyy'"
+                  (ngModelChange)="validateDob()"
+                  [nzDisabledDate]="disabledDate"
+                >
+                </nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label
+                >Place of Birth<span class="required-mark">*</span>
+              </nz-form-label>
+              <nz-form-control nzSpan="">
+                <input
+                  nz-input
+                  type="text"
+                  id="placeOfBirth"
+                  formControlName="placeOfBirth"
+                  placeholder="Place of Birth"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>Nationality</nz-form-label>
+              <nz-form-control nzSpan="" class="nationality">
+                <nz-select
+                  class="nationality"
+                  id="nationality"
+                  nzSuffixIcon="caret-down"
+                  nzAllowClear
+                  bindLabel="nationality"
+                  nzPlaceHolder="Select Nationality"
+                  clearAllText="Clear"
+                  formControlName="nationality"
+                  nzShowSearch
+                >
+                  <nz-option
+                    *ngFor="let data of nationalityData"
+                    [nzValue]="data.nationalityDetailsId"
+                    [nzLabel]="data.nationality"
+                  ></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </form>
+
+      <div class="btn-row">
+        <button
+          id="nextBtn"
+          nz-button
+          class="btn btn__high_orange"
+          (click)="firstStepContinue()"
+          *ngIf="!isEditBeneficiary"
+        >
+          Next
+        </button>
+        <button
+          id="updateBtn"
+          nz-button
+          class="btn btn__high_orange"
+          (click)="updateBeneficiary()"
+          *ngIf="isEditBeneficiary"
+        >
+          Update Beneficiary
+        </button>
+      </div>
+    </div>
+  </nz-tab>
+
+  <nz-tab nzTitle="Bank Account Details">
+    <div class="form-figure">
+      <form nz-form [nzLayout]="'vertical'" [formGroup]="accountDetailsForm">
+        <div nz-row nzGutter="16">
+          <div nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label
+                >Country<span class="required-mark">*</span></nz-form-label
+              >
+              <nz-form-control class="country">
+                <nz-select
+                  class="country"
+                  nzSuffixIcon="caret-down"
+                  nzPlaceHolder="Select Country"
+                  clearAllText="Clear"
+                  formControlName="country"
+                  nzAllowClear
+                  nzShowSearch
+                  (ngModelChange)="getReceivingCountry($event)"
+                  nzShowSearch
+                >
+                  <!-- <nz-option
+                    *ngFor="let data of countryData"
+                    [nzValue]="data.countryId"
+                    [nzLabel]="data.countryName"
+                  ></nz-option> -->
+                  <nz-option
+                    *ngFor="let data of receivingCountryData"
+                    [nzValue]="data.countryId"
+                    [nzLabel]="data.countryName"
+                  ></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label
+                >Bank Name<span class="required-mark">*</span></nz-form-label
+              >
+              <nz-form-control nzSpan="">
+                <input
+                  nz-input
+                  id="bankName"
+                  type="text"
+                  placeholder="Bank Name"
+                  formControlName="bankName"
+                  *ngIf="!isBankSl"
+                />
+                <nz-select
+                  nzSuffixIcon="caret-down"
+                  groupBy="isBeneficiary"
+                  nzPlaceHolder="Select Bank"
+                  clearAllText="Clear"
+                  formControlName="bankName"
+                  nzAllowClear
+                  *ngIf="isBankSl"
+                  nzShowSearch
+                >
+                  <nz-option
+                    *ngFor="let data of bankList"
+                    [nzValue]="data"
+                    [nzLabel]="data.bankname"
+                  ></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label
+                >Account Number<span class="required-mark">*</span>
+              </nz-form-label>
+              <nz-form-control nzSpan="">
+                <input
+                  nz-input
+                  id="accountNumber"
+                  type="text"
+                  placeholder="Enter Account Number"
+                  formControlName="accountNumber"
+                  (keypress)="numberOnly($event)"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div nz-row nzGutter="16">
+          <div nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label
+                >Branch Name<span class="required-mark">*</span></nz-form-label
+              >
+              <nz-form-control nzSpan="">
+                <input
+                  nz-input
+                  id="branchName"
+                  type="text"
+                  placeholder="Branch Name"
+                  formControlName="branchName"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label
+                >Currency<span class="required-mark">*</span></nz-form-label
+              >
+              <nz-form-control class="currency">
+                <nz-select
+                  class="currency"
+                  nzSuffixIcon="caret-down"
+                  formControlName="supportCurrency"
+                  nzPlaceHolder="Select Currency"
+                  nzAllowClear
+                  nzShowSearch
+                >
+                  <nz-option
+                    *ngFor="let data of clientCurrencyData"
+                    [nzValue]="data"
+                    [nzLabel]="data.currencyCode + '-' + data.currencyName"
+                  ></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div class="change_country" nz-row nzGutter="16">
+          <div *ngIf="bankCodeInput" class="row" nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label
+                >{{ receivingCountriesData.bankCodeLabel
+                }}<span class="required-mark">*</span>
+              </nz-form-label>
+              <nz-form-control nzSpan="">
+                <input
+                  nz-input
+                  id="bankCode"
+                  type="text"
+                  placeholder="Enter {{ receivingCountriesData.bankCodeLabel }}"
+                  formControlName="bankCode"
+                  (keypress)="numberOnly($event)"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="8" nzXs="24" *ngIf="isIban">
+            <nz-form-item>
+              <nz-form-label
+                >IBAN<span class="required-mark">*</span></nz-form-label
+              >
+              <nz-form-control nzSpan="">
+                <input
+                  nz-input
+                  id="iban"
+                  type="text"
+                  placeholder="Enter IBAN"
+                  formControlName="iban"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="8" nzXs="24" *ngIf="isIfsc">
+            <nz-form-item>
+              <nz-form-label
+                >IFSC<span class="required-mark">*</span></nz-form-label
+              >
+              <nz-form-control nzSpan="">
+                <input
+                  nz-input
+                  id="branchName"
+                  type="text"
+                  placeholder="Enter IFSC"
+                  formControlName="ifsc"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col nzMd="8" nzXs="24" *ngIf="isbrnachCode">
+            <nz-form-item>
+              <nz-form-label
+                >Branch Code<span class="required-mark">*</span></nz-form-label
+              >
+              <nz-form-control nzSpan="">
+                <input
+                  nz-input
+                  id="branchName"
+                  type="text"
+                  placeholder="Enter Branch Code"
+                  formControlName="branchCode"
+                  (keypress)="numberOnly($event)"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div *ngIf="swiftCodeInput" class="row" nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label
+                >{{ receivingCountriesData.swiftCodeLabel
+                }}<span class="required-mark">*</span>
+              </nz-form-label>
+              <nz-form-control nzSpan="">
+                <input
+                  nz-input
+                  id="swiftCode"
+                  type="text"
+                  placeholder="Enter {{
+                    receivingCountriesData.swiftCodeLabel
+                  }}"
+                  formControlName="swiftCode"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div *ngIf="routingNumber" class="row" nz-col nzMd="8" nzXs="24">
+            <div nzType="flex" nzJustify="center">
+              <div>
+                <nz-form-item>
+                  <nz-form-label
+                    >Routing Number<span class="required-mark">*</span>
+                  </nz-form-label>
+                  <nz-form-control nzSpan="">
+                    <input
+                      nz-input
+                      id="routingNumberLabel"
+                      type="text"
+                      placeholder="Enter {{
+                        receivingCountriesData.routingNumberLabel
+                      }}"
+                      formControlName="routingNumberLabel"
+                      (keypress)="numberOnly($event)"
+                    />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="btn-row mobile_button">
+        <button nz-button class="btn btn__goback" (click)="prev()">
+          Go Back
+        </button>
+        <button nz-button class="btn btn__cancel" (click)="closeModal()">
+          Cancel
+        </button>
+        <button
+          nz-button
+          class="btn btn__high_orange"
+          (click)="addBankAccount()"
+          *ngIf="isEditBeneficiary"
+        >
+          Add Bank Account
+        </button>
+        <button
+          nz-button
+          class="btn btn__high_orange"
+          (click)="addBankAccount()"
+          *ngIf="!isEditBeneficiary"
+        >
+          Save Beneficiary
+        </button>
+      </div>
+
+      <div
+        style="overflow-x: auto"
+        class="table-content-new"
+        *ngIf="isEditBeneficiary"
+      >
+        <div nz-row class="table-title-row">
+          <div nz-col>
+            <h4>Bank Accounts</h4>
+          </div>
+        </div>
+        <nz-table
+          #bankAccountDetails
+          [nzData]="bankaccountsList"
+          [nzPageSize]="pageSize"
+          [nzShowPagination]="false"
+          class="desktop-only"
+          [nzScroll]="{ y: '100px' }"
+        >
+          <thead>
+            <tr>
+              <th>BANK</th>
+              <th>ACCOUNT NUMBER</th>
+              <th>BRANCH</th>
+              <th>BANK CODE</th>
+              <th>IBAN</th>
+              <th>IFSC</th>
+              <th>Branch Code</th>
+              <th>Routing Number</th>
+              <th>SWIFT CODE</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of bankAccountDetails.data">
+              <td>{{ data.bankName }}</td>
+              <td>{{ data.accountNo }}</td>
+              <td>{{ data.branchName }}</td>
+              <td>{{ data.bankCode }}</td>
+              <td>{{ data.label5 }}</td>
+              <td>{{ data.label4 }}</td>
+              <td>{{ data.label6 }}</td>
+              <td>{{ data.routingNumber }}</td>
+              <td>{{ data.swiftCode }}</td>
+              <td>
+                <nz-switch
+                  [ngModel]="data.isActive"
+                  (click)="changeStatus(data)"
+                >
+                </nz-switch>
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+        <div class="mobile-only">
+          <div class="card" *ngFor="let data of bankaccountsList">
+            <div nz-row>
+              <div nz-col nzSpan="12">Bank</div>
+              <div nz-col nzSpan="12">{{ data.bankName }}</div>
+            </div>
+            <div nz-row>
+              <div nz-col nzSpan="12">Account Number</div>
+              <div nz-col nzSpan="12">{{ data.accountNo }}</div>
+            </div>
+            <div nz-row>
+              <div nz-col nzSpan="12">Branch</div>
+              <div nz-col nzSpan="12">{{ data.branchName }}</div>
+            </div>
+            <div nz-row>
+              <div nz-col nzSpan="12">Bank Code</div>
+              <div nz-col nzSpan="12">{{ data.bankCode }}</div>
+            </div>
+            <div nz-row>
+              <div nz-col nzSpan="12">IBAN</div>
+              <div nz-col nzSpan="12">{{ data.label5 }}</div>
+            </div>
+            <div nz-row>
+              <div nz-col nzSpan="12">IFSC</div>
+              <div nz-col nzSpan="12">{{ data.label4 }}</div>
+            </div>
+            <div nz-row>
+              <div nz-col nzSpan="12">IFSC</div>
+              <div nz-col nzSpan="12">{{ data.label6 }}</div>
+            </div>
+            <div nz-row>
+              <div nz-col nzSpan="12">Swift Code</div>
+              <div nz-col nzSpan="12">{{ data.swiftCode }}</div>
+            </div>
+            <div nz-row>
+              <div nz-col nzSpan="12">Routing Number</div>
+              <div nz-col nzSpan="12">{{ data.routingNumber }}</div>
+            </div>
+            <div nz-row>
+              <div nz-col nzSpan="12">Status</div>
+              <div nz-col nzSpan="12">
+                <nz-switch
+                  [ngModel]="data.isActive"
+                  (click)="changeStatus(data)"
+                >
+                </nz-switch>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagination-row">
+          <nz-pagination
+            class="pagination"
+            [nzPageSize]="pageSize"
+            [nzPageIndex]="currentPageIndex"
+            [nzTotal]="totalRecordsBank"
+            nzShowQuickJumper
+            [nzShowTotal]="rangeTemplate"
+            (nzPageIndexChange)="pageIndexChange($event)"
+          >
+          </nz-pagination>
+          <ng-template #rangeTemplate let-range="range" let-total>
+            <span>{{ range[0] }}-{{ range[1] }} of {{ total }} items</span>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </nz-tab>
+</nz-tabset>

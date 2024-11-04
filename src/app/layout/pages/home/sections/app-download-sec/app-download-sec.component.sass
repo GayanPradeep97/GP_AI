@@ -1,0 +1,58 @@
+@import '../../../../../../assets/sass/index'
+
+.section
+    width: 100%
+    //height: 547px
+    //background-image: url()
+    background-size: cover
+    background-repeat: no-repeat
+    //position: relative
+    @include media_query_all("linear-gradient(90deg, #2189b0 0%, #1e7fa4 100%)","url(../../../../../../assets/images/app-download_bg.svg)",null,null,null,null,'background-image')
+    //@include media_query_all("relative",null,null,null,null,null,'position')
+    @include media_query_all(auto,null,null,null,null,550,'height')
+
+    &-container
+        @include media_query_all(91,147,null,null,null,null,'padding-top')
+        @include media_query_all(20,81,null,null,null,null,'padding-right')
+        @include media_query_all(42,162,null,null,null,null,'padding-bottom')
+        @include media_query_all(20,83,null,null,null,null,'padding-left')
+
+.bg-caption
+    @include media_query_all("grid",null,null,null,null,null,'display')
+    @include media_query_all("center","left",null,null,null,null,'justify-items')
+
+.bg-caption h1
+    color: #FFF
+    font-family: "Open Sans"
+    font-style: normal
+    font-weight: bold
+    letter-spacing: 0.05em
+    margin-bottom: 50px
+    @include media_query_all(38,null,null,null,null,48,'font-size')
+    @include media_query_all(50,null,null,null,null,60,'line-height')
+    @include media_query_all(center,left,null,null,null,null,'text-align')
+
+.bg-caption .btn-row a
+    cursor: pointer
+    margin-right: 20px
+
+    &:last-child
+        margin-right: 0
+
+.bg-caption .btn-row img
+    width: auto
+    border-radius: 5px
+    @include media_query_all(60,null,null,null,null,62,'height')
+
+.mob-view-img
+    width: 100vw
+    height: 510px
+    left: 0
+    background: url(../../../../../../assets/images/app-download-bg-mob.png)
+    background-size: cover
+    background-repeat: no-repeat
+    @include media_query_all("block","none",null,null,null,null,'display')
+
+.btn-row
+    display: flex
+    // justify-content: center

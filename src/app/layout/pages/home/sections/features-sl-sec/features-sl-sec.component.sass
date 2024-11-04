@@ -1,0 +1,130 @@
+@import '../../../../../../assets/sass/index'
+
+// .section-container
+//     padding: 74px 120px
+
+// .feature-item 
+//     margin-bottom: 20px 
+
+// .item-desc h3
+//     color: #000
+//     font-size: 26px
+//     line-height: 30px
+//     font-weight: 700
+//     letter-spacing: 0.01em
+//     margin-bottom: 29px
+
+
+.section 
+    width: 100%
+    background: #FFF
+
+
+.section-container 
+    // padding: 74px 119px 66px 119px
+    @include media_query_all(16,null,16,null,74,74,'padding-top')
+    @include media_query_all(50,null,50,null,119,119,'padding-right')
+    @include media_query_all(230,null,230,null,66,66,'padding-bottom')
+    @include media_query_all(50,null,50,null,119,119,'padding-left')
+
+
+.feature-item 
+    // height: 255px
+
+
+.feature-item .item-desc 
+    display: table-cell
+    vertical-align: middle
+    height: auto
+
+
+.feature-item img 
+    position: relative
+    top: 50%
+    -ms-transform: translateY(-50%)
+    -webkit-transform: translateY(-50%)
+    transform: translateY(-50%)
+
+
+.feature-item .item-desc h3 
+    font-family: "Open Sans"
+    color: #000
+    font-size: 26px
+    // @include media_query_all(22,null,22,null,null,26,'font-size')
+    line-height: 30px
+    font-weight: 700
+    letter-spacing: 0.01em
+    margin-bottom: 29px
+    // @include media_query_all(22,null,22,null,null,29,'margin-bottom')
+
+
+.feature-item .item-desc p 
+    font-family: "Open Sans"
+    color: #4F4F4F
+    font-size: 20px
+    // @include media_query_all(18,null,18,null,null,20,'font-size')
+    line-height: 32px
+    letter-spacing: 0.01em
+    margin-bottom: 0
+
+
+.feature-item.left-side 
+    text-align: left
+    height: auto
+    min-height: 200px
+
+    // @include media_query_all(center,null,center,null,null,left,'text-align')
+
+
+.feature-item.right-side 
+    text-align: right
+    height: auto
+    min-height: 200px
+    // @include media_query_all(center,null,center,null,null,right,'text-align')
+
+
+// @media only screen and (max-width: 480px) 
+//     .section-container 
+//         padding: 60px 20px 60px 20px
+    
+
+//     .feature-item 
+//         height: auto
+//         margin-bottom: 45px
+    
+
+//     .feature-item:last-child 
+//         margin-bottom: 0
+    
+
+//     .feature-item.left-side,
+//     .feature-item.right-side 
+//         text-align: center
+    
+
+//     .feature-item .item-desc h3 
+//         font-size: 24px
+//         margin-bottom: 26px
+    
+
+//     .feature-item .item-desc p 
+//         font-size: 16px
+//         line-height: 26px
+    
+
+//     .feature-item.right-side 
+//         /* display: flex; 
+//         flex-direction: column-reverse
+    
+
+//     .feature-item img 
+//         transform: none
+//         width: 100px !important
+//         height: auto !important
+//         margin-bottom: 20px
+    
+
+//     .feature-item .item-desc 
+//         display: initial
+//         height: auto
+    

@@ -1,0 +1,37 @@
+@import './assets/sass/index'
+
+*
+    font-family: 'Open Sans'
+
+.ant-avatar-string
+    padding: 4px
+
+.desktop-only
+    @include media_query_all_im(none,null,null,null,block,block,"display")
+
+.mobile-only
+    @include media_query_all_im(block,null,null,null,none,none,"display")
+.mobile-table
+    background: #FFF !important
+
+.mobile-only.mobile-table
+    padding: 16px
+    @include media_query_all(30,null,null,null,null,30,'margin-top')
+    .ant-row
+        @include media_query_all(20,null,null,null,null,20,'margin-bottom')
+        span
+            font-size: 12px
+            font-weight: 600
+.steps-details
+    @include media_query_all_im(none,null,null,block,block,block,"display")
+.required-mark
+    color: red
+.a-tag-links
+    color: $medium-color
+
+.tawk-min-container .tawk-button-circle.tawk-button-large
+    width: 50px
+    height: 50px
+    bottom: 10px
+.ant-select-show-search.ant-select:not(.ant-select-customize-input) .ant-select-selector input
+    height: 100%

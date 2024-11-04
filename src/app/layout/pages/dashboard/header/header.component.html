@@ -1,0 +1,155 @@
+<div class="header">
+  <div class="header-container">
+    <div class="logo">
+      <a [routerLink]="['/']" (click)="trackClickActivity('logo')"
+        ><img src="./assets/images/logo.png"
+      /></a>
+    </div>
+    <div class="nav-menu-container">
+      <ul class="nav-menu">
+        <li
+          *ngIf="dataService.isLoggedIn && newRefference"
+          class="desktop-only-m992"
+        >
+          <a class="ref-txt"
+            ><b>New Reference: {{ customerReference }}</b></a
+          >
+        </li>
+        <li
+          *ngIf="dataService.isLoggedIn && oldRefference"
+          class="desktop-only-m992"
+        >
+          <a class="ref-txt">Old Reference: {{ customerOldReference }}</a>
+        </li>
+
+        <li>
+          <a
+            [routerLink]="['/about-us']"
+            (click)="trackClickActivity('about us')"
+            >About Us</a
+          >
+        </li>
+        <li>
+          <a
+            [routerLink]="['/how-it-works']"
+            (click)="trackClickActivity('how it works')"
+            >How it works?</a
+          >
+        </li>
+        <!-- <li><a [routerLink]="['/affiliate']">Become an Affiliate</a></li> -->
+        <li>
+          <a [routerLink]="['/contact']" (click)="trackClickActivity('contact')"
+            >Contact</a
+          >
+        </li>
+        <li *ngIf="dataService.isLoggedIn">
+          <a
+            nz-dropdown
+            [nzDropdownMenu]="menu"
+            id="profileBtn"
+            class="profile-btn"
+            (nzVisibleChange)="getClickAction()"
+            nzTrigger="click"
+          >
+            <nz-avatar
+              nzText="{{ usernameFirstCharacter }}"
+              class="avatar-icon"
+            >
+            </nz-avatar>
+            <i nz-icon nzType="caret-down" nzTheme="outline"></i>
+          </a>
+
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul
+              nz-menu
+              nzSelectable
+              class="profile-dropdown-menu"
+              style="max-height: 400px; overflow-y: auto"
+              (nzVisibleChange)="getClickAction()"
+            >
+              <li
+                nz-menu-item
+                (click)="setSelectedUserAccount(username)"
+                [ngClass]="{
+                  activeAccount: username === currentActiveUserAccount
+                }"
+              >
+                {{ username }}
+              </li>
+              <li
+                nz-menu-item
+                *ngFor="let sender of coporateSenders"
+                (click)="
+                  setSelectedUserAccount(sender.companyEmail);
+                  trackClickActivity('coporateAccount')
+                "
+                [ngClass]="{
+                  activeAccount:
+                    sender.companyEmail === currentActiveUserAccount
+                }"
+              >
+                {{ sender.companyEmail }}
+              </li>
+              <li
+                nz-menu-item
+                (click)="
+                  createCoporateAccount();
+                  trackClickActivity('create coporate account')
+                "
+                style="border-bottom: 2px solid #f45300"
+                *ngIf="coporateEnableStatus"
+              >
+                Create Corporate Account
+              </li>
+              <li nz-menu-item [routerLink]="['/dashboard/transactions']">
+                My Transactions
+              </li>
+              <li nz-menu-item [routerLink]="['/dashboard/beneficiaries']">
+                My Beneficiaries
+              </li>
+              <!-- <li nz-menu-item (click)="referalFriend()" *ngIf="referalPromotion">Refer Friend</li> -->
+              <li
+                nz-menu-item
+                [routerLink]="['/dashboard/settings']"
+                (click)="settingClick()"
+              >
+                Settings
+              </li>
+              <li nz-menu-item (click)="logout()">Sign Out</li>
+            </ul>
+          </nz-dropdown-menu>
+        </li>
+        <li *ngIf="!dataService.isLoggedIn">
+          <button nz-button class="login-btn" (click)="login()">Login</button>
+        </li>
+        <li *ngIf="!dataService.isLoggedIn">
+          <button nz-button class="signup-btn" (click)="signUpAmlCheck()">
+            Sign Up
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mob-menu-btn">
+      <a (click)="openHeader()"
+        ><img src="./assets/icons/hamburger-menu.png"
+      /></a>
+    </div>
+  </div>
+  <div class="ref" *ngIf="dataService.isLoggedIn">
+    <div
+      *ngIf="dataService.isLoggedIn && customerReference"
+      class="mobile-only-m992"
+    >
+      <a class="ref-txt"
+        ><b>New Reference: {{ customerReference }}</b></a
+      >
+    </div>
+    <!-- <div
+      *ngIf="dataService.isLoggedIn && customerOldReference"
+      class="mobile-only-m992"
+    >
+      <a class="ref-txt">Old Reference: UK10180008</a>
+    </div> -->
+  </div>
+</div>

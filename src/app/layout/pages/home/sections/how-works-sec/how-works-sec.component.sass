@@ -1,0 +1,104 @@
+@import '../../../../../../assets/sass/index'
+
+.section
+    width: 100%
+    //background: #FFF
+    @include media_query_all("none","#FFF",null,null,null,null,'background')
+
+    &-container
+        padding-top: 50px
+        padding-bottom: 50px
+        @include media_query_all(40,120,null,null,null,null,'padding-left')
+        @include media_query_all(40,120,null,null,null,null,'padding-right')
+
+    & .heading-row
+        text-align: center
+        //margin-bottom: 63px
+        @include media_query_all(40,63,null,null,null,null,'margin-bottom')
+
+    & .heading-row .heading
+        font-family: $font-family
+        font-size: 28px
+        line-height: 32px
+        letter-spacing: 0.01em
+        font-weight: bold
+        color: $black-bg
+        margin-bottom: 0
+        @include media_query_all(40,63,null,null,null,null,'margin-bottom')
+
+.left-sec p
+    font-family: $font-family
+    font-style: normal
+    font-weight: 500
+    //font-size: 20px
+    //line-height: 34px
+    letter-spacing: 0.01em
+    color: #4F4F4F
+    margin-top: 20px
+    // @include media_query_all(35,65,null,null,null,null,'line-height')
+    @include media_query_all(20,30,null,null,null,22,'font-size')
+
+    &:last-child
+        margin-bottom: 0
+
+.left-sec .step-figure
+    text-align: center
+
+.step-figure .step-item
+    position: relative
+    border: 3px solid #F65311
+    height: 140px
+    width: 140px
+    border-radius: 100%
+    left: 50%
+    transform: translateX(-50%)
+    cursor: pointer
+    //margin: 60px 0
+    @include media_query_all(60,null,null,null,20,null,'margin-top')
+
+    &:hover
+        background: #F65311
+
+    &:hover p
+        color: $white-color
+
+    & p
+        position: absolute
+        top: 55%
+        left: 50%
+        transform: translate(-50%, -50%)
+        font-family: $font-family
+        font-style: normal
+        font-weight: 500
+        font-size: 12px
+        line-height: 22px
+        text-align: center
+        letter-spacing: 0.01em
+        color: #F65311
+        margin-bottom: 0
+
+    & span
+        font-weight: 700
+        font-size: 70px
+        line-height: 22px
+        text-align: center
+        display: block
+        margin-bottom: 25px
+
+.steps-section .step-figure h5
+    font-family: $font-family
+    font-style: normal
+    font-weight: bold
+    font-size: 26px
+    line-height: 30px
+    text-align: center
+    letter-spacing: 0.01em
+    color: $black-bg
+    margin-top: 27px
+
+div.right-sec:nth-child(2)
+    //display: flex
+    @include media_query_all("block",null,null,"flex",null,null,'display')
+
+div.ant-col-lg-12
+    @include media_query_all("center","left",null,null,null,null,'text-align')

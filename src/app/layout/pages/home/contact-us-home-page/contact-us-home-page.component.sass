@@ -1,0 +1,179 @@
+@import '../../../../../assets/sass/index'
+@import '../../../../../assets/sass/variable'
+
+.ant-layout-header
+    padding: 0
+    width: 100%
+    height: 95px
+    background: #20366B
+    position: fixed
+    z-index: 900
+
+.ant-layout-footer
+    padding: 0
+    width: 100%
+
+.section
+    background: $secondary-color
+    text-align: center
+    @include media_query_all_im(16,null,null,null,null,40,"padding")
+
+    p
+        color: #31386C
+        text-align: center
+        font-family: Open Sans
+        font-weight: 400
+        letter-spacing: 0.2px
+        @include media_query_all_im(16,null,null,null,null,26,"font-size")
+        @include media_query_all_im(10,null,null,null,null,24,"padding-top")
+        margin-bottom: 0
+        // @include media_query_all_im(10,null,null,null,null,10,"padding-right")
+        // @include media_query_all_im(10,null,null,null,null,10,"padding")
+
+.heading-row
+    text-align: center
+    // padding-top: 48px
+    h5
+        @include media_query_all_im(16,null,null,null,null,28,"font-size")
+        font-weight: 600
+        @include media_query_all_im(20,null,null,null,null,50,"margin-bottom")
+
+.heading-1
+    padding-top: 90px
+    // @include media_query_all_im(45,null,null,null,null,80,"padding-top")
+    color: $white-color
+    font-weight: 600
+    letter-spacing: 0.48px
+    @include media_query_all_im(16,null,null,null,null,48,"font-size")
+    margin-bottom: 0
+
+.heading
+    color: $white-color
+    font-weight: 600
+    letter-spacing: 0.48px
+    @include media_query_all_im(16,null,null,null,null,48,"font-size")
+    // @include media_query_all_im(16,null,null,null,null,20,"padding-bottom")
+    // @include media_query_all_im(16,null,null,null,null,20,"padding-top")
+    // @include media_query_all_im(16,null,null,null,null,20,"margin-top")
+    margin-bottom: 0
+
+/* how do u sec start */
+.steps-section-container
+    display: flex
+    @include media_query_all_im(column,null,null,row,null,null,"flex-direction")
+    justify-content: space-between
+    align-items: center
+    @include media_query_all_im("100%",null,null,null,unset,unset,"width")
+    @include media_query_all_im(20,null,null,null,null,unset,"padding-bottom")
+
+.steps-section .step-figure
+    width: 25%
+    text-align: center
+    @include media_query_all_im(20,null,null,null,null,40,"padding-bottom")
+
+.steps-section .step-figure .step-item
+    position: relative
+    background: #F45300
+    height: 42px
+    width: 42px
+    border-radius: 80px
+    left: 50%
+    transform: translateX(-50%)
+    @include media_query_all_im(30,null,null,null,null,50,"margin-top")
+
+.steps-section .step-figure .step-item span
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    font-family: "Open Sans"
+    font-style: normal
+    font-weight: bold
+    text-align: center
+    letter-spacing: normal
+    color: #FFFFFF
+    @include media_query_all_im(30,null,null,null,null,50,"font-size")
+    @include media_query_all_im(20,null,null,null,null,40,"line-height")
+
+.steps-section .step-figure h5
+    font-family: "Open Sans"
+    font-style: normal
+    font-weight: bold
+    line-height: 34px
+    text-align: center
+    letter-spacing: normal
+    color: #000
+    @include media_query_all_im(16,null,null,null,null,26,"font-size")
+    @include media_query_all_im(16,null,null,null,null,27,"margin-top")
+
+/*common*/
+.step-figure .step-item
+    position: relative
+    border: 4px solid #F45300
+    @include media_query_all_im(100,null,null,null,null,100,"width")
+    @include media_query_all_im(100,null,null,null,null,100,"height")
+    border-radius: 100%
+    // left: 40%
+    // transform: translateX(-50%)
+    cursor: pointer
+
+/* security section start*/
+
+.security
+    display: flex
+    @include media_query_all_im(column,null,null,null,null,row,"flex-direction")
+    padding-left: 50px
+    padding-right: 50px
+    align-items: center
+
+.left-sec p
+    font-family: "Open Sans"
+    font-style: normal
+    font-weight: 500
+    @include media_query_all_im(16,null,null,null,null,22,"font-size")
+    letter-spacing: 0.01em
+    color: #4F4F4F
+    @include media_query_all_im(center,null,null,null,null,left,"text-align")
+    @include media_query_all_im(16,null,null,null,null,30,"margin-top")
+    // margin-top: 30px
+
+.right-sec
+    display: flex
+    @include media_query_all_im(center,null,null,null,null,flex-end,"justify-content")
+    @include media_query_all_im(column,null,null,null,null,row,"flex-direction")
+    align-items: center
+    // @include media_query_all_im(30,null,null,null,null,120,"gap")
+    width: 100%
+
+.right-sec .step-figure
+    display: flex
+    justify-content: center
+    @include media_query_all_im(16,null,null,null,null,unset,"margin-bottom")
+
+.right-sec .step-figure .step-item
+    @include media_query_all_im(162,null,null,null,null,162,"width")
+    @include media_query_all_im(162,null,null,null,null,162,"height")
+
+.step-figure .step-item:hover
+    background: #F65311
+
+.step-figure .step-item:hover p
+    color: #FFF
+
+.step-figure .step-item p
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    font-family: "Open Sans"
+    font-style: normal
+    font-weight: 500
+    line-height: 22px
+    text-align: center
+    letter-spacing: 0.01em
+    color: #F65311
+    margin-bottom: 0
+    @include media_query_all_im(10,null,null,null,null,17,"font-size")
+
+.ant-row
+    justify-content: center

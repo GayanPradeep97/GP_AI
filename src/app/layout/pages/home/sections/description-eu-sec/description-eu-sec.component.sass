@@ -1,0 +1,40 @@
+@import '../../../../../../assets/sass/index'
+
+.section
+    position: relative
+    width: 100%
+    //background: #FFF
+    @include media_query_all("none","#FFF",null,null,null,null,'background')
+    @include media_query_all(0,null,null,null,null,null,'padding-right')
+    @include media_query_all(0,null,null,null,null,null,'padding-left')
+
+    &-container
+        padding-top: 34px
+        @include media_query_all(90,null,null,null,null,120,'padding-bottom')
+        @include media_query_all(20,81,null,null,null,81,'padding-right')
+        @include media_query_all(20,81,null,null,null,81,'padding-left')
+
+.desc h5
+    font-family: "Open Sans"
+    //font-size: 26px
+    line-height: 30px
+    font-weight: bold
+    letter-spacing: 0.01em
+    color: #000000
+    margin-bottom: 18px
+    @include media_query_all(23,null,null,null,null,26,'font-size')
+
+.desc p
+    color: #4F4F4F
+    font-family: "Open Sans"
+    letter-spacing: 0.01em
+    text-align: left
+    @include media_query_all(40,60,null,null,null,null,'margin-bottom')
+    @include media_query_all(23,null,null,null,null,26,'font-size')
+    @include media_query_all(40,null,null,null,null,40,'line-height')
+
+    &:last-child
+        margin-bottom: 0
+
+div.right-sec:nth-child(3) > div:nth-child(1)
+    @include media_query_all(50,null,null,null,0,0,'margin-top')

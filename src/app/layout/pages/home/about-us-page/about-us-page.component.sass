@@ -1,0 +1,70 @@
+@import '../../../../../assets/sass/index'
+
+.ant-layout-header
+    padding: 0
+    width: 100%
+    height: 95px
+    background: #20366B
+    position: fixed
+    z-index: 900
+
+.ant-layout-footer
+    padding: 0
+    width: 100%
+
+.section
+    width: 100%
+    background: #00A2DC
+
+    &-container
+        //padding: 110px 290px 64px 290px
+        // @include media_query_all_im(40,null,null,null,null,298,'padding-right')
+        // @include media_query_all_im(40,null,null,null,null,298,'padding-left')
+        @include media_query_all(140,null,null,null,null,140,'padding-top')
+        @include media_query_all(50,null,null,null,null,64,'padding-bottom')
+.code-section
+    // @include media_query_all(50,null,null,null,null,160,'padding-top')
+
+.heading-row
+    text-align: center
+    margin-bottom: 15px
+
+    & .heading
+        font-family: "Open Sans"
+        @include media_query_all(20,null,null,null,null,50,'font-size')
+        letter-spacing: 0.01em
+        font-weight: bold
+        color: #FFF
+
+p
+    font-family: "Open Sans"
+    color: #20366b
+    @include media_query_all(16,null,null,null,null,28,'font-size')
+    // @include media_query_all(25,null,null,null,null,38,'line-height')
+    text-align: center
+    // letter-spacing: 0.068px
+    @include media_query_all(15,null,null,null,null,15,'margin-bottom')
+    // @include media_query_all_im(10,null,null,null,null,15,"padding-left")
+    // @include media_query_all_im(10,null,null,null,null,15,"padding-right")
+
+// .section
+//     background: $secondary-color
+//     text-align: center
+//     @include media_query_all_im(16,null,null,null,null,40,"padding")
+
+// p
+//     text-align: center
+//     font-family: Open Sans
+//     font-weight: 400
+//     letter-spacing: 0.26px
+//     @include media_query_all_im(16,null,null,null,null,26,"font-size")
+//     @include media_query_all_im(10,null,null,null,null,10,"padding-left")
+//     @include media_query_all_im(10,null,null,null,null,10,"padding-right")
+
+// .heading
+//     color: $white-bg-color
+//     font-weight: 600
+//     line-height: 21px
+//     letter-spacing: 0.48px
+//     @include media_query_all_im(30,null,null,null,null,48,"font-size")
+//     @include media_query_all_im(16,null,null,null,null,30,"margin-bottom")

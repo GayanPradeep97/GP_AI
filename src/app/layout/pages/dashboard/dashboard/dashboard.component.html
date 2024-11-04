@@ -1,0 +1,148 @@
+<nz-layout>
+  <nz-sider
+    nzCollapsible
+    [(nzCollapsed)]="isCollapsed"
+    [nzBreakpoint]="'lg'"
+    [nzCollapsedWidth]="0"
+    [nzTrigger]="null"
+    [nzWidth]="250"
+    [ngClass]="{ 'mob-hide-slider': isCollapsed }"
+  >
+    <div class="logo-sec" [routerLink]="['']">
+      <img src="./assets/images/spot-on-money-logo.png" />
+    </div>
+    <nz-divider></nz-divider>
+
+    <ul
+      nz-menu
+      class="ant-menu ant-menu-root ant-menu-dark ant-menu-inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <div class="mob-view-only customer-mail">
+        <span>{{ username }}</span>
+      </div>
+      <div class="mob-view-only ref-figure">
+        <span style="display: block; color: black" *ngIf="newRefference"
+          ><b>New Reference:{{ customerReference }}</b></span
+        >
+        <span style="display: block; color: black" *ngIf="oldRefference"
+          ><b>Old Reference: {{ customerOldReference }}</b></span
+        >
+      </div>
+      <li
+        nz-menu-item
+        [routerLink]="['transactions']"
+        nzMatchRouter
+        routerLinkActive="active"
+      >
+        <div class="nav-menu-icon">
+          <img
+            class="default-icon"
+            src="./assets/icons/my-transaction-black.svg"
+          />
+          <img class="active-icon" src="./assets/icons/my-transaction.svg" />
+        </div>
+        <span class="nav-menu-item">My Transactions</span>
+      </li>
+      <li
+        nz-menu-item
+        nzMatchRouter
+        [routerLink]="['beneficiaries']"
+        routerLinkActive="active"
+      >
+        <div class="nav-menu-icon">
+          <img
+            class="default-icon"
+            src="./assets/icons/my-benifits-black.svg"
+          />
+          <img class="active-icon" src="./assets/icons/my-benifits-white.svg" />
+        </div>
+        <span class="nav-menu-item">My Beneficiaries</span>
+      </li>
+      <li
+        nz-menu-item
+        [routerLink]="['settings']"
+        nzMatchRouter
+        routerLinkActive="active"
+        (click)="settingClick()"
+      >
+        <div class="nav-menu-icon">
+          <img class="default-icon" src="./assets/icons/settings-black.svg" />
+          <img class="active-icon" src="./assets/icons/settings-white.svg" />
+        </div>
+        <span class="nav-menu-item">Settings</span>
+      </li>
+      <li class="mob-view-only sign-out">
+        <span
+          class="nav-menu-item"
+          style="font-weight: bold; color: #f5222d"
+          (click)="signOut()"
+          >Sign Out</span
+        >
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <!-- <div class="header"> -->
+      <div class="hamburger-mob-view">
+        <!-- <div class="logo" *ngIf="isCollapsed">
+          <img [routerLink]="['']" src="./assets/images/SpotOn-logo.png">
+          <span>User Dashboard</span>
+        </div> -->
+        <a class="mob-menu-btn" (click)="isCollapsed = !isCollapsed">
+          <img src="./assets/icons/hamburger-menu.png" />
+        </a>
+      </div>
+      <div class="header-ref">
+        <span
+          ><b>New Reference: {{ customerReference }}</b></span
+        ><br />
+        <span>Old Reference: {{ customerOldReference }}</span>
+      </div>
+      <nz-space>
+        <button nz-button nz-dropdown [nzDropdownMenu]="menu">
+          <img class="avatar-icon" src="./assets/icons/user-profile.svg" />
+          <span>{{ username }}</span>
+          <i
+            nz-icon
+            nzType="caret-down"
+            style="color: #f45300"
+            nzTheme="outline"
+          ></i>
+        </button>
+        <nz-dropdown-menu #menu>
+          <ul nz-menu nzSelectable>
+            <li nz-menu-item [routerLink]="['transactions']">
+              My Transactions
+            </li>
+            <li nz-menu-item [routerLink]="['beneficiaries']">
+              My Beneficiaries
+            </li>
+            <li nz-menu-item [routerLink]="['settings']">Settings</li>
+            <li nz-menu-item (click)="signOut()">Sign Out</li>
+          </ul>
+        </nz-dropdown-menu>
+      </nz-space>
+    </nz-header>
+
+    <nz-layout>
+      <!-- <div class="ant-layout-header-mob"> -->
+      <!-- <div class="logo" *ngIf="isCollapsed">
+          <img [routerLink]="['']" src="./assets/images/SpotOn-logo.png">
+          <span>User Dashboard</span>
+        </div> -->
+      <!-- <a class="mob-menu-btn" (click)="isCollapsed = !isCollapsed">
+          <img src="./assets/icons/hamburger-menu.png" />
+        </a> -->
+      <!-- </div> -->
+      <nz-content
+        class="ant-layout-content"
+        [ngClass]="{ 'mob-hide': !isCollapsed }"
+      >
+        <router-outlet></router-outlet>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>
+<!-- <app-loading></app-loading> -->

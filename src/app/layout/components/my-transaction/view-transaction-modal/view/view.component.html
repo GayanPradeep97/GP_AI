@@ -1,0 +1,154 @@
+<form nz-form [nzLayout]="'vertical'" [formGroup]="transferDetailsForm">
+  <div nz-row nzType="flex" nzJustify="start" [nzGutter]="20">
+    <div nz-col nzMd="8" nzXs="24">
+      <nz-form-item>
+        <nz-form-label>Amount to be Sent</nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="text"
+            formControlName="sentAmount"
+            placeholder="Amount Payable"
+            (keypress)="numberOnly($event)"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col nzMd="8" nzXs="24">
+      <nz-form-item>
+        <nz-form-label>Transfer As</nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="text"
+            formControlName="transferMode"
+            placeholder="Amount Payable"
+            [readOnly]="true"
+          />
+          <!-- <nz-select
+                formControlName="transferMode"
+                items="transferMode"
+                bindLabel="transferMode"
+                nzPlaceHolder="Select Transfer As"
+                clearable="false"
+                nzSuffixIcon="caret-down"
+                [nzDisabled]="true"
+              >
+              </nz-select> -->
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col nzMd="8" nzXs="24">
+      <nz-form-item>
+        <nz-form-label>Recipient Currency</nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="text"
+            formControlName="recepientCountry"
+            placeholder="Amount Payable"
+            [readOnly]="true"
+          />
+          <!-- <nz-select
+                items="recepientCountry"
+                bindLabel="countryName"
+                nzPlaceHolder="Select Country"
+                formControlName="recepientCountry"
+                clearable="false"
+                nzSuffixIcon="caret-down"
+                isOpen="false"
+                [nzDisabled]="true"
+              >
+              </nz-select> -->
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row nzType="flex" nzJustify="start" [nzGutter]="20">
+    <div nz-col nzMd="8" nzXs="24">
+      <nz-form-item>
+        <nz-form-label>Sender Country</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            type="text"
+            formControlName="senderCountry"
+            placeholder="Amount Payable"
+            [readOnly]="true"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col nzMd="8" nzXs="24">
+      <nz-form-item>
+        <nz-form-label>Transfer Fee</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            type="text"
+            formControlName="transferFee"
+            placeholder="000.00"
+            [readOnly]="true"
+            (keypress)="numberOnly($event)"
+            [disabled]="true"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col nzMd="8" nzXs="24">
+      <nz-form-item>
+        <nz-form-label>Beneficiary will Receive</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            type="text"
+            formControlName="beneficiaryReceiveAmount"
+            placeholder="Enter Amount"
+            [readOnly]="true"
+            (keypress)="numberOnly($event)"
+            [disabled]="true"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row nzType="flex" nzJustify="start" [nzGutter]="20">
+    <div nz-col nzMd="8" nzXs="24">
+      <nz-form-item>
+        <nz-form-label>Total Amount Payable</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            type="text"
+            formControlName="totalAmountPayable"
+            placeholder="Amount Payable"
+            [readOnly]="true"
+            (keypress)="numberOnly($event)"
+            [disabled]="true"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzMd="8" nzXs="24">
+      <nz-form-item>
+        <nz-form-label>Promo Code</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            type="text"
+            formControlName="promoCode"
+            placeholder="Promo Code"
+            [readOnly]="true"
+            [disabled]="true"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+</form>

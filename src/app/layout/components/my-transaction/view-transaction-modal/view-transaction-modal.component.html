@@ -1,0 +1,75 @@
+<div class="steps-row">
+  <div class="heading-row">
+    <h3 class="modal-heading" *ngIf="current === 0">
+      View Transfer - {{ transferNumber }}
+    </h3>
+    <h3 class="modal-heading" *ngIf="current === 1">User Details</h3>
+    <h3 class="modal-heading" *ngIf="current === 2">Beneficiary Details</h3>
+    <h3 class="modal-heading" *ngIf="current === 3">Transfer Invoice</h3>
+
+    <div nz-row class="steps-details">
+      <nz-steps [nzCurrent]="current">
+        <nz-step nzTitle="VIEW"></nz-step>
+        <nz-step nzTitle="USER"></nz-step>
+        <nz-step nzTitle="BENEFICIARY"></nz-step>
+        <nz-step nzTitle="SUMMARY"></nz-step>
+      </nz-steps>
+    </div>
+  </div>
+</div>
+
+<div class="steps-content">
+  <!--  Step 1 content -->
+  <div *ngIf="index === 0">
+    <app-view [mode]="mode"></app-view>
+  </div>
+  <!-- Step 2 content  -->
+  <div *ngIf="index === 1">
+    <app-user-details [mode]="mode"></app-user-details>
+  </div>
+  <!-- Step 3 content  -->
+  <div *ngIf="index === 2">
+    <app-benificary-details [mode]="mode"></app-benificary-details>
+  </div>
+
+  <!-- Step 4 content  -->
+  <div *ngIf="index === 3">
+    <app-confirmation-details></app-confirmation-details>
+  </div>
+
+  <div class="button-section">
+    <button
+      nz-button
+      *ngIf="current === 0"
+      class="btn btn__cancel"
+      (click)="closeModal()"
+    >
+      Cancel
+    </button>
+    <button
+      nz-button
+      class="btn btn__update"
+      *ngIf="current === 2"
+      (click)="updateDetails()"
+    >
+      Update Beneficiary
+    </button>
+    <button
+      nz-button
+      class="btn btn__goback"
+      (click)="pre()"
+      *ngIf="current > 0 && current != 3"
+    >
+      Go Back
+    </button>
+
+    <button
+      nz-button
+      class="btn btn__next"
+      (click)="next()"
+      *ngIf="current != 3"
+    >
+      Next
+    </button>
+  </div>
+</div>

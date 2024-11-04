@@ -1,0 +1,63 @@
+<div nz-row nzType="flex" nzJustify="center" class="modal-content">
+  <div nz-col nzSpan="20" class="content-figure">
+    <h3 class="title">Login to your Account</h3>
+    <form
+      nz-form
+      [nzAutoTips]="autoTips"
+      [formGroup]="loginForm"
+      (ngSubmit)="send2FaCode()"
+    >
+      <nz-form-item>
+        <div class="input_field_login" nz-row nzType="flex">
+          <nz-form-control>
+            <nz-input-group>
+              <input
+                nz-input
+                type="text"
+                id="username"
+                class="input_status"
+                placeholder="User ID"
+                formControlName="userName"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </div>
+      </nz-form-item>
+      <nz-form-item style="margin-bottom: 0px">
+        <div class="input_field_login" nz-row nzType="flex" nzJustify="center">
+          <nz-form-control>
+            <nz-input-group>
+              <input
+                nz-input
+                [type]="passwordVisible ? 'text' : 'password'"
+                id="password"
+                class="input_status"
+                placeholder="Password"
+                formControlName="password"
+              />
+            </nz-input-group>
+          </nz-form-control>
+        </div>
+      </nz-form-item>
+      <nz-form-item style="margin-bottom: 0px">
+        <div nz-row nzType="flex" nzJustify="center">
+          <button
+            type="submit"
+            nz-button
+            class="btn btn__high_orange btn_align"
+          >
+            Login
+          </button>
+        </div>
+      </nz-form-item>
+      <a class="signup-link">
+        Don't have an account?
+        <b (click)="signUpAmlCheck()"><u>Sign Up</u></b></a
+      >
+      <a class="forget-password-link" (click)="forgotPassword()">
+        Forgot your Password?
+      </a>
+    </form>
+  </div>
+</div>
+<app-loading></app-loading>

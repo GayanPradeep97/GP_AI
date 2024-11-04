@@ -1,0 +1,88 @@
+<div class="modal-content">
+  <div class="nav-menu-container">
+    <ul class="nav-menu">
+      <li>
+        <a [routerLink]="['/about-us']" (click)="routeToAboutus()">About Us</a>
+      </li>
+      <li>
+        <a [routerLink]="['/how-it-works']" (click)="routeToHowitworks()"
+          >How it works?</a
+        >
+      </li>
+      <li>
+        <a [routerLink]="['/contact']" (click)="routeToContact()">Contact</a>
+      </li>
+      <li *ngIf="!dataService.isLoggedIn">
+        <button nz-button class="login-btn" (click)="login()">Login</button>
+      </li>
+      <li *ngIf="!dataService.isLoggedIn">
+        <button nz-button class="signup-btn" (click)="signUpAmlCheck()">
+          Sign Up
+        </button>
+      </li>
+      <li *ngIf="dataService.isLoggedIn">
+        <ul
+          nz-menu
+          nzSelectable
+          class="profile-dropdown-menu"
+          (nzVisibleChange)="getClickAction()"
+          style="max-height: 400px; overflow-y: auto"
+        >
+          <li
+            nz-menu-item
+            (click)="setSelectedUserAccount(username)"
+            [ngClass]="{
+              activeAccount: username === currentActiveUserAccount
+            }"
+          >
+            {{ username }}
+          </li>
+          <li
+            nz-menu-item
+            *ngFor="let sender of coporateSenders"
+            (click)="
+              setSelectedUserAccount(sender.companyEmail);
+              trackClickActivity('coporate account')
+            "
+            [ngClass]="{
+              activeAccount: sender.companyEmail === currentActiveUserAccount
+            }"
+          >
+            {{ sender.companyEmail }}
+          </li>
+          <li
+            nz-menu-item
+            (click)="
+              createCoporateAccount();
+              trackClickActivity('create coporate account')
+            "
+            style="border-bottom: 2px solid #f45300"
+            *ngIf="coporateEnableStatus"
+          ></li>
+        </ul>
+      </li>
+      <li *ngIf="dataService.isLoggedIn">
+        <a (click)="createCoporateAccount()">Create Corporate Account</a>
+      </li>
+      <li *ngIf="dataService.isLoggedIn">
+        <a (click)="routeToDashboard()" style="font-size: 16px"
+          >My Transactions</a
+        >
+      </li>
+      <li *ngIf="dataService.isLoggedIn">
+        <a (click)="routeToBeneficiaries()" style="font-size: 16px"
+          >My Beneficiary</a
+        >
+      </li>
+
+      <li *ngIf="dataService.isLoggedIn">
+        <a (click)="routeToSettings()" style="font-size: 16px">Settings</a>
+      </li>
+      <li *ngIf="dataService.isLoggedIn">
+        <a (click)="logout()" style="font-size: 16px; color: #f5222d"
+          >Sign Out</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>

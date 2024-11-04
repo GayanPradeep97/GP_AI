@@ -1,0 +1,26 @@
+<nz-layout>
+  <nz-content>
+    <!---- banner section ---->
+    <app-home-banner></app-home-banner>
+    <!---- //banner section ---->
+
+    <!---->
+    <div class="content-figure">
+      <router-outlet></router-outlet>
+      <!---- dynamic content ---->
+      <!-- <div class="content-item" *ngIf="currentRoute === '/'">
+          <app-features-eu-sec></app-features-eu-sec>
+          <app-description-eu-sec></app-description-eu-sec>
+        </div>
+        <div class="content-item" *ngIf="currentRoute !== '/'">
+          <app-features-sl-sec></app-features-sl-sec>
+          <app-description-sl-sec></app-description-sl-sec>
+          <app-convenience-sl-sec></app-convenience-sl-sec>
+        </div> -->
+      <!---- //dynamic content ---->
+      <!-- <app-app-download-sec></app-app-download-sec>
+        <app-how-works-sec></app-how-works-sec>
+        <app-questions-sec></app-questions-sec> -->
+    </div>
+  </nz-content>
+</nz-layout>

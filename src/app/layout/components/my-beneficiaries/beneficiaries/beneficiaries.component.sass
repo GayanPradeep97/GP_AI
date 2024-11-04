@@ -1,0 +1,154 @@
+@import '../../../../../assets/sass/index'
+
+.title-bar
+    // height: 74px
+    background: #FFF8F5
+    display: flex
+    align-items: center
+    justify-content: center
+    // margin-bottom: 30px
+    width: 100%
+    margin-top: 38px
+    @include media_query_all(30,null,null,null,null,30,'margin-bottom')
+    @include media_query_all_im(16,null,50,null,null,50,'padding-left')
+    @include media_query_all_im(16,null,50,null,null,50,'padding-right')
+
+::ng-deep .ant-tabs-top>.ant-tabs-nav
+    margin: 0
+    // @include media_query_all(35,'unset',null,null,null,'unset','height')
+::ng-deep .ant-layout-content
+    background: #FFF8F5
+    height: 100vh
+
+:host ::ng-deep .ant-col-24
+    background: #ffff
+    padding: 20px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    @include media_query_all(0,68,null,null,null,68,'height')
+    @include media_dynamic(1281,68,'height')
+    height: 68px
+    border-bottom: 0.2px solid rgba(0, 0, 0, 0.10)
+
+::ng-deep .ant-input:hover
+    .ant-input:focus,
+    .ant-input-focused
+        border-radius: 5px
+        border: none
+
+//dropdown focus bordersadow
+::ng-deep .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector
+    box-shadow: none
+
+.title-bar .page-heading
+    // font-size: 28px
+    color: black
+    font-weight: 600
+    margin-bottom: 0
+    letter-spacing: 0.01em
+    line-height: 28px
+    @include media_query_all_im(20,null,null,null,null,26,'font-size')
+
+.btn
+    height: 38px
+    width: 128px
+    background: #F45300
+    font-size: 13px
+
+.filter-section
+    @include media_query_all_im(16,null,50,null,null,50,'padding-left')
+    @include media_query_all_im(16,null,50,null,null,50,'padding-right')
+
+.filter-row
+    border: none
+    // height: 68px
+    // padding-left: 20px
+    // width: 227px
+    display: flex
+    // gap: 40px
+    margin-bottom: 20px
+
+.filter-btn
+    // width: 227px
+    height: 40px
+    font-size: 15px
+    @include media_query_all(100,145,190,227,null,null,'width')
+
+.ant-input
+    color: rgba(0, 0, 0, 0.50)
+
+    font-size: 12px
+    height: 24px
+    border: none
+
+.ant-btn:hover
+    border-radius: 5px
+    border: none
+    color: none
+
+::ng-deep .ant-dropdown-trigger
+    display: flex
+    align-items: center
+    width: 227px
+    color: rgba(0, 0, 0, 0.50)
+
+::ng-deep .ant-dropdown-trigger:hover
+    color: rgba(0, 0, 0, 0.50)
+
+.ant-input:hover
+.ant-input:focus
+    border-radius: 5px
+    border: none
+
+.ant-input:focused
+    border: none
+
+.table-content
+    border-radius: 6px 0px 0px 6px
+    background: #FFF
+    height: 68px
+    @include media_query_all_im(16,null,50,null,null,50,'margin-left')
+    @include media_query_all_im(16,null,50,null,null,50,'margin-right')
+
+.heading-row .table-col
+    height: 68px
+    display: flex
+    align-items: center
+    font-size: 14px
+    font-weight: 600
+    color: #565658
+
+.table-row
+    background: #ffffff
+    margin-top: 10px
+
+.heading-row,
+.data-row
+    padding: 0 20px
+
+.data-row .table-col
+    height: 68px
+    display: flex
+    align-items: center
+    font-size: 13px
+    font-weight: 400
+    color: #565658
+
+.pagination-row
+    margin-top: 30px
+
+.filter-inputs
+    // @include media_query_all_im(200,null,null,null,null,227,'width')
+    // width: 227px
+    height: 30px
+    padding: 1px 11px
+    font-size: 13px
+    border-radius: 5px
+    margin-bottom: 10px
+
+.pagination_mob
+    display: flex
+    position: relative
+    bottom: 70px
+    margin-top: 60px !important

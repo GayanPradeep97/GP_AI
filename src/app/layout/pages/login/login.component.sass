@@ -1,0 +1,106 @@
+@import ./../../../../assets/sass/index
+
+::ng-deep.ant-modal-body
+    padding: 0px
+
+::ng-deep.ant-form-item.ant-row
+    margin-bottom: 12px
+    justify-content: center
+    justify-items: center
+
+.modal-content
+    background-color: $medium-bg-color
+    border-radius: 5px
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1)
+    margin-bottom: 12px
+
+.content-figure
+    justify-content: center
+    text-align: center
+    width: 100%
+
+.title
+    margin: 27px auto 34px
+    font-family: $font-family
+    //font-size: 22px
+    line-height: 29px
+    text-align: center
+    letter-spacing: 0.01em
+    color: $low-black
+
+    @include media_query_all(32,null,null,null,null,null,'font-size')
+
+:host ::ng-deep .input_status.ant-input
+    height: 52px
+    width: 100%
+    // min-width: 400px
+    border: 1px solid $input-border
+    box-sizing: border-box
+    border-radius: 5px
+    padding: 0 11px
+    font-family: $font-family
+    font-weight: normal
+    font-size: 14px
+    line-height: 19px
+    letter-spacing: 0.01em
+    background: none
+    color: $gray-color
+    text-align: left
+
+.ant-btn.btn_align
+    height: 52px
+    width: 200px
+    margin-top: 34px
+    margin-bottom: 12px
+    border-radius: 5px
+    outline: none
+    cursor: pointer
+    background: $medium-color
+
+.signup-link
+    font-family: $font-family
+    font-style: normal
+    font-weight: normal
+    font-size: 12px
+    line-height: 16px
+    text-align: center
+    letter-spacing: 0.01em
+    color: $secondary-color
+    display: block
+    cursor: default
+    margin-bottom: 16px
+
+    & u
+        cursor: pointer
+
+.forget-password-link
+    font-family: $font-family
+    font-style: normal
+    font-weight: normal
+    font-size: 12px
+    line-height: 16px
+    text-align: center
+    letter-spacing: 0.01em
+    color: $gray
+    display: block
+    cursor: pointer
+    margin: 0px auto 27px
+
+.modal-content p
+    font-family: $font-family
+    font-size: 14px
+    line-height: 28px
+    letter-spacing: 0.01em
+    color: $gray-color
+    text-align: center
+    margin-bottom: 0
+
+.input_field_login
+    width: 100%
+    max-width: 425px
+:host ::ng-deep .ant-form-item-explain-error
+    text-align: left
+
+// ::ng-deep .ant-modal-content  
+//     width: 390px
+//     height: 340px  

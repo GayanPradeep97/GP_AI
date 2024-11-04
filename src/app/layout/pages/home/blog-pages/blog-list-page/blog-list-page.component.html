@@ -1,0 +1,40 @@
+<nz-content>
+  <div class="section">
+    <div class="section-container">
+      <div class="heading-row">
+        <div class="heading">From the Blog</div>
+      </div>
+      <div class="item-figure">
+        <div
+          nz-row
+          class="blog-item"
+          *ngFor="let data of blogList; let i = index"
+          [hidden]="!showAllItems && i >= initialItemCount"
+        >
+          <div nz-col nzXs="24" nzLg="4" nzXl="4">
+            <img class="blog-img" [src]="data.imgUrl" />
+          </div>
+          <div nz-col nzXs="24" nzLg="20" nzXl="20" class="desc-sec">
+            <h3>{{ data.heading }}</h3>
+            <span class="date-txt">{{ data.createdOn }}</span>
+            <p>
+              {{ data.summaryText }}
+              <a (click)="goReadMore(data.permalink)">Read More</a>
+              <!-- <a [routerLink]="['/blog', data.id]">Read More</a> -->
+            </p>
+          </div>
+        </div>
+        <div class="btn-container">
+          <button
+            nz-button
+            nzType="default"
+            class="btn btn__goback btn-design"
+            (click)="toggleShowAll()"
+          >
+            {{ showAllItems ? "Read Less" : "Read More" }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nz-content>

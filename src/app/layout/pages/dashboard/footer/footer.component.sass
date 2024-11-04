@@ -1,0 +1,109 @@
+@import '../../../../../assets/sass/index'
+:host ::ng-deep.ant-layout-footer
+    padding: 0px
+
+.ant-row-space-between
+    //display: block
+    @include media_query_all('block',null,null,null,'flex','flex','display')
+
+.footer
+    //padding: 0 72px 0 98px
+    background: $low-black
+    // overflow: hidden
+    @include media_query_all(0,null,null,null,72,72,'padding-right')
+    @include media_query_all(0,null,null,null,98,98,'padding-left')
+
+.footer-container
+    @include media_query_all(40,null,null,null,null,0,'padding-top')
+    @include media_query_all(40,null,null,null,null,5,'padding-bottom')
+
+.footer .footer-container
+    @include media_query_all('relative',null,null,null,null,null,'position')
+
+.logo-col
+    // @include media_query_all('auto',null,null,null,null,null,'margin')
+    // @include media_query_all('grid',null,null,null,'block','block','display')
+    display: flex
+    align-items: center
+    @include media_query_all(center,null,null,null,null,left,'justify-content')
+
+.links-col
+    text-align: center
+    margin: 0 auto
+    display: flex
+    justify-content: center
+    align-items: end
+
+.copyright-col
+    padding: 25.5px 0 0 0
+    text-align: center
+    // @include media_query_all('auto',null,null,null,null,null,'margin')
+    @include media_query_all('end',null,null,null,'end','end','text-align')
+
+.logo img
+    width: 155px
+    // height: 76px
+    height: 56px
+
+.bottom-links
+    text-align: center
+
+.bottom-links a
+    font-family: $font-family
+    color: $gray
+    font-size: 14px
+    line-height: 19px
+    font-weight: normal
+    //margin: 0 17px
+    text-decoration: none
+    //display: inline-block
+    text-transform: none
+    outline: 0
+    cursor: pointer
+    @include media_query_all("grid",null,null,null,'inline-block','inline-block','display')
+    @include media_query_all(20,null,null,null,17,17,'margin')
+    @include media_query_all(24,null,null,null,17,17,'margin-righ')
+    // @include media_query_all(1.5,null,null,null,null,null,'line-height')
+
+.social-links
+    margin-bottom: 20.5px
+    @include media_query_all(150,null,null,null,60,60,'padding-right')
+    // padding-right: 50px
+    & span
+        display: inline-block
+        color: $medium-color
+        font-family: $font-family
+        font-size: 14px
+        line-height: 19px
+        letter-spacing: 0.01em
+        //margin-right: 45px
+        @include media_query_all(15,null,null,null,45,45,'margin-right')
+
+    & a
+        cursor: pointer
+        //margin-right: 36px
+        @include media_query_all(15,null,null,null,36,36,'margin-right')
+
+.social-links a:last-child
+    margin-right: 0
+
+.social-links a img
+    height: 20px
+    width: auto
+
+.copyright-txt
+    color: $white-bg-color
+    font-family: $font-family
+    font-style: normal
+    font-weight: normal
+    font-size: 14px
+    line-height: 19px
+    letter-spacing: 0.01em
+    margin-bottom: 0
+    @include media_query_all(50,null,null,null,null,null,'padding-right')
+    text-wrap: nowrap
+
+.copyright-txt span
+    @include media_query_all("block",null,null,null,null,null,'display')
+.footer-container
+    padding-bottom: 0

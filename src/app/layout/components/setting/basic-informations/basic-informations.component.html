@@ -1,0 +1,142 @@
+<div class="basic-table">
+  <form nz-form [nzLayout]="'vertical'" [formGroup]="basicInfoForm">
+    <div nz-row class="row">
+      <div nz-col class="col">
+        <nz-form-item>
+          <nz-form-label>Email</nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              class="input-fields"
+              formControlName="email"
+              type="text"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row style="margin-bottom: 60px">
+      <div nz-col>
+        <nz-form-item>
+          <nz-form-label>New Password</nz-form-label>
+          <nz-form-control>
+            <nz-input-group [nzSuffix]="currentPasswordSuffixTemplate">
+              <input
+                nz-input
+                class="input-fields"
+                formControlName="currentPassword"
+                [type]="currentPasswordVisible ? 'text' : 'password'"
+                placeholder="Enter New Password"
+                autocomplete="new-password"
+              />
+            </nz-input-group>
+            <ng-template #currentPasswordSuffixTemplate>
+              <span
+                nz-icon
+                [nzType]="currentPasswordVisible ? 'eye-invisible' : 'eye'"
+                (click)="currentPasswordVisible = !currentPasswordVisible"
+              ></span>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col>
+        <nz-form-item>
+          <nz-form-label>Confirm Password</nz-form-label>
+          <nz-form-control>
+            <nz-input-group [nzSuffix]="newPasswordSuffixTemplate">
+              <input
+                nz-input
+                class="input-fields"
+                nz-popover
+                formControlName="newPassword"
+                [type]="newPasswordVisible ? 'text' : 'password'"
+                placeholder="Enter Confirm Password"
+              />
+            </nz-input-group>
+
+            <ng-template #newPasswordSuffixTemplate>
+              <span
+                nz-icon
+                [nzType]="newPasswordVisible ? 'eye-invisible' : 'eye'"
+                (click)="newPasswordVisible = !newPasswordVisible"
+              ></span>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col>
+        <nz-form-item>
+          <nz-form-label>First Name</nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              class="input-fields"
+              formControlName="firstName"
+              type="text"
+              placeholder="Enter First Name"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col>
+        <nz-form-item>
+          <nz-form-label>Last Name</nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              class="input-fields"
+              formControlName="lastName"
+              type="text"
+              placeholder="Enter Last Name"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col>
+        <nz-form-item>
+          <nz-form-label>Contact Number</nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              class="input-fields"
+              formControlName="contactNumber"
+              type="text"
+              placeholder="Enter Contact Number"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col>
+        <nz-form-item>
+          <nz-form-label>Address</nz-form-label>
+          <nz-form-control>
+            <input
+              nz-input
+              class="input-fields"
+              formControlName="address"
+              type="text"
+              placeholder="Enter Address"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+    <div nz-row class="btn-row">
+      <div nz-col nzSpan="12">
+        <button
+          nz-button
+          class="btn btn__high_orange"
+          type="submit"
+          (click)="saveProfile()"
+        >
+          Save Profile
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

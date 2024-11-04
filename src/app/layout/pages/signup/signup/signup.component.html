@@ -1,0 +1,197 @@
+<div class="steps-content">
+  <!--  step 01 content-->
+  <div nz-row>
+    <form nz-form [formGroup]="personalInformationForm">
+      <div nz-row>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="start">
+            <div nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Contact Title<span class="required-mark"
+                    >*</span
+                  ></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <!-- <ng-select nz-dropdown  class="dropdown" bindLabel="contactTitle" id="ctitleName"
+                    formControlName="ctitleName" placeHolder="Select Contact Title"></ng-select> -->
+                  <nz-select
+                    class="dropdown"
+                    nzSuffixIcon="caret-down"
+                    formControlName="titleName"
+                    id="ctitleName"
+                    nzShowSearch
+                    nzAllowClear
+                    nzPlaceHolder="Select Contact Title"
+                  >
+                    <nz-option
+                      *ngFor="let data of titles"
+                      [nzValue]="data.contactTitle"
+                      [nzLabel]="data.contactTitle"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="start">
+            <div nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label>First Name</nz-form-label>
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="firstName"
+                    type="text"
+                    placeholder="First Name"
+                    formControlName="firstName"
+                    (keypress)="checkAlphabets($event)"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >Last Name<span class="required-mark">*</span></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="lastName"
+                    type="text"
+                    placeholder="Last Name"
+                    formControlName="lastName"
+                    (keypress)="checkAlphabets($event)"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="space-between">
+            <div class="code" nz-col nzXs="8" nzLg="8" nzXl="8">
+              <nz-form-item>
+                <nz-form-label
+                  >Code<span class="required-mark">*</span></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <nz-select
+                    class="dropdown"
+                    nzSuffixIcon="caret-down"
+                    formControlName="code"
+                    id="ctitleName"
+                    nzShowSearch
+                    nzAllowClear
+                    nzPlaceHolder="code"
+                  >
+                    <nz-option
+                      *ngFor="let data of countryCodes"
+                      [nzValue]="data.countryCodeId"
+                      [nzLabel]="data.phonePrefix"
+                    ></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div id="contactNo" nz-col nzXs="15" nzLg="15" nzXl="15">
+              <nz-form-item>
+                <nz-form-label
+                  >Contact Number<span class="required-mark"
+                    >*</span
+                  ></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="contactNumber"
+                    type="number"
+                    formControlName="contactNumber"
+                    placeholder="Contact Number"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="end">
+            <div class="agent" nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label
+                  >User Name (Email)<span class="required-mark"
+                    >*</span
+                  ></nz-form-label
+                >
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="userName"
+                    type="text"
+                    placeholder="User Name"
+                    formControlName="email"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div nz-row>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="start">
+            <div nz-col  nzXl="23">
+              <nz-form-item>
+                <nz-form-label>Referred Agent<span class="required-mark">*</span></nz-form-label>
+                <nz-form-control nzSpan="">
+                  <ng-select [items]="agentDetails" bindLabel="agentName" formControlName="referredAgent" 
+                     placeholder="Referred Agent">
+                  </ng-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div nz-row>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12">
+          <div nz-row nzType="flex" nzJustify="start">
+            <div nz-col nzXs="24" nzLg="23" nzXl="23">
+              <nz-form-item>
+                <nz-form-label>Agent Promo Code</nz-form-label>
+                <nz-form-control nzSpan="">
+                  <input
+                    nz-input
+                    id="agentPromoCode"
+                    type="text"
+                    placeholder="Agent Promo Code"
+                    formControlName="agentPromoCode"
+                  />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="btn-row">
+    <button
+      nz-button
+      class="btn btn__high_orange"
+      (click)="firstStepContinue()"
+    >
+      Continue
+    </button>
+  </div>
+</div>

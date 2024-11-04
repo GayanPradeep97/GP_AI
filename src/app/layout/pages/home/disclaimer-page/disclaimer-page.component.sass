@@ -1,0 +1,52 @@
+@import '../../../../../assets/sass/index'
+@import '../../../../../assets/sass/variable'
+
+.ant-layout-header
+    padding: 0
+    width: 100%
+    // height: 95px
+    @include media_query_all(45,null,null,null,null,95,'height')
+    background: #20366B
+    position: fixed
+    z-index: 900
+
+.ant-layout-footer
+    padding: 0
+    width: 100%
+
+.section
+    width: 100%
+    background: $white-color
+
+    &-container
+        // @include media_query_all(40,null,null,null,135,135,'padding-right')
+        // @include media_query_all(40,null,null,null,135,135,'padding-left')
+        @include media_query_all(160,null,null,null,null,300,'padding-top')
+        @include media_query_all(100,null,null,null,null,300,'padding-bottom')
+
+.heading-row
+    text-align: center
+    margin-bottom: 15px
+
+    & .heading
+        font-family: "Open Sans"
+        @include media_query_all(20,null,null,null,null,54,'font-size')
+        @include media_query_all(16,null,null,null,null,21,'line-height')
+        letter-spacing: 0.01em
+        font-weight: 600
+        color: #20366B
+        // margin-bottom: 80px
+        @include media_query_all(30,null,null,null,null,80,'margin-bottom')
+
+p
+    color: #4F4F4F
+    text-align: center
+    font-family: Open Sans
+    font-weight: 400
+
+    @include media_query_all(16,null,null,null,null,28,'line-height')
+    @include media_query_all(16,null,null,null,null,23,'font-size')
+    letter-spacing: 0.2px
+    @include media_query_all(15,null,null,null,null,15,'margin-bottom')
+    // @include media_query_all(20,null,null,null,null,24,'padding-right')
+    // @include media_query_all(20,null,null,null,null,24,'padding-left')

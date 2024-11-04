@@ -1,0 +1,90 @@
+@import '../../../../../../assets/sass/index'
+
+.ant-layout-header
+    padding: 0
+    width: 100%
+    height: 95px
+    // @include media_query_all(95,null,null,null,95,95,'height')
+    background: #20366b
+
+.ant-layout-footer
+    padding: 0
+    width: 100%
+
+.section
+    width: 100%
+    background: #fff
+    min-height: 85vh
+
+    &-container
+        @include media_query_all(48,null,null,48,null,48,'padding-top')
+        @include media_query_all(48,null,null,48,null,64,'padding-bottom')
+        @include media_query_all(20,null,null,48,null,83,'padding-left')
+        @include media_query_all(20,null,null,48,null,83,'padding-right')
+        @include media_query_all(90,null,null,null,90,48,'margin-top')
+
+.heading-row
+    text-align: center
+    // margin-bottom: 48px
+    @include media_query_all(48,null,null,null,48,48,'margin-bottom')
+    
+
+    & .heading
+        font-family: "Open Sans"
+        // font-size: 48px
+        @include media_query_all(20,null,null,48,null,48,'font-size')
+        // line-height: 65px
+        @include media_query_all(65,null,null,null,65,65,'line-hight')
+        letter-spacing: 0.01em
+        font-weight: 600
+        color: #20366b
+        // @include media_query_all(150,null,null,null,null,48,'margin-top')
+
+.content-figure
+    border-bottom: 1px solid rgba(32, 54, 107, 0.3)
+    @include media_query_all(38,null,null,null,38,38,'margin-bottom')
+
+    & .content-item
+        @include media_query_all(40,null,null,null,40,40,'margin-bottom')
+
+    & .content-item p
+        font-family: "Open Sans"
+        font-style: normal
+        font-weight: 400
+        @include media_query_all(20,null,null,null,20,20,'font-size')
+        @include media_query_all(34,null,null,null,34,34,'line-hight')
+        color: #4f4f4f
+        // margin-bottom: 20px
+
+    & .content-item h4
+        font-family: "Open Sans"
+        font-style: normal
+        font-weight: 600
+        @include media_query_all(20,null,null,null,20,20,'font-size')
+        @include media_query_all(34,null,null,null,34,34,'line-height')
+        color: #4f4f4f
+        // margin-bottom: 20px
+
+    & .blog-img
+        height: auto
+        width: 100%
+        @include media_query_all(48,null,null,null,48,48,'margin-bottom')
+
+.btn-row .prev-btn-sec
+    text-align: left
+
+.btn-row .next-btn-sec
+    text-align: right
+
+.btn-row a
+    font-family: "Open Sans"
+    font-style: normal
+    font-weight: 600
+    @include media_query_all(20,null,null,null,20,20,'font-size')
+    @include media_query_all(26,null,null,null,26,26,'line-height')
+    color: #2f378c
+
+.clickDeactive
+    pointer-events: none
+    color: #828282 !important
+    opacity: 0.5

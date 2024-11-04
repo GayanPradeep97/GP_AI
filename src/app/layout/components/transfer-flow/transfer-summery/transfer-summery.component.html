@@ -1,0 +1,137 @@
+<div>
+  <form nz-form [nzLayout]="'vertical'" [formGroup]="transferSummaryForm">
+    <div nz-row nzGutter="16">
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label>DATE</nz-form-label>
+          <nz-form-control nzSpan="">
+            <input
+              nz-input
+              id="date"
+              type="text"
+              placeholder="date"
+              formControlName="date"
+              [readOnly]="transferSummaryFormReadOnly"
+              [class.txt-read-only]="transferSummaryFormReadOnly"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label>SENDER NAME</nz-form-label>
+          <nz-form-control nzSpan="">
+            <input
+              nz-input
+              placeholder="sender name"
+              formControlName="senderName"
+              id="senderName"
+              [readOnly]="transferSummaryFormReadOnly"
+              [class.txt-read-only]="transferSummaryFormReadOnly"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label>TRANSFERRED AMOUNT</nz-form-label>
+          <nz-form-control nzSpan="">
+            <input
+              nz-input
+              placeholder="transferred amount"
+              formControlName="transferredAmount"
+              id="transferredAmount"
+              [readOnly]="transferSummaryFormReadOnly"
+              [class.txt-read-only]="transferSummaryFormReadOnly"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <div nz-row nzGutter="16">
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label>BENEFICIARY NAME</nz-form-label>
+          <nz-form-control nzSpan="">
+            <input
+              nz-input
+              id="beneficiaryName"
+              type="text"
+              placeholder="beneficiary name"
+              formControlName="beneficiaryName"
+              [readOnly]="transferSummaryFormReadOnly"
+              [class.txt-read-only]="transferSummaryFormReadOnly"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label>MODE OF SERVICE</nz-form-label>
+          <nz-form-control nzSpan="">
+            <input
+              nz-input
+              id="modeOfService"
+              type="text"
+              placeholder="mode of service"
+              formControlName="modeOfService"
+              [readOnly]="transferSummaryFormReadOnly"
+              [class.txt-read-only]="transferSummaryFormReadOnly"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzMd="8" nzXs="24">
+        <nz-form-item>
+          <nz-form-label>RECEIVED AMOUNT</nz-form-label>
+          <nz-form-control nzSpan="">
+            <input
+              nz-input
+              placeholder="received amount"
+              formControlName="receivedAmount"
+              id="receivedAmount"
+              [readOnly]="transferSummaryFormReadOnly"
+              [class.txt-read-only]="transferSummaryFormReadOnly"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+
+    <nz-divider nzType="vertical"></nz-divider>
+
+    <div nz-row nzGutter="16">
+      <div>
+        <span style="color: #828282; margin-left: 10px; margin-top: 30px"
+          >SpotOn Money is the trading name of Monex International Ltd, 32
+          Spring Street, Paddington, W2 1JA.</span
+        >
+      </div>
+    </div>
+    <div nz-row style="margin-top: 20px; margin-bottom: 30px">
+      <div>
+        <img style="margin-right: 20px" src="./assets/images/monex_logo.png" />
+        <img src="./assets/images/spoton_logo.png" />
+      </div>
+    </div>
+
+    <div nz-row nzGutter="16">
+      <div style="margin-bottom: 30px; margin-left: 10px">
+        <label
+          nz-checkbox
+          id="termsAndConditions"
+          #termsAndConditionsCheckbox
+          (nzCheckedChange)="handleCheckboxChange($event)"
+        ></label
+        ><label style="color: #828282"
+          >&nbsp;&nbsp;I confirm that I have read the
+          <a href="terms-conditions" target="_blank">Terms and Conditions</a>
+          and I hereby agree to it.</label
+        >
+      </div>
+    </div>
+  </form>
+</div>

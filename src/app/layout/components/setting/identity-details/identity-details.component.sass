@@ -1,0 +1,25 @@
+@import '../../../../../assets/sass/index'
+
+.primary-identity
+    // margin-top: 60px
+    @include media_query_all(30,60,null,null,null,60,'margin-top')
+
+::ng-deep .ant-tabs-top > .ant-tabs-nav::before
+    background: #C4C4C4
+    height: 0.5px
+
+::ng-deep .ant-tabs-card>.ant-tabs-nav .ant-tabs-tab
+    border-bottom: 0.5px solid #C4C4C4
+    border-top: none
+    border-left: none
+    border-right: none
+
+::ng-deep .ant-tabs-card.ant-tabs-top>.ant-tabs-nav .ant-tabs-tab
+    border-radius: 5px 5px 0px 0px
+
+::ng-deep .ant-tabs-card.ant-tabs-top>.ant-tabs-nav .ant-tabs-tab-active
+    border-radius: 5px 5px 0px 0px
+
+:host ::ng-deep .ant-tabs>.ant-tabs-nav .ant-tabs-nav-more, .ant-tabs>div>.ant-tabs-nav .ant-tabs-nav-more
+    @include media_query_all_im(none,null,null,null,block,block,"display")
+

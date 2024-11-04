@@ -1,0 +1,267 @@
+<div nz-row class="title-bar">
+  <div nz-col [nzSpan]="24">
+    <h1 class="page-heading">My Beneficiaries</h1>
+    <button nz-button class="btn btn__high_orange" (click)="addBeneficiary()">
+      Add Beneficiary
+    </button>
+  </div>
+</div>
+<form nz-form [formGroup]="filterForm">
+  <div class="filter-section">
+    <div nz-row nzGutter="40" class="filter-row">
+      <div nz-col nzMd="4" nzSm="5" nzXs="24">
+        <nz-input-group class="filter-inputs" [nzSuffix]="suffixIconSearch">
+          <input
+            nz-input
+            type="text"
+            placeholder="Name"
+            (keyup)="searchrxjs($event)"
+            formControlName="searchByName"
+          />
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+          <span nz-icon nzType="search"></span>
+        </ng-template>
+      </div>
+
+      <div nz-col nzMd="4" nzSm="5" nzXs="24">
+        <nz-input-group class="filter-inputs" [nzSuffix]="suffixIconSearch">
+          <input
+            type="text"
+            nz-input
+            placeholder="Contact Number"
+            (keyup)="searchrxjs($event)"
+            formControlName="searchByContact"
+          />
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+          <span nz-icon nzType="search"></span>
+        </ng-template>
+      </div>
+
+      <div nz-col nzMd="4" nzSm="5" nzXs="24">
+        <nz-input-group class="filter-inputs" [nzSuffix]="suffixIconSearch">
+          <input
+            type="text"
+            nz-input
+            (keyup)="searchrxjs($event)"
+            placeholder="Address"
+            formControlName="searchByAddress"
+          />
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+          <span nz-icon nzType="search"></span>
+        </ng-template>
+      </div>
+
+      <div nz-col nzMd="9" nzSm="9" nzXs="24"></div>
+    </div>
+  </div>
+</form>
+
+<div class="table-content">
+  <div class="desktop-only">
+    <div nz-row class="table-row heading-row">
+      <div nz-col [nzSpan]="5" class="table-col">
+        <span>Name</span>
+      </div>
+      <div nz-col [nzSpan]="6" class="table-col">
+        <span>Address</span>
+      </div>
+      <div nz-col [nzSpan]="4" class="table-col">
+        <span>Contact Number</span>
+      </div>
+      <div nz-col [nzSpan]="4" class="table-col">
+        <span>Mobile Number</span>
+      </div>
+      <div nz-col [nzSpan]="2" class="table-col">
+        <span>Account Type</span>
+      </div>
+      <div nz-col [nzSpan]="2" class="table-col">
+        <span>Status</span>
+      </div>
+      <div nz-col [nzSpan]="1" class="table-col">
+        <span></span>
+      </div>
+    </div>
+    <div>
+      <div nz-row class="table-row data-row" *ngFor="let data of beneficiaries">
+        <div nz-col [nzSpan]="5" class="table-col">
+          <span>{{ data.beneficiaryFullName }}</span>
+        </div>
+        <div
+          nz-col
+          [nzSpan]="6"
+          class="table-col"
+          style="word-wrap: break-word; word-break: break-all"
+        >
+          <span style="padding-right: 30px">{{ data.address }}</span>
+        </div>
+        <div nz-col [nzSpan]="4" class="table-col">
+          <span>{{ data.contactNumber }}</span>
+          <!-- <span>{{ data.contactNumberPrefix }}{{ data.contactNumber }}</span> -->
+        </div>
+        <div nz-col [nzSpan]="4" class="table-col">
+          <span>{{ data.mobileNumber }}</span>
+          <!-- <span>{{ data.mobileNumberPrefix }}{{ data.mobileNumber }}</span> -->
+        </div>
+        <div
+          nz-col
+          [nzSpan]="2"
+          class="table-col"
+          *ngIf="data.isCoporateBeneficiary == true"
+        >
+          <span class="pill-error">Coporate</span>
+        </div>
+        <div
+          nz-col
+          [nzSpan]="2"
+          class="table-col"
+          *ngIf="data.isCoporateBeneficiary == false"
+        >
+          <span class="pill-error">Personal</span>
+        </div>
+        <div nz-col [nzSpan]="2" class="table-col">
+          <nz-switch
+            [ngModel]="data.isActive"
+            (click)="toggleSwitch(data)"
+          ></nz-switch>
+        </div>
+        <div nz-col [nzSpan]="1" class="table-col">
+          <div (click)="checkBenisEditable(data)">
+            <img src="./assets/icons/view-eye.svg" />
+          </div>
+        </div>
+        <!-- <div nz-col [nzSpan]="3" class="table-col">
+        <a class="download-btn" (click)="downloadInvoiceSummary(data1)"><img src="./assets/icons/download-icon.png">Download</a>
+      </div> -->
+      </div>
+    </div>
+    <div class="pagination-row">
+      <nz-pagination
+        class="pagination"
+        [nzPageSize]="pageSize"
+        [nzPageIndex]="currentPageIndex"
+        [nzTotal]="totalRecords"
+        nzShowQuickJumper
+        [nzShowTotal]="rangeTemplate"
+        (nzPageIndexChange)="pageIndexChange($event)"
+      >
+      </nz-pagination>
+      <ng-template #rangeTemplate let-range="range" let-total>
+        <span>{{ range[0] }}-{{ range[1] }} of {{ total }} items</span>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="mobile-only mobile-table">
+    <div class="table-card" *ngFor="let data of beneficiariesMob">
+      <div nz-row>
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>Name</span>
+        </div>
+
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>{{ data.beneficiaryFullName }}</span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span> Address</span>
+        </div>
+
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>{{ data.address }}</span>
+        </div>
+      </div>
+
+      <div nz-row>
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span> Contact Number</span>
+        </div>
+
+        <div nz-col [nzSpan]="12" class="table-col">
+          <!-- <span>{{ data.contactNumberPrefix }}-{{ data.contactNumber }}</span> -->
+          <span>{{ data.contactNumber }}</span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span> Mobile Number</span>
+        </div>
+
+        <div nz-col [nzSpan]="12" class="table-col">
+          <!-- <span>{{ data.mobileNumberPrefix }}-{{ data.mobileNumber }}</span> -->
+          <span>{{ data.mobileNumber }}</span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span> Account Type</span>
+        </div>
+
+        <div
+          nz-col
+          [nzSpan]="12"
+          class="table-col"
+          *ngIf="data.isCoporateBeneficiary == false"
+        >
+          <span> Personal</span>
+        </div>
+        <div
+          nz-col
+          [nzSpan]="12"
+          class="table-col"
+          *ngIf="data.isCoporateBeneficiary == true"
+        >
+          <span> Coporate</span>
+        </div>
+      </div>
+      <div nz-row>
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span> Status</span>
+        </div>
+
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>
+            <nz-switch
+              [ngModel]="data.isActive"
+              (ngModelChange)="toggleSwitch(data)"
+            ></nz-switch
+          ></span>
+        </div>
+      </div>
+
+      <div nz-row>
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span></span>
+        </div>
+
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span
+            ><img
+              (click)="checkBenisEditable(data)"
+              src="./assets/icons/view-eye.svg"
+              alt=""
+            />
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="pagination-row pagination_mob">
+      <nz-pagination
+        class="pagination"
+        [nzPageSize]="1"
+        [nzPageIndex]="currentPageIndex"
+        [nzTotal]="totalRecords"
+        nzShowQuickJumper
+        [nzShowTotal]="rangeTemplate"
+        (nzPageIndexChange)="pageIndexChangeMob($event)"
+      >
+      </nz-pagination>
+      <ng-template #rangeTemplate let-range="range" let-total>
+        <span>{{ range[0] }}-{{ range[1] }} of {{ total }} items</span>
+      </ng-template>
+    </div>
+  </div>
+</div>

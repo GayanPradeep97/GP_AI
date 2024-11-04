@@ -1,0 +1,195 @@
+@import '../../../../../../assets/sass/index'
+
+::ng-deep .view-trans-modal .ant-modal-content
+    border-radius: 5px
+::ng-deep .view-trans-modal .ant-modal-body
+    border-radius: 5px
+    padding: 0 0 30px 0
+
+.modal-heading
+    margin-bottom: 0
+    color: #fff
+    font-size: 16px
+    font-weight: 600
+
+::ng-deep .view-trans-modal .ant-modal-close-icon
+    color: #fff
+
+.heading-row
+    height: 63px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    background: #F45300
+    padding: 0 30px 0 30px
+
+.steps-content
+    background: #fff
+    margin-left: 30px
+    margin-top: 30px
+
+::ng-deep .view-trans-modal .ant-steps-item-icon
+    width: 37px
+    height: 37px
+    margin: 0 3px 0 0
+    font-size: 15px
+    font-weight: 600
+    display: flex
+    align-items: center
+    justify-content: center
+
+::ng-deep .view-trans-modal .ant-steps-item-wait .ant-steps-item-icon
+    background: #F45300
+    border-color: #fff
+
+// ::ng-deep .view-trans-modal .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title    
+//     font-size: 12px
+//     color: #FFFFFF   
+
+::ng-deep .view-trans-modal .ant-steps-item-container
+    display: flex
+    align-items: center
+    width: 147px
+
+::ng-deep .view-trans-modal .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title,
+::ng-deep .view-trans-modal .ant-steps-item-wait>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title,
+::ng-deep .view-trans-modal .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title
+    font-size: 12px
+    color: #FFFFFF
+
+::ng-deep .view-trans-modal .ant-steps-item-wait .ant-steps-item-icon>.ant-steps-icon
+    color: #F45300
+
+::ng-deep .view-trans-modal .ant-steps-item-process .ant-steps-item-icon
+    background: #FFFFFF
+    border: none
+    display: flex
+    align-items: center
+    justify-content: center
+
+::ng-deep .view-trans-modal .ant-steps-item-finish .ant-steps-item-icon
+    border-color: #fff
+    background: #F45300
+
+::ng-deep .view-trans-modal .ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon
+    color: #ffff
+
+::ng-deep .view-trans-modal .ant-steps-item-process>.ant-steps-item-container>.ant-steps-item-icon .ant-steps-icon
+    color: #F45300
+
+// ::ng-deep .view-trans-modal .ant-col
+//     width: 304px
+    // margin-right: 20px
+
+::ng-deep .view-trans-modal .ant-select.ant-select-in-form-item
+    height: 52px
+
+::ng-deep .view-trans-modal .ant-select:not(.ant-select-customize-input) .ant-select-selector
+    height: 52px
+    border-radius: 5px
+    border: 1px solid #C4C4C4
+    display: flex
+    align-items: center
+
+::ng-deep .view-trans-modal .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after
+    background-color: #ffffff
+
+// .teli  
+//     width: 304px  
+.telephone
+    width: 202px
+
+#telephoneLand
+    width: 202px
+#telephoneMobile
+    width: 202px
+
+#dateOfBirth
+    width: 304px
+    height: 52px
+    border-radius: 5px
+
+.code
+    width: 88px
+    margin-right: 14px
+
+.row
+    margin-right: 20px
+
+.button-section
+    display: flex
+    gap: 20px
+    margin-bottom: 30px
+
+.btn
+    font-size: 15px
+    font-weight: 600
+    &__high_orange
+        width: 237px
+        height: 38px
+        color: #ffffff
+        border-radius: 5px
+        background: #F45300
+
+    &__goback
+        width: 135px
+        height: 38px
+        background: #FFFFFF
+        border: 1px solid #F45300
+        color: #F45300
+    &__cancel
+        width: 135px
+        height: 38px
+        background: #F40000
+        color: #FFFFFF
+    &__next
+        width: 135px
+        height: 38px
+        color: #ffffff
+        border-radius: 5px
+        background: #F45300
+    &__update
+        width: 237px
+        height: 38px
+        color: #ffffff
+        border-radius: 5px
+        background: #828282
+
+.coporate-personal-switch-row
+    margin-bottom: 22px
+    display: flex
+
+.benefi-lable
+    // margin-right: 48.5px
+    .bene
+        color: #828282
+        font-weight: 600
+
+.personal
+    margin-right: 47.5px
+
+.corporate
+    margin-left: 47.5px
+
+::ng-deep .add-ben-modal .ant-switch.ant-switch-checked
+    background: #F45300
+    border-color: #F45300
+
+::ng-deep .add-ben-modal .ant-switch
+    background-color: #1AA3FF80
+    border-color: #1AA3FF80
+.col_add
+    .ant-input
+        @include media_query_all(435,null,null,null,null,630,'width')
+        // width: 630px
+.detail-label
+    text-transform: uppercase
+    font-weight: 600
+    @include media_query_all(14,null,null,null,null,14,'font-size')
+.mobile_button
+    @include media_query_all_im(flex,null,null,null,null,null,"display")
+    @include media_query_all_im(column,null,null,null,row,row,"flex-flow")
+    @include media_query_all(14,null,null,null,null,16,'font-size')
+
+.detail
+    @include media_query_all(14,null,null,null,null,18,'font-size')

@@ -1,0 +1,101 @@
+@import '../../../../../../assets/sass/index'
+
+.ant-layout-header
+    padding: 0
+    width: 100%
+    height: 95px
+    background: $primary-color
+
+.ant-layout-footer
+    padding: 0
+    width: 100%
+
+.ant-col-lg-20
+    @include media_query_all("100%",null,"83.33%",null,null,null,'max-width')
+    @include media_query_all("85%",null,"83.33%",null,null,null,'flex')
+
+.section
+    width: 100%
+    background: $white-bg-color
+    min-height: 85vh
+
+    &-container
+        @include media_query_all(140,null,null,null,null,140,'padding-top')
+        @include media_query_all(50,null,null,null,null,64,'padding-bottom')
+
+.heading-row
+    text-align: center
+    // margin-bottom: 15px
+
+    & .heading
+        font-family: $font-family
+        //font-size: 48px
+        line-height: 65px
+        letter-spacing: 0.01em
+        font-weight: bold
+        color: $primary-color
+        @include media_query_all(48,null,null,68,null,null,'font-size')
+
+.item-figure .blog-item
+    padding: 33px 0 33px 83px
+    border-bottom: 1px solid rgba(32, 54, 107, 0.3)
+
+    & .desc-sec
+        padding-top: 28px
+        padding-left: 30px
+        @include media_query_all(20,null,null,28,null,28,'padding-top')
+        @include media_query_all(unset,null,null,38,null,30,'padding-left')
+
+    & h3
+        font-family: $font-family
+        font-style: normal
+        font-weight: bold
+        font-size: 24px
+        line-height: 28px
+        color: $black-bg
+        margin-bottom: 13px
+
+    & .date-txt
+        font-family: $font-family
+        font-style: normal
+        font-weight: 600
+        font-size: 20px
+        line-height: 20px
+        color: $primary-low-color
+        display: block
+        margin-bottom: 23px
+
+    & p
+        font-family: $font-family
+        font-style: normal
+        font-weight: 600
+        font-size: 20px
+        line-height: 26px
+        margin-bottom: 0
+        @include media_query_all("100%",null,null,"75%",null,"75%",'width')
+        color: $gray-color
+
+    & p a
+        cursor: pointer
+        color: $primary-low-color
+        font-weight: bold
+
+    & .blog-img
+        height: 188px
+        width: 188px
+        object-fit: contain
+        object-position: center
+
+button.btn-design
+    width: 135px
+    height: 38px
+    padding: 10px 0px 10px 0px
+    border-radius: 5px
+    border: 1px solid
+    border-color: $medium-color
+    color: $medium-color
+    margin-top: 60px
+
+.btn-container
+    justify-content: center
+    display: flex

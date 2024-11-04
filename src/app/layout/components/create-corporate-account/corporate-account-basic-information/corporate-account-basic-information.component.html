@@ -1,0 +1,312 @@
+<form nz-form [nzLayout]="'vertical'" [formGroup]="companyInfoForm">
+  <div nz-row nzType="flex" nzJustify="space-between">
+    <div nz-col style="width: 304px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          Company Name
+          <span class="required-mark"> * </span></nz-form-label
+        >
+        <nz-form-control>
+          <input
+            nz-input
+            type="text"
+            id="companyName"
+            formControlName="companyName"
+            placeholder="Enter Company Name"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col style="width: 304px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          Registration Number <span class="required-mark"> * </span>
+        </nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="text"
+            id="registrationNumber"
+            formControlName="companyRegNumber"
+            placeholder="Enter Registration Number"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col style="width: 304px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          Company Email <span class="required-mark"> * </span>
+        </nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="text"
+            id="companyEmail"
+            formControlName="companyEmail"
+            placeholder="Enter Company Email"
+            [ngClass]="{
+              inputError: isCoporateAccountAvailable === false
+            }"
+            autocomplete="new-email"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row nzType="flex" nzJustify="space-between">
+    <div nz-col class="code" style="width: 88px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          Code <span class="required-mark"> * </span>
+        </nz-form-label>
+        <nz-form-control>
+          <nz-select
+            class="select-dropdown"
+            nzSuffixIcon="caret-down"
+            formControlName="countryCodesIdPrimary"
+            nzAllowClear="true"
+            nzPlaceHolder="Code"
+            nzShowSearch
+          >
+            <nz-option
+              *ngFor="let data of countryCodes"
+              [nzValue]="data.countryCodeId"
+              [nzLabel]="data.phonePrefix"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col class="contact-class" style="width: 202px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          Primary Contact No <span class="required-mark"> * </span>
+        </nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="text"
+            id="primaryContact"
+            formControlName="companyTelephone"
+            (keypress)="numberOnly($event)"
+            (input)="checkLength($event)"
+            (ngModelChange)="contactNumberValidation()"
+            placeholder="Contact Number"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col class="code" style="width: 88px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          Code <span class="required-mark">*</span>
+        </nz-form-label>
+        <nz-form-control nzSpan="24">
+          <nz-select
+            class="select-dropdown"
+            formControlName="countryCodesIdSecondary"
+            nzAllowClear="true"
+            nzPlaceHolder="Code"
+            nzSuffixIcon="caret-down"
+            nzShowSearch
+          >
+            <nz-option
+              *ngFor="let data of countryCodes"
+              [nzValue]="data.countryCodeId"
+              [nzLabel]="data.phonePrefix"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col class="contact-class" style="width: 202px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          Secondary Contact No <span class="required-mark"> * </span>
+        </nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="text"
+            id="secondaryContact"
+            formControlName="companyMobile"
+            (keypress)="numberOnly($event)"
+            (input)="checkLength($event)"
+            (ngModelChange)="contactNumberValidation()"
+            placeholder="Contact Number"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col style="width: 304px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          Street <span class="required-mark">*</span>
+        </nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="text"
+            id="street"
+            formControlName="companyStreet"
+            placeholder="Enter Street"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row nzType="flex" nzJustify="space-between">
+    <div nz-col style="width: 304px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          City <span class="required-mark"> * </span>
+        </nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="text"
+            id="city"
+            formControlName="companyCity"
+            placeholder="Enter City"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col style="width: 304px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          Postal Code <span class="required-mark"> * </span>
+        </nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="text"
+            id="postalCode"
+            formControlName="companyPostalCode"
+            placeholder="Enter Postal Code"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col style="width: 304px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          State/Province <span class="required-mark"> *</span>
+        </nz-form-label>
+        <nz-form-control>
+          <input
+            nz-input
+            type="text"
+            id="stateProvince"
+            formControlName="stateOrProvince"
+            placeholder="Enter State / Province"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row nzType="flex" nzJustify="space-between">
+    <div nz-col style="width: 304px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          Country <span class="required-mark"> * </span>
+        </nz-form-label>
+        <nz-form-control class="border-round-dropdown">
+          <nz-select
+            class="select-dropdown full-width"
+            formControlName="country"
+            nzAllowClear="true"
+            nzPlaceHolder="Select Country"
+            nzShowSearch
+          >
+            <nz-option
+              *ngFor="let data of countries"
+              [nzValue]="data.countryId"
+              [nzLabel]="data.countryName"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col style="width: 304px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          Company Type <span class="required-mark"> * </span>
+        </nz-form-label>
+        <nz-form-control class="border-round-dropdown">
+          <nz-select
+            class="select-dropdown full-width"
+            formControlName="companytype"
+            nzAllowClear="true"
+            nzPlaceHolder="Select Company Type"
+            nzShowSearch
+          >
+            <nz-option
+              *ngFor="let data of companyTypes"
+              [nzValue]="data.companyType"
+              [nzLabel]="data.companyType"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col style="width: 304px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          Contact Role <span class="required-mark"> * </span>
+        </nz-form-label>
+        <nz-form-control class="border-round-dropdown">
+          <nz-select
+            class="select-dropdown full-width"
+            formControlName="contactRole"
+            nzAllowClear="true"
+            nzPlaceHolder="Select Contact Role"
+            nzShowSearch
+          >
+            <nz-option
+              *ngFor="let data of contactRoles"
+              [nzValue]="data.roleType"
+              [nzLabel]="data.roleType"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row>
+    <div nz-col style="width: 304px">
+      <nz-form-item>
+        <nz-form-label class="label">
+          Date <span class="required-mark">*</span></nz-form-label
+        >
+        <nz-form-control>
+          <nz-date-picker
+            id="incorporationdate"
+            formControlName="incorporationdate"
+            [nzFormat]="'dd-MM-yyyy'"
+            [nzDisabledDate]="disabledFutureDates"
+            class="border-round"
+            nzPlaceHolder="Select Date"
+            nzAllowClear="true"
+          >
+          </nz-date-picker>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+</form>

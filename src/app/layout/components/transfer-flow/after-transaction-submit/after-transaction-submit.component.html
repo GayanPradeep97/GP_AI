@@ -1,0 +1,101 @@
+<div class="container">
+  <div>
+    <span style="font-size: 20px; font-weight: 400">
+      Please make a payment of GBP {{ amountSent }} to below bank account with
+      the
+    </span>
+  </div>
+  <div style="text-align: center">
+    <span style="font-size: 20px; font-weight: 400; text-align: center"
+      >reference <span class="refernce_text">{{ referenceNumber }}</span></span
+    >
+  </div>
+
+  <div class="table-content">
+    <div>
+      <div nz-row class="table-row heading-row">
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>Account Name:</span>
+        </div>
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>{{ accountName }}</span>
+        </div>
+      </div>
+      <div nz-row class="table-row heading-row">
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>Account Number:</span>
+        </div>
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>{{ accountNumber }}</span>
+        </div>
+      </div>
+      <div nz-row class="table-row heading-row">
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>Sort Code:</span>
+        </div>
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>{{ sortCode }}</span>
+        </div>
+      </div>
+      <div nz-row class="table-row heading-row">
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>Bank Name:</span>
+        </div>
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>{{ bankName }}</span>
+        </div>
+      </div>
+      <div nz-row class="table-row heading-row">
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>IBAN:</span>
+        </div>
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>{{ iban }}</span>
+        </div>
+      </div>
+      <div nz-row class="table-row heading-row">
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>Reference No:</span>
+        </div>
+        <div nz-col [nzSpan]="12" class="table-col">
+          <span>{{ referenceNumber }}</span>
+        </div>
+      </div>
+      <div class="footer">
+        <p>Please Note:</p>
+
+        <div class="note-section">
+          <div nz-row>
+            <div nz-col><p>1.</p></div>
+            <div nz-col nzLg="23" class="text_note">
+              Please make sure that we receive the payment within 4 hours to
+              avoid any rate<br />
+              changes or cancellations.
+            </div>
+          </div>
+
+          <div nz-row>
+            <div nz-col><p>2.</p></div>
+            <div nz-col nzLg="23" class="text_note">
+              Payment needs to be sent from your own account. We cannot accept
+              payments<br />
+              from a third party
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col><p>3.</p></div>
+            <div nz-col nzLg="23" class="text_note">
+              We do not accept any cash deposit
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button nz-button class="btn" id="okButton" (click)="closeModal()">
+      OK
+    </button>
+  </div>
+</div>

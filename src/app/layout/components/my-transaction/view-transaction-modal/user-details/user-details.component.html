@@ -1,0 +1,210 @@
+<form nz-form [nzLayout]="'vertical'" [formGroup]="senderDetailsForm">
+  <div nz-row [nzGutter]="[10, 10]">
+    <div nz-col nzLg="8">
+      <nz-form-item>
+        <nz-form-label>First Name</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            formControlName="senderFirstName"
+            type="text"
+            placeholder="Sender Name"
+            [readOnly]="false"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzLg="8">
+      <nz-form-item>
+        <nz-form-label>Last Name</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            formControlName="senderLastName"
+            type="text"
+            placeholder="Sender Name"
+            [readOnly]="false"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzLg="2">
+      <nz-form-item>
+        <nz-form-label>Code</nz-form-label>
+        <nz-form-control nzSpan="">
+          <!-- <input
+            nz-input
+            formControlName="code1"
+            type="text"
+            placeholder="Sender Name"
+            [readOnly]="false"
+          /> -->
+          <nz-select
+            nzSuffixIcon="caret-down"
+            formControlName="code1"
+            nzPlaceHolder="Code"
+            nzAllowClear
+            nzShowSearch
+          >
+            <nz-option
+              *ngFor="let data of allCountryCodes"
+              [nzValue]="data.countryCodeId"
+              [nzLabel]="data.phonePrefix"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col nzLg="6">
+      <nz-form-item>
+        <nz-form-label>Telephone(Landline)</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            id="telephoneLand"
+            formControlName="telephoneLand"
+            type="text"
+            placeholder="Enter Telephone Number"
+            maxlength="14"
+            [readOnly]="false"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row [nzGutter]="[10, 10]">
+    <div nz-col nzLg="2">
+      <nz-form-item>
+        <nz-form-label>Code</nz-form-label>
+        <nz-form-control nzSpan="">
+          <!-- <input
+            nz-input
+            formControlName="code2"
+            type="text"
+            placeholder="Enter Telephone Number"
+            maxlength="14"
+            [readOnly]="false"
+          /> -->
+          <nz-select
+            nzSuffixIcon="caret-down"
+            items="data"
+            bindLabel="countryId.countryName"
+            formControlName="code2"
+            nzPlaceHolder="Code"
+            nzShowSearch
+          >
+            <nz-option
+              *ngFor="let data of allCountryCodes"
+              [nzValue]="data.countryCodeId"
+              [nzLabel]="data.phonePrefix"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col nzLg="6">
+      <nz-form-item>
+        <nz-form-label>Telephone(Mobile)</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            formControlName="telephoneMobile"
+            type="text"
+            placeholder="Enter Telephone Number"
+            maxlength="14"
+            [readOnly]="false"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col nzLg="8">
+      <nz-form-item>
+        <nz-form-label>Email Address</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            formControlName="emailAddress"
+            type="text"
+            placeholder="Email Address"
+            [readOnly]="false"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col nzLg="8">
+      <nz-form-item>
+        <nz-form-label>Residential Address</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            formControlName="residentialAddress"
+            type="text"
+            placeholder="Residential Address"
+            [readOnly]="false"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+
+  <div nz-row [nzGutter]="[10, 10]">
+    <div nz-col nzLg="8">
+      <nz-form-item>
+        <nz-form-label>City</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            formControlName="city"
+            type="text"
+            placeholder="Enter city"
+            [readOnly]="false"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col nzLg="8">
+      <nz-form-item>
+        <nz-form-label>State/Province</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            formControlName="state"
+            type="text"
+            placeholder="Enter state or province"
+            [readOnly]="false"
+          />
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+
+    <div nz-col nzLg="8">
+      <nz-form-item>
+        <nz-form-label>Paying By</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            formControlName="paymentMode"
+            type="text"
+            placeholder="Enter state or province"
+            [readOnly]="false"
+          />
+          <!-- <nz-select
+                items="paymentMode"
+                bindLabel="paymentModeDto.paymentModeDesc"
+                formControlName="paymentMode"
+                nzPlaceHolder="Select Type"
+                clearable="false"
+                isOpen="false"
+                nzSuffixIcon="caret-down"
+              >
+              </nz-select> -->
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+  </div>
+</form>

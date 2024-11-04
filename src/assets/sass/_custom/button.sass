@@ -1,0 +1,58 @@
+@import '../variable'
+
+// .ant-btn:hover
+//   transition: 0.8s
+//   border: none
+
+.btn
+  display: flex
+  align-items: center
+  justify-content: center
+  border: none
+  color: $white-color
+  font-size: 14px
+  padding: 10px
+  border-radius: 5px
+
+  //login button
+  &__login
+    background-color: $medium-color
+
+  //signUP,contact-us,submit, ok
+  &__high_orange
+    background-color: $medium-color
+
+  &__cancel
+    background: $primary-bg-color
+
+  &__goback
+    background-color: $white-color
+    border: 1px solid $medium-color
+
+  &__update
+    background-color: $gray
+
+/*----------toggle-------------*/
+
+/* Styles for the switch when it's toggled on (true) */
+::ng-deep .ant-switch
+  &.ant-switch-checked
+    background-color: $low-blue
+    border-color: $low-blue
+
+  /* Styles for the switch when it's toggled off (false) */
+::ng-deep .ant-switch
+  background-image: none
+  background-color: red
+  border-color: red
+
+// <button nz-button class="btn btn__login">Login</button>
+// <button nz-button class="btn btn__high_orange">SignUp</button>
+// <button nz-button class="btn btn__cancel">Cancel</button>
+// <nz-switch [ngModel]="isToggled" (ngModelChange)="toggleSwitch($event)"></nz-switch>
+
+// isToggled = false;
+
+// toggleSwitch(event: boolean): void {
+//   this.isToggled = event;
+// }

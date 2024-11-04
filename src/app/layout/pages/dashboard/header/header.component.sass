@@ -1,0 +1,219 @@
+@import '../../../../../assets/sass/index'
+
+.header
+   
+    @include media_query_all(95,null,null,null,null,95,'height')
+    background: $primary-color
+    @include media_query_all(10,null,null,null,null,10,'padding-top')
+    @include media_query_all(10,20,null,81,null,81,'padding-left')
+    @include media_query_all(60,null,null,null,null,60,'padding-bottom')
+    @include media_query_all(10,20,null,83,null,83,'padding-right')
+
+.header-container
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+.logo img
+    @include media_query_all(174,null,null,null,null,174,'width')
+    // @include media_query_all(96,null,null,null,null,96,'height')
+    @include media_query_all(63,null,null,null,null,63,'height')
+
+.nav-menu-container
+    @include media_query_all('none',null,null,block,block,block,'display')
+    float: right
+    position: relative
+    z-index: 400
+
+.nav-menu-container .nav-menu
+    margin: 0
+    padding: 0
+    list-style: none
+
+.nav-menu li
+    display: flex
+    align-items: center
+    height: 65px
+    position: relative
+    white-space: nowrap
+    float: left
+
+.nav-menu li a
+    color: #fff
+    @include media_query_all(15,null,null,null,null,18,'font-size')
+    line-height: 19px
+    font-weight: 600
+    @include media_query_all(8,null,null,15,null,15,'margin-left')
+    @include media_query_all(8,null,null,15,null,15,'margin-right')
+    @include media_query_all(0,null,null,null,null,0,'margin-top')
+    @include media_query_all(0,null,null,null,null,0,'margin-bottom')
+    text-decoration: none
+    display: inline-block
+    text-transform: none
+    outline: 0
+    cursor: pointer
+
+.nav-menu li .login-btn,
+.nav-menu li .signup-btn
+    @include media_query_all(38,null,null,null,null,38,'height')
+    border-radius: 5px
+    border: none
+    text-align: center
+    cursor: pointer
+    outline: none
+    color: #fff
+    @include media_query_all(15,null,null,null,null,18,'font-size')
+    font-weight: 500
+    letter-spacing: 0.01em
+
+:host ::ng-deep .ant-btn
+    padding: 0px
+
+.nav-menu li .login-btn
+    @include media_query_all(65,80,126,null,null,126,'width')
+    background: none
+    border: 1px solid #00A2DC
+
+.nav-menu li .signup-btn
+    @include media_query_all(90,96,183,null,null,183,'width')
+    background: $medium-color
+    @include media_query_all(6,null,20,null,null,20,'margin-left')
+
+.nav-menu li .profile-btn
+    border: none
+    background: none
+    outline: none
+    cursor: pointer
+    padding: 0
+    position: relative
+    // margin-left: 15px
+
+.profile-btn .avatar-icon
+    height: 40px
+    width: 40px
+    background: #F45300
+    margin-right: 8px
+
+:host ::ng-deep .ant-dropdown-trigger
+    height: 40px
+    width: 40px
+    border: none
+    margin-right: 8px
+
+.profile-btn span
+    font-family: "Open Sans"
+    font-size: 14px
+    line-height: 40px
+    color: #FFF
+    letter-spacing: 0.01em
+
+.profile-btn i
+    float: right
+    color: #FFF
+    font-size: 21px
+    position: absolute
+    top: 30%
+    bottom: 0
+    // transform: translateY(50%)
+    margin: 0
+
+.profile-dropdown-menu
+    background: #424242
+    min-width: 200px
+    width: auto
+    border: 1px solid #147fbd
+    padding: 4px 12px
+    margin-top: 18px
+
+:host ::ng-deep .ant-dropdown
+    margin: 0 !important
+
+:host ::ng-deep .ant-dropdown-menu-item
+    padding: 0
+
+.profile-dropdown-menu li
+    color: #FFF
+    font-size: 14px
+    line-height: 19px
+    font-weight: 600
+    outline: 0
+    cursor: pointer
+    border-bottom: 1px solid #828282
+    padding: 10px 0
+
+.profile-dropdown-menu li:last-child
+    border-bottom: none
+
+.profile-dropdown-menu li:hover
+    background: none
+
+::ng-deep .ant-dropdown-menu-item-selected
+    background: none
+
+.mob-menu-btn
+    float: right
+    @include media_query_all(block,block,block,none,null,none,'display')
+
+.mob-menu-btn a
+    width: 30px
+    height: auto
+    cursor: pointer
+
+.nav-menu.ref
+    position: absolute
+    top: -36px
+    right: 0
+
+.nav-menu li span
+    border-radius: 5px
+    box-sizing: border-box
+    text-align: center
+    color: #FFF
+    font-size: 10px
+    line-height: 19px
+    padding: 2px 6px
+    font-weight: 500
+    margin: 0 4px
+
+.nav-menu li .ref-txt
+    color: #00A2DC
+    cursor: default
+
+.profile-dropdown-menu li.activeAccount
+    color: #147fbd
+
+.mobile-only-m992 
+    @include media_query_all(block,block,block,none,null,none,'display')
+    bottom: 25px
+    position: relative
+
+.profile-dropdown-menu::-webkit-scrollbar 
+  width: 5px // Adjust the width of the scrollbar as needed */
+
+
+/* For Firefox */
+.profile-dropdown-menu 
+  scrollbar-width: thin // "thin" is the default width of the scrollbar in Firefox */
+
+
+/* For Internet Explorer and Edge */
+.profile-dropdown-menu 
+  -ms-overflow-style: scrollbar // Ensures the scrollbar is visible in IE and Edge */
+
+.profile-dropdown-menu::-webkit-scrollbar-track 
+  background-color: #080808 //* Set the background color */
+
+
+/* Thumb (the draggable part of the scrollbar) */
+.profile-dropdown-menu::-webkit-scrollbar-thumb 
+  background-color: #ccc //* Set the background color */
+  border-radius: 5px //* Optional: add rounded corners to the scrollbar thumb */
+
+:host ::ng-deep.ant-avatar-string  
+    padding-top: 4px  
+    left: 3%
+    top: 10%
+    transform: none
+    position: relative
+
+

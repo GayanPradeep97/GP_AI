@@ -1,0 +1,91 @@
+<div class="steps-row">
+  <div class="heading-row">
+    <h3 class="modal-heading">Transfer Process</h3>
+
+    <div nz-row class="steps-details">
+      <nz-steps [nzCurrent]="current">
+        <nz-step nzTitle="VIEW"></nz-step>
+        <nz-step nzTitle="BENEFICIARY"></nz-step>
+        <nz-step nzTitle="SUMMARY"></nz-step>
+      </nz-steps>
+    </div>
+  </div>
+</div>
+
+<div>
+  <form>
+    <div class="steps-content">
+      <form [formGroup]="transferInfoForm">
+        <app-transfer-view
+          (SendingCurrencyChange)="SendingCurrencyChange($event)"
+          (FirstIndexvalue)="newIndexvalue($event)"
+          (receivingCurrencyChange)="receivingCurrencyChange($event)"
+          [sendingCurrencies]="sendingCurrencies"
+          [receivingCurrencies]="receivingCurrencies"
+          [transactionmodes]="transactionmodes"
+          formGroupName="transferView"
+          [mode]="mode"
+          (agentSenderDetails)="(agentSenderDetails)"
+          *ngIf="index === 0"
+        ></app-transfer-view>
+        <app-transfer-beneficiary
+          formGroupName="benificiaryView"
+          [mode]="mode"
+          (GonextPage)="reviewandConfirm()"
+          *ngIf="index === 1"
+        ></app-transfer-beneficiary>
+        <app-transfer-summery
+          formGroupName="transferSummaryView"
+          [agentSenderDetails]="agentSenderDetails"
+          [mode]="mode"
+          [mytransaction]="mytransaction"
+          (disablebutton)="disableButton()"
+          *ngIf="index === 2"
+        ></app-transfer-summery>
+      </form>
+      <div class="button-section">
+        <button
+          nz-button
+          (click)="closeModal()"
+          class="btn btn__cancel"
+          *ngIf="index === 0"
+        >
+          Cancel
+        </button>
+        <button
+          nz-button
+          class="btn btn__next"
+          *ngIf="index === 0"
+          (click)="next()"
+        >
+          Next
+        </button>
+        <button
+          nz-button
+          class="btn btn__goback"
+          (click)="pre()"
+          *ngIf="current > 0"
+        >
+          Go Back
+        </button>
+        <button
+          nz-button
+          class="btn btn__review"
+          *ngIf="index === 1"
+          (click)="next()"
+        >
+          Review and Confirm
+        </button>
+
+        <button
+          nz-button
+          class="btn btn__confirmation"
+          *ngIf="current === 2"
+          (click)="next()"
+        >
+          Confirm Transaction
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

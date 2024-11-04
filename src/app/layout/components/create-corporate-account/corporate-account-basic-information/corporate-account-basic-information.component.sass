@@ -1,0 +1,104 @@
+@import '../../../../../assets/sass/index'
+::ng-deep .corporate-account-modal .ant-modal-content
+    border-radius: 5px
+    .ant-modal-body
+        background: #F45300
+        border-radius: 5px
+        padding: 63px 0 0 0
+
+    .modal-content
+        background: #fff
+        padding: 30px 34px 30px 30px
+
+        .ant-steps-item-container
+            display: flex
+            align-items: center
+            justify-content: center
+
+    .ant-modal-close-x
+        color: #fff
+        font-size: 20px !important
+
+    .ant-steps
+        width: 453px
+        @include media_query_all_im(none,null,null,null,block,block,"display")
+
+    .ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon
+        background: #fff
+        border: 1px solid #fff
+
+        .ant-steps-icon
+            color: #F45300
+
+    .ant-input
+        max-width: 304px
+
+.border-round
+    border: 1px solid #C4C4C4 !important
+    border-radius: 5px
+    height: 52px
+    // width: 304px
+
+    &-dropdown
+        display: flex
+        align-items: flex-start
+        justify-content: center
+        // padding-left: 11px
+
+.required-mark
+    color: #F71E35
+    font-size: 14px
+    font-weight: 400
+    line-height: 19px
+    letter-spacing: 0.028px
+    margin-left: 5px
+
+::ng-deep .label label
+    color: #424242
+    font-size: 14px
+    font-weight: 400
+    line-height: 19px
+    letter-spacing: 0.028px
+
+::ng-deep
+    .ant-select-selector
+        align-items: center
+        height: 100% !important
+        display: flex
+        width: 100%
+        border-radius: 5px !important
+        border-color: #C4C4C4 !important
+
+    .select-dropdown
+        width: 100%
+        height: 100%
+        height: 52px
+        // border: none
+        // background: transparent
+        font-size: 14px
+        font-weight: 400
+        line-height: 19px
+        letter-spacing: 0.028px
+        color: #424242
+
+    .full-width
+        width: 304px !important
+
+    #incorporationdate
+        width: 100%
+
+    .ant-steps-item-container
+        .ant-steps-item-content .ant-steps-item-title
+            color: #fff !important
+
+        .ant-steps-item-icon
+            background: #F45300
+            border: 1px solid #fff
+
+            .ant-steps-icon
+                color: #F45300
+
+                .anticon.anticon-check
+                    color: #fff
+:host ::ng-deep .ant-picker-suffix
+    @include media_query_all_im(16,null,null,null,20,28,"font-size")

@@ -1,0 +1,40 @@
+<nz-content>
+  <div class="section">
+    <div class="section-container">
+      <div class="heading-row">
+        <h2 class="heading">{{ blogHeading.heading }}</h2>
+      </div>
+      <div class="content-figure">
+        <img class="blog-img" [src]="blogHeading.imgUrl" />
+        <div class="content-item" *ngFor="let data of blogDetails">
+          <h4 *ngIf="data.headingName">{{ data.headingName }}</h4>
+          <p *ngFor="let details of data.blogHeadingDetailsListDtos">
+            {{ details.blogDetails }}
+          </p>
+        </div>
+      </div>
+      <div nz-row class="btn-row">
+        <div nz-col nzXs="24" nzLg="12" nzXl="12" class="prev-btn-sec">
+          <a
+            *ngIf="
+              blogHeading.previousPermalink !== null &&
+              blogHeading.previousPermalink !== ''
+            "
+            (click)="navigatePrevPost(blogHeading.previousPermalink)"
+            [ngClass]="{ clickDeactive: previousPermalink === null }"
+          >
+            < Previous Post</a
+          >
+        </div>
+        <div nz-col nzXs="24" nzLg="12" nzXl="12" class="next-btn-sec">
+          <a
+            *ngIf="blogHeading.nextPermalink"
+            (click)="navigateNextPost(blogHeading.nextPermalink)"
+            [ngClass]="{ clickDeactive: nextPermalink === null }"
+            >Next Post ></a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</nz-content>
