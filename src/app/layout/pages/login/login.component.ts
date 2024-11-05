@@ -108,7 +108,12 @@ export class LoginComponent implements OnInit {
         next: (response) => {
           this.dataService.isLoggedIn = true;
           this.route.navigate(['']);
-          this.afterLoginPopup();
+          this.dataService.loggedInUser = this.userName?.value;
+          this.tokenStorageService.saveUser(this.userName?.value);
+
+          // this.afterLoginPopup();
+          this.modalRef.close();
+          window.location.reload();
           console.log('Success', response);
         },
         error: (err) => {

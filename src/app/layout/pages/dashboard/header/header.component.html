@@ -1,9 +1,7 @@
 <div class="header">
   <div class="header-container">
     <div class="logo">
-      <a [routerLink]="['/']" (click)="trackClickActivity('logo')"
-        ><img src="./assets/images/gp_logo1.png"
-      /></a>
+      <a [routerLink]="['/']"><img src="./assets/images/gp_logo1.png" /></a>
     </div>
     <div class="nav-menu-container">
       <ul class="nav-menu">
@@ -23,30 +21,18 @@
         </li>
 
         <li>
-          <a [routerLink]="['/']" (click)="trackClickActivity('about us')"
-            >Home</a
-          >
+          <a [routerLink]="['/']">Home</a>
         </li>
 
         <li>
-          <a
-            [routerLink]="['/about-us']"
-            (click)="trackClickActivity('about us')"
-            >About Us</a
-          >
+          <a [routerLink]="['/about-us']">About Us</a>
         </li>
         <li>
-          <a
-            [routerLink]="['/how-it-works']"
-            (click)="trackClickActivity('how it works')"
-            >How it works?</a
-          >
+          <a [routerLink]="['/how-it-works']">How it works?</a>
         </li>
         <!-- <li><a [routerLink]="['/affiliate']">Become an Affiliate</a></li> -->
         <li>
-          <a [routerLink]="['/contact']" (click)="trackClickActivity('contact')"
-            >Contact</a
-          >
+          <a [routerLink]="['/contact']">Contact</a>
         </li>
         <li *ngIf="dataService.isLoggedIn">
           <a
@@ -54,7 +40,6 @@
             [nzDropdownMenu]="menu"
             id="profileBtn"
             class="profile-btn"
-            (nzVisibleChange)="getClickAction()"
             nzTrigger="click"
           >
             <nz-avatar
@@ -71,7 +56,6 @@
               nzSelectable
               class="profile-dropdown-menu"
               style="max-height: 400px; overflow-y: auto"
-              (nzVisibleChange)="getClickAction()"
             >
               <li
                 nz-menu-item
@@ -85,10 +69,7 @@
               <li
                 nz-menu-item
                 *ngFor="let sender of coporateSenders"
-                (click)="
-                  setSelectedUserAccount(sender.companyEmail);
-                  trackClickActivity('coporateAccount')
-                "
+                (click)="setSelectedUserAccount(sender.companyEmail)"
                 [ngClass]="{
                   activeAccount:
                     sender.companyEmail === currentActiveUserAccount
@@ -98,10 +79,6 @@
               </li>
               <li
                 nz-menu-item
-                (click)="
-                  createCoporateAccount();
-                  trackClickActivity('create coporate account')
-                "
                 style="border-bottom: 2px solid #f45300"
                 *ngIf="coporateEnableStatus"
               >
