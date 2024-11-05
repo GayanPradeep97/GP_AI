@@ -1,69 +1,55 @@
 <div class="steps-content">
   <!--  step 01 content-->
-  <div nz-row>
-    <form nz-form [formGroup]="personalInformationForm">
-      <div nz-row>
-        <div nz-col nzXs="24" nzLg="12" nzXl="12">
-          <div nz-row nzType="flex" nzJustify="start">
-            <div nz-col nzXs="24" nzLg="23" nzXl="23">
-              <nz-form-item>
-                <nz-form-label>User Name</nz-form-label>
-                <nz-form-control nzSpan="">
-                  <input
-                    nz-input
-                    id="firstName"
-                    type="text"
-                    placeholder="First Name"
-                    formControlName="userName"
-                  />
-                </nz-form-control>
-              </nz-form-item>
-            </div>
-          </div>
-        </div>
-        <div nz-col nzXs="24" nzLg="12" nzXl="12">
-          <div nz-row nzType="flex" nzJustify="end">
-            <div nz-col nzXs="24" nzLg="23" nzXl="23">
-              <nz-form-item>
-                <nz-form-label
-                  >Email<span class="required-mark">*</span></nz-form-label
-                >
-                <nz-form-control nzSpan="">
-                  <input
-                    nz-input
-                    id="lastName"
-                    type="email"
-                    placeholder="Last Name"
-                    formControlName="email"
-                  />
-                </nz-form-control>
-              </nz-form-item>
-            </div>
-          </div>
-        </div>
-        <div nz-col nzXs="24" nzLg="12" nzXl="12">
-          <div nz-row nzType="flex" nzJustify="end">
-            <div nz-col nzXs="24" nzLg="23" nzXl="23">
-              <nz-form-item>
-                <nz-form-label
-                  >Password<span class="required-mark">*</span></nz-form-label
-                >
-                <nz-form-control nzSpan="">
-                  <input
-                    nz-input
-                    id="lastName"
-                    type="password"
-                    placeholder="Last Name"
-                    formControlName="password"
-                  />
-                </nz-form-control>
-              </nz-form-item>
-            </div>
-          </div>
-        </div>
+  <h3 class="title">Signup</h3>
+
+  <form nz-form [formGroup]="personalInformationForm">
+    <nz-form-item>
+      <div class="input_field_login" nzType="flex">
+        <nz-form-label>User Name</nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            id="firstName"
+            type="text"
+            placeholder="First Name"
+            formControlName="userName"
+          />
+        </nz-form-control>
       </div>
-    </form>
-  </div>
+    </nz-form-item>
+
+    <nz-form-item>
+      <div class="input_field_login" nzType="flex">
+        <nz-form-label>Email<span class="required-mark">*</span></nz-form-label>
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            id="lastName"
+            type="email"
+            placeholder="Last Name"
+            formControlName="email"
+          />
+        </nz-form-control>
+      </div>
+    </nz-form-item>
+
+    <nz-form-item>
+      <div class="input_field_login" nzType="flex">
+        <nz-form-label
+          >Password<span class="required-mark">*</span></nz-form-label
+        >
+        <nz-form-control nzSpan="">
+          <input
+            nz-input
+            id="lastName"
+            type="password"
+            placeholder="Last Name"
+            formControlName="password"
+          />
+        </nz-form-control>
+      </div>
+    </nz-form-item>
+  </form>
 
   <div class="btn-row">
     <button
@@ -71,7 +57,7 @@
       class="btn btn__high_orange"
       (click)="firstStepContinue()"
     >
-      Continue
+      SignUp
     </button>
   </div>
 </div>
