@@ -1,5 +1,18 @@
 <div class="banner-section">
-  <img class="banner-img" src="./assets/images/mainBannerBg.svg" />
+  <video
+    *ngIf="!dataService.isLoggedIn"
+    class="banner-img"
+    src="./assets/video/mainBannerBg.mp4"
+    autoplay
+    loop
+  ></video>
+  <video
+    *ngIf="dataService.isLoggedIn"
+    class="banner-img"
+    src="./assets/video/home-banner.mp4"
+    autoplay
+    loop
+  ></video>
   <div class="banner-section-container">
     <div nz-row>
       <!-- <div nz-col nzSpan="8" class="banner-caption"> -->
@@ -16,8 +29,8 @@
           {{ country }}
         </h1>
         <h1 *ngIf="country === ''">
-          Spot On Money transfers.<br />
-          Now send money to Asia, UAE, Africa and beyond
+          GP AI <br />
+          Revolutionizing Tomorrow <br />with Intelligent Solutions
         </h1>
         <h6 *ngIf="country !== ''">
           Easily send remittances to {{ country }} with our secure and efficient
@@ -29,7 +42,8 @@
           pay for services, or make personal transfers with ease.
         </h6>
         <h6 *ngIf="country == ''">
-          An efficient and effective way to send money worldwide
+          Empower your journey with our suite <br />of AI tools designed for
+          enhanced efficiency and insight.
         </h6>
         <div nz-row class="learn-more-row">
           <button
@@ -50,8 +64,8 @@
         class="banner-caption"
         *ngIf="dataService.isLoggedIn"
       >
-        <h1>TRANSFERS SIMPLIFIED</h1>
-        <h6>We move money,SpotOn</h6>
+        <h1>GP AI Uses Simple</h1>
+        <h6>Are you ready to get started?</h6>
         <div nz-row class="learn-more-row">
           <button
             nz-button
@@ -72,149 +86,11 @@
       </div>
 
       <div nz-col nzXs="24" nzLg="8" nzXl="8">
-        <form nz-form [nzLayout]="'vertical'" [formGroup]="transferDetailsForm">
-          <!-- <div nz-col xs="24" lg="8" xl="8" class="form-align"> -->
-          <div class="form-align">
-            <div class="get-started-figure">
-              <h4 *ngIf="!country">Send Money</h4>
-              <h4 *ngIf="country && !uniqueTitle && country === ''">
-                Send Money
-              </h4>
-              <h4 *ngIf="country && !uniqueTitle && country !== ''">
-                Send Money to {{ country }}
-              </h4>
-              <h4 *ngIf="uniqueTitle">{{ uniqueTitle }}</h4>
-              <div nz-row>
-                <div nz-col [nzSpan]="24">
-                  <nz-form-item>
-                    <nz-form-label [nzNoColon]="true"
-                      >Sending from</nz-form-label
-                    >
-                    <nz-form-control>
-                      <nz-select
-                        class="nzsel"
-                        nzSuffixIcon="caret-down"
-                        formControlName="sendingCurrency"
-                        nzPlaceHolder="Select Currency"
-                        nzAllowClear="true"
-                        nzShowSearch
-                      >
-                        <nz-option
-                          *ngFor="let data of sendingCurrencies"
-                          [nzValue]="data.currencyCode"
-                          [nzLabel]="
-                            data.currencyCode + ' - ' + data.currencyName
-                          "
-                        >
-                        </nz-option>
-                      </nz-select>
-                    </nz-form-control>
-                  </nz-form-item>
-                </div>
-              </div>
-              <div nz-row>
-                <div nz-col [nzSpan]="24">
-                  <nz-form-item>
-                    <nz-form-label [nzNoColon]="true"
-                      >Recipient Currency</nz-form-label
-                    >
-                    <nz-form-control>
-                      <nz-select
-                        formControlName="recipientCurrency"
-                        nzSuffixIcon="caret-down"
-                        nzPlaceHolder="Select Currency"
-                        nzAllowClear="true"
-                        (ngModelChange)="
-                          getRecieverRatesWithoutValues(); getRecieverRates(0)
-                        "
-                        nzShowSearch
-                      >
-                        <nz-option
-                          *ngFor="let data of recipientCurrencies"
-                          [nzValue]="data.currencyId"
-                          [nzLabel]="
-                            data.currencyCode + ' - ' + data.currencyName
-                          "
-                        ></nz-option>
-                      </nz-select>
-                    </nz-form-control>
-                  </nz-form-item>
-                </div>
-              </div>
-              <div nz-row>
-                <div nz-col [nzSpan]="12">
-                  <div nz-row nzType="flex" nzJustify="start">
-                    <div nz-col nzSpan="23">
-                      <nz-form-item>
-                        <nz-form-label [nzNoColon]="true"
-                          >Send Amount</nz-form-label
-                        >
-                        <nz-form-control>
-                          <input
-                            nz-input
-                            type="text"
-                            formControlName="sendAmount"
-                            placeholder="Enter Amount"
-                            nzAllowClear="true"
-                            (keypress)="numberOnly($event)"
-                            (change)="
-                              getRecieverRates(1); covertSendingToDecimal()
-                            "
-                            (ngModelChange)="validateNumber()"
-                            (click)="handleSendAmountClick()"
-                            [disabled]="!dataService.isLoggedIn"
-                          />
-                        </nz-form-control>
-                      </nz-form-item>
-                    </div>
-                  </div>
-                </div>
-                <div nz-col [nzSpan]="12">
-                  <div nz-row nzType="flex" nzJustify="end">
-                    <div nz-col nzSpan="23">
-                      <nz-form-item>
-                        <nz-form-label [nzNoColon]="true"
-                          >Amount Received</nz-form-label
-                        >
-                        <nz-form-control>
-                          <input
-                            nz-input
-                            type="text"
-                            formControlName="amountReceived"
-                            placeholder="Enter Amount"
-                            (keypress)="numberOnly($event)"
-                            (change)="
-                              getSenderRates(); covertReceivingToDecimal()
-                            "
-                            (ngModelChange)="validateNumberRec()"
-                          />
-                        </nz-form-control>
-                      </nz-form-item>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <button
-                nz-button
-                nzType="primary"
-                class="get-started-btn"
-                (click)="startTransaction()"
-              >
-                Get Started
-              </button>
-              <div nz-row class="bottom-row">
-                <div nz-col nzSpan="24">
-                  <span style="float: none">{{ rateEquation }}</span>
-                  <span
-                    *ngIf="rateEquation"
-                    style="float: none; font-size: 12px; font-style: italic"
-                    >*Rates are indicative and may change often</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
+        <video
+          class="banner-img"
+          src="./assets/images/spoton_banner.png"
+          alt="banner"
+        ></video>
       </div>
     </div>
   </div>

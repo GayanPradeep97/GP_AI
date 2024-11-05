@@ -20,6 +20,7 @@ import { SignUpService } from 'src/app/_services/sign-up.service';
 import { IdScanDetailsComponent } from '../../signup/id-scan-details/id-scan-details.component';
 import { CorporateAccountsChangeService } from 'src/app/_services/corporate-accounts-change.service';
 import { CheckIdDocumentsComponent } from '../../check-id-documents/check-id-documents.component';
+import { SignupPageComponent } from '../../signup/signup-page/signup-page.component';
 
 @Component({
   selector: 'app-header',
@@ -67,107 +68,112 @@ export class HeaderComponent {
     private tokenStorageService: TokenStorageServiceService,
     private corporateAccountsChangeService: CorporateAccountsChangeService
   ) {
-    this.currentUser = this.commonService.parseJwt(
-      this.tokenService.getToken()
-    );
+    // this.currentUser = this.commonService.parseJwt(
+    //   this.tokenService.getToken()
+    // );
   }
 
   ngOnInit() {
-    if (this.currentUser) {
+    console.log('loggin user', this.tokenStorageService.getUser().username);
+    this.currentActiveUserAccount = this.tokenStorageService.getUser();
+    console.log('loggin user 2', this.dataService.loggedInUser);
+    console.log('username first', this.currentActiveUserAccount);
+    console.log('is logging', this.dataService.isLoggedIn);
+    this.usernameFirstCharacter = this.currentActiveUserAccount
+      .slice(0, 1)
+      .toUpperCase();
+    console.log('username first character', this.usernameFirstCharacter);
+
+    if (this.currentActiveUserAccount !== null) {
       this.dataService.isLoggedIn = true;
     }
-    if (this.dataService.isLoggedIn) {
-      this.currentUser = this.commonService.parseJwt(
-        this.tokenService.getToken()
-      );
-      this.username = this.currentUser.sub;
-      this.currentActiveUserAccount = this.tokenStorageService.getUser();
-      this.usernameFirstCharacter = this.currentActiveUserAccount
-        .slice(0, 1)
-        .toUpperCase();
 
-      this.getCoporateSenders();
-      this.getExposableId();
-    }
-    this.eventTrigger.executeOnchangeFunction.subscribe({
-      next: (res: any) => {
-        if (res === 'login') {
-        }
-      },
-    });
-    if (this.route.snapshot.queryParams['origin']) {
-      const data = {
-        customerReference: window.atob(
-          this.route.snapshot.queryParams['origin']
-        ),
-        journeyId: window.atob(this.route.snapshot.queryParams['refer']),
-      };
+    this.currentUser = this.dataService.loggedInUser;
 
-      this.agentDetailsDataService
-        .getAgentExposableId()
-        .pipe(takeUntil(this.unsubscribe$))
-        .subscribe({
-          next: (res: any) => {
-            if (res['responseDto']) {
-              this.agentExposableId = res['responseDto']['data'];
-              this.upateAgentJourneyId(data, res['responseDto']['data']);
-            }
-          },
-        });
-    }
+    this.username = this.currentUser;
 
-    this.eventTrigger.executeOnchangeFunction.subscribe({
-      next: (res: any) => {
-        if (res === 'userdetails') {
-          this.getUserDetails();
-        }
-      },
-    });
+    console.log('username', this.usernameFirstCharacter);
+    console.log('username first check', this.currentActiveUserAccount);
+
+    // this.eventTrigger.executeOnchangeFunction.subscribe({
+    //   next: (res: any) => {
+    //     if (res === 'login') {
+    //     }
+    //   },
+    // });
+    // if (this.route.snapshot.queryParams['origin']) {
+    //   const data = {
+    //     customerReference: window.atob(
+    //       this.route.snapshot.queryParams['origin']
+    //     ),
+    //     journeyId: window.atob(this.route.snapshot.queryParams['refer']),
+    //   };
+
+    //   this.agentDetailsDataService
+    //     .getAgentExposableId()
+    //     .pipe(takeUntil(this.unsubscribe$))
+    //     .subscribe({
+    //       next: (res: any) => {
+    //         if (res['responseDto']) {
+    //           this.agentExposableId = res['responseDto']['data'];
+    //           this.upateAgentJourneyId(data, res['responseDto']['data']);
+    //         }
+    //       },
+    //     });
+    // }
+
+    // this.eventTrigger.executeOnchangeFunction.subscribe({
+    //   next: (res: any) => {
+    //     if (res === 'userdetails') {
+    //       this.getUserDetails();
+    //     }
+    //   },
+    // });
   }
-  upateAgentJourneyId(data: any, refNumber: any) {
-    this.signUpService.updateAgentJourneyId(data, refNumber).subscribe({
-      next: (res: any) => {
-        if (res['responseDto']) {
-          this.getSignUpDetails(data.customerReference);
-        }
-      },
-    });
-  }
+  // upateAgentJourneyId(data: any, refNumber: any) {
+  //   this.signUpService.updateAgentJourneyId(data, refNumber).subscribe({
+  //     next: (res: any) => {
+  //       if (res['responseDto']) {
+  //         this.getSignUpDetails(data.customerReference);
+  //       }
+  //     },
+  //   });
+  // }
 
-  getExposableId() {
-    const data: any = {};
-    data['username'] = this.currentActiveUserAccount;
-    this.corporateAccountsChangeService
-      .getCorporateExposableId(data)
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe({
-        next: (res: any) => {
-          this.agentExposableId = res['responseDto']['agentExposableId'];
-          this.tokenStorageService.saveAgentExposableId(this.agentExposableId);
-          this.getUserDetails();
-        },
-      });
-  }
+  // getExposableId() {
+  //   const data: any = {};
+  //   data['username'] = this.currentActiveUserAccount;
+  //   this.corporateAccountsChangeService
+  //     .getCorporateExposableId(data)
+  //     .pipe(takeUntil(this.unsubscribe$))
+  //     .subscribe({
+  //       next: (res: any) => {
+  //         this.agentExposableId = res['responseDto']['agentExposableId'];
+  //         this.tokenStorageService.saveAgentExposableId(this.agentExposableId);
+  //         this.getUserDetails();
+  //       },
+  //     });
+  // }
 
-  getSignUpDetails(data: any) {
-    this.signUpService.getSignUpDetails(data).subscribe({
-      next: (res: any) => {
-        if (res['responseDto']) {
-          this.dataService.idScanDetails = res['responseDto'];
-          if (window.innerWidth < 540) {
-            const model = this.modalService.create({
-              nzTitle: 'ID Details',
-              nzContent: IdScanDetailsComponent,
-              nzClosable: true,
-              nzFooter: null,
-              nzWidth: 510,
-              nzClassName: 'sign-up-summary',
-            });
-          }
-        }
-      },
-    });
-  }
+  // getSignUpDetails(data: any) {
+  //   this.signUpService.getSignUpDetails(data).subscribe({
+  //     next: (res: any) => {
+  //       if (res['responseDto']) {
+  //         this.dataService.idScanDetails = res['responseDto'];
+  //         if (window.innerWidth < 540) {
+  //           const model = this.modalService.create({
+  //             nzTitle: 'ID Details',
+  //             nzContent: IdScanDetailsComponent,
+  //             nzClosable: true,
+  //             nzFooter: null,
+  //             nzWidth: 510,
+  //             nzClassName: 'sign-up-summary',
+  //           });
+  //         }
+  //       }
+  //     },
+  //   });
+  // }
 
   setSelectedUserAccount(selectedUserAccount: any) {
     this.tokenStorageService.saveUser(selectedUserAccount);
@@ -177,139 +183,149 @@ export class HeaderComponent {
       .slice(0, 1)
       .toUpperCase();
     window.location.reload();
-    this.getUserDetails();
+    // this.getUserDetails();
   }
 
-  getCoporateSenders() {
-    const data = this.currentUser.sub;
-    this.coporateSenderDataService
-      .getAgentCoporateSenderData(data)
-      .subscribe((res) => {
-        this.coporateSenders = res['responseDto'];
-      });
-  }
+  // getCoporateSenders() {
+  //   const data = this.currentUser.sub;
+  //   this.coporateSenderDataService
+  //     .getAgentCoporateSenderData(data)
+  //     .subscribe((res) => {
+  //       this.coporateSenders = res['responseDto'];
+  //     });
+  // }
 
-  getUserDetails() {
-    const data: any = {};
-    data['exposableId'] = this.agentExposableId;
-    data['email'] = this.currentActiveUserAccount;
-    this.corporateAccountsChangeService
-      .getCorporateAcountData(data)
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe({
-        next: (res: any) => {
-          if (res['responseDto']) {
-            this.customerReference = res['responseDto']['customerReference'];
-            this.dataService.customerReferenceLogin =
-              res['responseDto']['customerReference'];
+  // getUserDetails() {
+  //   const data: any = {};
+  //   data['exposableId'] = this.agentExposableId;
+  //   data['email'] = this.currentActiveUserAccount;
+  //   this.corporateAccountsChangeService
+  //     .getCorporateAcountData(data)
+  //     .pipe(takeUntil(this.unsubscribe$))
+  //     .subscribe({
+  //       next: (res: any) => {
+  //         if (res['responseDto']) {
+  //           this.customerReference = res['responseDto']['customerReference'];
+  //           this.dataService.customerReferenceLogin =
+  //             res['responseDto']['customerReference'];
 
-            this.customerOldReference =
-              res['responseDto']['customerOldReference'];
+  //           this.customerOldReference =
+  //             res['responseDto']['customerOldReference'];
 
-            this.dataService.customerOldReference =
-              res['responseDto']['customerOldReference'];
-            this.SenderDetails = res['responseDto'];
+  //           this.dataService.customerOldReference =
+  //             res['responseDto']['customerOldReference'];
+  //           this.SenderDetails = res['responseDto'];
 
-            if (this.customerReference !== null) {
-              this.newRefference = true;
-            }
-            if (this.customerOldReference !== null) {
-              this.newRefference = true;
-            }
-            this.getCoperateAccess(this.SenderDetails.agentSenderDetailsId);
+  //           if (this.customerReference !== null) {
+  //             this.newRefference = true;
+  //           }
+  //           if (this.customerOldReference !== null) {
+  //             this.newRefference = true;
+  //           }
+  //           this.getCoperateAccess(this.SenderDetails.agentSenderDetailsId);
 
-            setTimeout(() => {
-              if (this.SenderDetails.role === null) {
-                this.checkFileExisting(this.SenderDetails);
-              }
-            }, 100);
-          }
-        },
-      });
-  }
+  //           setTimeout(() => {
+  //             if (this.SenderDetails.role === null) {
+  //               this.checkFileExisting(this.SenderDetails);
+  //             }
+  //           }, 100);
+  //         }
+  //       },
+  //     });
+  // }
 
-  checkFileExisting(values: any) {
-    const data: any = {};
-    data['email'] = values.email;
-    data['dateOfBirth'] = values.dateOfBirth;
-    data['birthPlace'] = values.placeOfBirth;
-    this.corporateAccountsChangeService
-      .checkFileExisting(data)
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe({
-        next: (res: any) => {
-          if (res['responseDto']) {
-            this.existingFileDetails = res['responseDto'];
-            if (res['responseDto']['imageAvailablity'] === false) {
-              this.openCheckId();
-            }
-          }
-        },
-      });
-  }
+  // checkFileExisting(values: any) {
+  //   const data: any = {};
+  //   data['email'] = values.email;
+  //   data['dateOfBirth'] = values.dateOfBirth;
+  //   data['birthPlace'] = values.placeOfBirth;
+  //   this.corporateAccountsChangeService
+  //     .checkFileExisting(data)
+  //     .pipe(takeUntil(this.unsubscribe$))
+  //     .subscribe({
+  //       next: (res: any) => {
+  //         if (res['responseDto']) {
+  //           this.existingFileDetails = res['responseDto'];
+  //           if (res['responseDto']['imageAvailablity'] === false) {
+  //             this.openCheckId();
+  //           }
+  //         }
+  //       },
+  //     });
+  // }
 
-  openCheckId() {
-    const model = this.modalService.create({
-      // nzTitle: 'Forgot your Password?',
-      nzContent: CheckIdDocumentsComponent,
+  // openCheckId() {
+  //   const model = this.modalService.create({
+  //     // nzTitle: 'Forgot your Password?',
+  //     nzContent: CheckIdDocumentsComponent,
+  //     nzClosable: true,
+  //     nzFooter: null,
+  //     nzWidth: 480,
+  //   });
+  // }
+
+  // getCoperateAccess(data: any) {
+  //   this.corporateAccountsChangeService
+  //     .getCorporateAccess(data)
+  //     .subscribe((res) => {
+  //       this.coporateEnableStatus = res['responseDto'];
+  //     });
+  // }
+
+  // getClickAction() {
+  //   this.getCoperateAccess(this.SenderDetails.agentSenderDetailsId);
+  // }
+
+  // signUpAmlCheck() {
+  //   if (window.innerWidth > 540) {
+  //     this.modalService.create({
+  //       nzContent: PopupMessageComponent,
+  //       nzClosable: true,
+  //       nzFooter: null,
+  //       nzWidth: 510,
+  //       nzClassName: 'popup-message',
+  //     });
+  //   } else {
+  //     this.modalService.create({
+  //       nzContent: SignupComponent,
+  //       nzClosable: true,
+  //       nzFooter: null,
+  //       nzWidth: 510,
+  //       nzClassName: 'sign-up',
+  //     });
+  //   }
+  // }
+  signUpAmlCheck() {
+    this.modalService.create({
+      nzContent: SignupPageComponent,
       nzClosable: true,
       nzFooter: null,
-      nzWidth: 480,
+      nzWidth: 510,
+      nzClassName: 'sign-up',
     });
   }
 
-  getCoperateAccess(data: any) {
-    this.corporateAccountsChangeService
-      .getCorporateAccess(data)
-      .subscribe((res) => {
-        this.coporateEnableStatus = res['responseDto'];
-      });
-  }
+  // trackClickActivity(type: string) {
+  //   this.corporateType = type;
+  //   console.log('this.corporateType', this.corporateType);
+  // }
 
-  getClickAction() {
-    this.getCoperateAccess(this.SenderDetails.agentSenderDetailsId);
-  }
-
-  signUpAmlCheck() {
-    if (window.innerWidth > 540) {
-      this.modalService.create({
-        nzContent: PopupMessageComponent,
-        nzClosable: true,
-        nzFooter: null,
-        nzWidth: 510,
-        nzClassName: 'popup-message',
-      });
-    } else {
-      this.modalService.create({
-        nzContent: SignupComponent,
-        nzClosable: true,
-        nzFooter: null,
-        nzWidth: 510,
-        nzClassName: 'sign-up',
-      });
-    }
-  }
-
-  trackClickActivity(type: string) {
-    this.corporateType = type;
-    console.log('this.corporateType', this.corporateType);
-  }
-
-  createCoporateAccount() {
-    this.modalService.create({
-      nzContent: CreateCorporateAccountComponent,
-      nzFooter: null,
-      nzWidth: 1012,
-      // nzClosable: false,
-      nzMaskClosable: false,
-      nzClassName: 'corporate-account-modal',
-    });
-  }
+  // createCoporateAccount() {
+  //   this.modalService.create({
+  //     nzContent: CreateCorporateAccountComponent,
+  //     nzFooter: null,
+  //     nzWidth: 1012,
+  //     // nzClosable: false,
+  //     nzMaskClosable: false,
+  //     nzClassName: 'corporate-account-modal',
+  //   });
+  // }
 
   logout() {
     this.dataService.isLoggedIn = false;
     localStorage.clear();
     window.localStorage.clear();
+    this.tokenStorageService.removeUser();
     window.location.reload();
   }
   login() {
