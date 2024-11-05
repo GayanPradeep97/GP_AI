@@ -19,7 +19,7 @@ export class DataService {
   agentTransactionMasterId: any;
   customerBasicDetails: any;
   agentSenderDetailsEmail: any;
-  loggedInUser: any;
+  loggedInUser: any = null;
   loggedInPassword: any;
   beneficiaryDataPersonal: any;
   beneficiaryDataPersonalId: any;

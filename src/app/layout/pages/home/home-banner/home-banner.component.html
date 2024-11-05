@@ -1,7 +1,15 @@
 <div class="banner-section">
   <video
+    *ngIf="!dataService.isLoggedIn"
     class="banner-img"
     src="./assets/video/mainBannerBg.mp4"
+    autoplay
+    loop
+  ></video>
+  <video
+    *ngIf="dataService.isLoggedIn"
+    class="banner-img"
+    src="./assets/video/home-banner.mp4"
     autoplay
     loop
   ></video>
@@ -56,8 +64,8 @@
         class="banner-caption"
         *ngIf="dataService.isLoggedIn"
       >
-        <h1>TRANSFERS SIMPLIFIED</h1>
-        <h6>We move money,SpotOn</h6>
+        <h1>GP AI Uses Simple</h1>
+        <h6>Are you ready to get started?</h6>
         <div nz-row class="learn-more-row">
           <button
             nz-button

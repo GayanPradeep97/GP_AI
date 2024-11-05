@@ -20,10 +20,10 @@ const routes: Routes = [
     path: '',
     component: HomeRouteComponent,
     data: {
-      title: 'Send Money | Easy Global Online Money Transfer |SpotOn Money',
+      title: 'Artificial Enteligence | Easy Working Online |GP AI',
       // tslint:disable-next-line: max-line-length
       description:
-        'SpotOn Money offers easy and secure international transfers with a guaranteed global exchange rate. Send money online to friends and family anytime.',
+        'GP AI-driven solutions bring precision, efficiency, and insights to enhance your experience ,Harness the power of Artificial Intelligence for smarter, faster decisions. ',
       // ogUrl: 'your og url'
     },
     children: [
