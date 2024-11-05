@@ -106,15 +106,15 @@ export class LoginComponent implements OnInit {
       .login(this.userName?.value, this.password?.value)
       .subscribe({
         next: (response) => {
+          const displayName = response.user?.displayName;
           this.dataService.isLoggedIn = true;
           this.route.navigate(['']);
           this.dataService.loggedInUser = this.userName?.value;
           this.tokenStorageService.saveUser(this.userName?.value);
-
-          // this.afterLoginPopup();
           this.modalRef.close();
           window.location.reload();
           console.log('Success', response);
+          console.log('Success, Display Name:', displayName);
         },
         error: (err) => {
           this.notificationServise.create(
