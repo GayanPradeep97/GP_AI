@@ -14,6 +14,7 @@ import { AuthGuard } from 'src/app/_guard/auth.guard';
 import { HomeRouteComponent } from './home-route/home-route.component';
 import { SectionComponent } from './sections/section/section.component';
 import { HomeSectionComponent } from './sections/home-section/home-section.component';
+import { ImageToTextComponent } from './image-to-text/image-to-text.component';
 
 const routes: Routes = [
   {
@@ -680,6 +681,16 @@ const routes: Routes = [
       title: 'About Us |Quick and Easy Money Transfer| SpotOn Money',
       description:
         'SpotOn Money provides a secure online Easy Money Transfer service to Transfer Money with a guaranteed global exchange rate.',
+      // ogUrl: 'your og url'
+    },
+  },
+  {
+    path: 'image-to-text',
+    component: ImageToTextComponent,
+    data: {
+      title: 'Image to Text |Quick and Easy Convert Image to Text| GP AI',
+      description:
+        'GP AI provides a fast image to text service to convert image to text. It is Easy and vary secure images to text.',
       // ogUrl: 'your og url'
     },
   },
