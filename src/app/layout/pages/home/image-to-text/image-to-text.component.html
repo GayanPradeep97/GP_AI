@@ -1,0 +1,51 @@
+<!-- Video Background -->
+<nz-content>
+  <!-- <div class="video-background">
+    <video
+      src="./assets/video/mainBannerBg.mp4"
+      autoplay
+      loop
+      muted
+      playsinline
+    ></video>
+  </div> -->
+
+  <!-- Main Content Container -->
+  <div class="container">
+    <h2>Image to Text Converter</h2>
+    <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+
+    <button
+      class="btn__high_orange"
+      (click)="convertImageToText()"
+      [disabled]="!selectedImage"
+    >
+      Convert to Text
+    </button>
+    <button
+      class="btn__green"
+      (click)="clearImageAndText()"
+      [disabled]="!selectedImage && !extractedText"
+    >
+      Clear
+    </button>
+
+    <h3>Image Preview:</h3>
+
+    <!-- Display image preview -->
+    <div class="preview-image-container">
+      <div *ngIf="imagePreview">
+        <img [src]="imagePreview" alt="Uploaded Image" class="preview-image" />
+      </div>
+
+      <!-- Loader -->
+      <div *ngIf="isLoading" class="loader"></div>
+
+      <!-- Display extracted text -->
+      <div *ngIf="extractedText">
+        <h3>Extracted Text:</h3>
+        <p>{{ extractedText }}</p>
+      </div>
+    </div>
+  </div>
+</nz-content>

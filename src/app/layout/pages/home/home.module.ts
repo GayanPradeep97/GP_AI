@@ -25,6 +25,8 @@ import { FooterComponent } from '../dashboard/footer/footer.component';
 import { HomeRouteComponent } from './home-route/home-route.component';
 import { SectionComponent } from './sections/section/section.component';
 import { HomeSectionComponent } from './sections/home-section/home-section.component';
+import { ImageToTextComponent } from './image-to-text/image-to-text.component';
+import { AudioToTextComponent } from './audio-to-text/audio-to-text.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,8 @@ import { HomeSectionComponent } from './sections/home-section/home-section.compo
     HomeRouteComponent,
     SectionComponent,
     HomeSectionComponent,
+    ImageToTextComponent,
+    AudioToTextComponent,
   ],
   imports: [CommonModule, SharedModule, HomeRoutingModule],
 })

@@ -1,0 +1,51 @@
+<div class="container">
+  <h2 class="title">Upload Audio File for Transcription</h2>
+
+  <!-- Audio file input -->
+  <input
+    type="file"
+    (change)="onFileSelected($event)"
+    accept="audio/*"
+    class="file-input"
+  />
+
+  <!-- Audio playback -->
+  <div *ngIf="audioUrl" class="audio-player">
+    <audio controls [src]="audioUrl"></audio>
+  </div>
+
+  <!-- Display transcribed text with highlighted word -->
+  <div *ngIf="transcript" class="transcript-container">
+    <p class="transcript-title">Transcribed Text:</p>
+    <p class="transcript-text">
+      <span
+        *ngFor="let word of words; let i = index"
+        [class.highlighted]="i === highlightedIndex"
+        [ngStyle]="{
+          'background-color': i === highlightedIndex ? '#2281d4' : 'transparent'
+        }"
+      >
+        {{ word }}&nbsp;
+      </span>
+    </p>
+  </div>
+
+  <!-- Copy and Clear Buttons -->
+  <div *ngIf="transcript" class="button-container">
+    <button class="copy-button" (click)="copyToClipboard()">Copy Text</button>
+    <button class="clear-button" (click)="clear()">Clear</button>
+  </div>
+
+  <div>
+    <!-- Display the saved converted texts for the logged-in user -->
+    <ul *ngIf="convertedTexts.length > 0; else noTexts">
+      <li *ngFor="let text of convertedTexts">
+        {{ text.text }} ({{ text.timestamp.toDate() | date : "short" }})
+      </li>
+    </ul>
+
+    <ng-template #noTexts>
+      <p>No converted texts found.</p>
+    </ng-template>
+  </div>
+</div>
