@@ -7,20 +7,28 @@ import { BehaviorSubject, Observable, catchError, from, map } from 'rxjs';
 import { user } from '../_models/users';
 import { environment } from 'src/environments/environment';
 import { DataService } from './shared-data/data.service';
-import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth';
 import {
   Auth,
   createUserWithEmailAndPassword,
   updateProfile,
 } from '@angular/fire/auth';
+import { FirebaseService } from './firebase.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   public currentUser!: Observable<any>;
-  private currentUserSubject!: BehaviorSubject<user>;
+
   private firebaseAuth = inject(Auth);
+  private firebaseService = inject(FirebaseService);
+  private currentUserSubject!: BehaviorSubject<user>;
 
   constructor(
     private http: HttpClient,
@@ -29,10 +37,9 @@ export class AuthService {
     private tokenStorage: TokenService,
     private dataService: DataService
   ) {
-    // this.currentUserSubject = new BehaviorSubject<user>(
-    //   JSON.parse(JSON.stringify(localStorage.getItem('currentUser')))
-    // );
-    // this.currentUser = this.currentUserSubject.asObservable();
+    onAuthStateChanged(this.firebaseAuth, (user: any) => {
+      return this.currentUserSubject.next(user);
+    });
   }
 
   public get currentUserValue(): user {
@@ -66,6 +73,7 @@ export class AuthService {
     );
     return from(promise);
   }
+
   //login user
   // login(data: any) {
   //   const url = environment.authenticate;

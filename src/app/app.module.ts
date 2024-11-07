@@ -53,6 +53,7 @@ import { NzResultModule } from 'ng-zorro-antd/result';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environments';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBl_6MnrJxIFFF0SfuWf8jRoMrXg652n3Y',
@@ -121,6 +122,7 @@ registerLocaleData(en);
     DecimalPipe,
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   bootstrap: [AppComponent],
 })
