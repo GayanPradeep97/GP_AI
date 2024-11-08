@@ -28,7 +28,9 @@ export class AuthService {
 
   private firebaseAuth = inject(Auth);
   private firebaseService = inject(FirebaseService);
-  private currentUserSubject!: BehaviorSubject<user>;
+  private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(
+    null
+  );
 
   constructor(
     private http: HttpClient,
@@ -37,13 +39,25 @@ export class AuthService {
     private tokenStorage: TokenService,
     private dataService: DataService
   ) {
-    onAuthStateChanged(this.firebaseAuth, (user: any) => {
-      return this.currentUserSubject.next(user);
+    onAuthStateChanged(this.firebaseAuth, (user) => {
+      if (user) {
+        this.currentUserSubject.next(user);
+        console.log('Current user:', user); // Log current user when logged in
+        console.log('User ID (UID):', user.uid);
+        this.dataService.setLoggedUserId(user.uid); // Set UID in DataService; // Set isLoggedIn value in shared service
+      } else {
+        this.currentUserSubject.next(null);
+        console.log('No user logged in'); // Log when no user is logged in
+        this.dataService.setLoggedUserId(null);
+      }
     });
+
+    this.currentUser = this.currentUserSubject.asObservable();
+    console.log('new current user', this.currentUser);
   }
 
   public get currentUserValue(): user {
-    return this.currentUserSubject.value;
+    return this.currentUserSubject?.value;
   }
 
   register(

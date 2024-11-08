@@ -1,8 +1,23 @@
 @import '../../../../../assets/sass/index'
-    
+.main_container
+  display: flex
+  justify-content: space-around 
+  padding: 20px 
 .audio-to-text-container 
   text-align: center
 
+.oneList
+  border: 1px solid black
+  border-radius: 5px
+  padding: 10px
+  margin-bottom: 10px
+
+.history-title
+  margin-left: 40px
+  margin-bottom: 20px
+  span
+    font-size: 30px
+    font-weight: bold
 
 button 
   margin: 10px
@@ -153,3 +168,6 @@ body
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1)
 
 
+.converted-texts
+  max-height: 300px
+  overflow-y: scroll

@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FirebaseService } from 'src/app/_services/firebase.service';
 import { AuthService } from 'src/app/_services/auth.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ConnectableObservable } from 'rxjs';
+import { DataService } from 'src/app/_services/shared-data/data.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-audio-to-text',
@@ -16,22 +20,44 @@ export class AudioToTextComponent {
   audioElement: HTMLAudioElement | null = null;
   convertedText: string = '';
   convertedTexts: any[] = [];
+  public audioForm: any = FormGroup;
+  file: any;
 
   constructor(
     private http: HttpClient,
+    private authService: AuthService,
+    private formBuilder: FormBuilder,
     private FirebaseService: FirebaseService,
-    private authService: AuthService
+    private dataService: DataService,
+    private notificationService: NzNotificationService
   ) {}
 
   ngOnInit() {
-    // When the component initializes, load the saved texts for the logged-in user
-    if (this.authService.currentUserValue) {
-      this.loadConvertedTexts();
-    }
+    this.audioForm = this.formBuilder.group({
+      audioFile: [''],
+    });
+    this.dataService.loggedUserId$.subscribe((userId) => {
+      if (userId) {
+        console.log('User ID available:', userId);
+        this.loadConvertedTexts(); // Only call this once userId is available
+      } else {
+        console.log('No user logged in');
+      }
+    });
   }
 
-  onFileSelected(event: any) {
-    const file = event.target.files[0];
+  get audioFile() {
+    return this.audioForm.get('audioFile');
+  }
+
+  handleFileInput(event: any) {
+    this.file = event.target.files[0];
+  }
+
+  onFileSelected() {
+    const file = this.file;
+    console.log('values', file);
+    // const file = event.target.files[0];
     if (file) {
       const formData = new FormData();
       formData.append('file', file, file.name); // Specify file name as the third argument
@@ -46,11 +72,25 @@ export class AudioToTextComponent {
             this.audioUrl = URL.createObjectURL(file); // Create an audio URL for playback
             this.initializeAudio(); // Initialize audio
             this.onAudioConverted(this.transcript);
+            this.notificationService.create(
+              'success',
+              'Success',
+              ' Successfully Converted',
+              {
+                nzStyle: { background: '#4CAF50', color: '#fff' },
+              }
+            );
           },
           (error) => {
-            console.error('Error uploading audio file:', error);
+            this.notificationService.create('error', 'Error', 'Conver Failed', {
+              nzStyle: { background: '#dd1717', color: '#fff' },
+            });
           }
         );
+    } else {
+      this.notificationService.create('error', 'Error', 'Please Input Audio', {
+        nzStyle: { background: '#dd1717', color: '#fff' },
+      });
     }
   }
 
@@ -114,6 +154,7 @@ export class AudioToTextComponent {
     this.audioUrl = null;
     this.words = [];
     this.highlightedIndex = -1;
+    this.audioForm.get('audioFile').reset();
   }
 
   onAudioConverted(audioText: string) {
@@ -128,10 +169,39 @@ export class AudioToTextComponent {
 
   // Method to load all converted texts from Firestore
   loadConvertedTexts() {
+    console.log('Logged-in user ID:', this.dataService.loggedUserId); // Log UID // Log UID
     this.FirebaseService.getConvertedTexts().then((texts) => {
       this.convertedTexts = texts;
+      console.log('exiasting converted', texts);
     });
   }
 
-  // Call this method to simulate the audio-to-text conversion and saving
+  deleteConvertedText(docId: string) {
+    console.log('docId', docId);
+    this.FirebaseService.deleteConvertedText(docId)
+      .then(() => {
+        // Update the local array to reflect deletion
+        this.convertedTexts = this.convertedTexts.filter(
+          (text) => text.id !== docId
+        );
+        this.notificationService.create(
+          'success',
+          'Success',
+          'Text Deleted Successfully',
+          {
+            nzStyle: { background: '#4CAF50', color: '#fff' },
+          }
+        );
+      })
+      .catch((error) => {
+        this.notificationService.create(
+          'error',
+          'Error',
+          'Text Deleted Failed',
+          {
+            nzStyle: { background: '#dd1717', color: '#fff' },
+          }
+        );
+      });
+  }
 }

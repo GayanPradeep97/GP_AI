@@ -1,47 +1,57 @@
-<div class="container">
-  <h2 class="title">Upload Audio File for Transcription</h2>
+<div class="main_container">
+  <div class="container">
+    <h2 class="title">Upload Audio File for Transcription</h2>
+    <form class="audio-form" [formGroup]="audioForm">
+      <!-- Audio file input -->
+      <input
+        type="file"
+        accept="audio/*"
+        class="file-input"
+        (change)="handleFileInput($event)"
+        formControlName="audioFile"
+      />
 
-  <!-- Audio file input -->
-  <input
-    type="file"
-    (change)="onFileSelected($event)"
-    accept="audio/*"
-    class="file-input"
-  />
+      <!-- Audio playback -->
+      <div *ngIf="audioUrl" class="audio-player">
+        <audio controls [src]="audioUrl"></audio>
+      </div>
+      <div>
+        <button class="copy-button" (click)="onFileSelected()">Convert</button>
+      </div>
+    </form>
+    <!-- Display transcribed text with highlighted word -->
+    <div *ngIf="transcript" class="transcript-container">
+      <p class="transcript-title">Transcribed Text:</p>
+      <p class="transcript-text">
+        <span
+          *ngFor="let word of words; let i = index"
+          [class.highlighted]="i === highlightedIndex"
+          [ngStyle]="{
+            'background-color':
+              i === highlightedIndex ? '#2281d4' : 'transparent'
+          }"
+        >
+          {{ word }}&nbsp;
+        </span>
+      </p>
+    </div>
 
-  <!-- Audio playback -->
-  <div *ngIf="audioUrl" class="audio-player">
-    <audio controls [src]="audioUrl"></audio>
+    <!-- Copy and Clear Buttons -->
+    <div *ngIf="transcript" class="button-container">
+      <button class="copy-button" (click)="copyToClipboard()">Copy Text</button>
+      <button class="clear-button" (click)="clear()">Clear</button>
+    </div>
   </div>
-
-  <!-- Display transcribed text with highlighted word -->
-  <div *ngIf="transcript" class="transcript-container">
-    <p class="transcript-title">Transcribed Text:</p>
-    <p class="transcript-text">
-      <span
-        *ngFor="let word of words; let i = index"
-        [class.highlighted]="i === highlightedIndex"
-        [ngStyle]="{
-          'background-color': i === highlightedIndex ? '#2281d4' : 'transparent'
-        }"
-      >
-        {{ word }}&nbsp;
-      </span>
-    </p>
-  </div>
-
-  <!-- Copy and Clear Buttons -->
-  <div *ngIf="transcript" class="button-container">
-    <button class="copy-button" (click)="copyToClipboard()">Copy Text</button>
-    <button class="clear-button" (click)="clear()">Clear</button>
-  </div>
-
-  <div>
+  <div class="converted-texts">
+    <div class="history-title"><span>History</span></div>
     <!-- Display the saved converted texts for the logged-in user -->
     <ul *ngIf="convertedTexts.length > 0; else noTexts">
-      <li *ngFor="let text of convertedTexts">
-        {{ text.text }} ({{ text.timestamp.toDate() | date : "short" }})
-      </li>
+      <div *ngFor="let text of convertedTexts" class="oneList">
+        <p>{{ text.text }}</p>
+        <button class="clear-button" (click)="deleteConvertedText(text.id)">
+          Delete
+        </button>
+      </div>
     </ul>
 
     <ng-template #noTexts>
