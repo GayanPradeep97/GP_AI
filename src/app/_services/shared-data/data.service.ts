@@ -113,5 +113,18 @@ export class DataService {
   firstTransactionDone = false;
   settingtSelectedIndex = 0;
   popupClick = false;
+  private loggedUserIdSubject = new BehaviorSubject<string | null>(null);
+  public loggedUserId$ = this.loggedUserIdSubject.asObservable();
+
+  // Method to update the loggedUserId
+  setLoggedUserId(userId: string | null) {
+    this.loggedUserIdSubject.next(userId);
+  }
+
+  // Method to get the current value synchronously
+  get loggedUserId(): string | null {
+    return this.loggedUserIdSubject.value;
+  }
+
   constructor() {}
 }

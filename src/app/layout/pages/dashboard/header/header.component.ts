@@ -322,9 +322,9 @@ export class HeaderComponent {
   // }
 
   logout() {
+    this.dataService.setLoggedUserId(null);
     this.dataService.isLoggedIn = false;
     localStorage.clear();
-    window.localStorage.clear();
     this.tokenStorageService.removeUser();
     window.location.reload();
   }
